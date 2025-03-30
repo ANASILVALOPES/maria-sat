@@ -13,7 +13,9 @@ CC := gcc
 CFLAGS := -Wall -Wextra -g \
 	-I$(INCLUDE_DIR) \
 	-I$(FREERTOS_DIR)/include \
-	-I$(FREERTOS_DIR)/portable/GCC/Posix
+	-I$(FREERTOS_DIR)/portable/GCC/Posix \
+	-DportUSING_POSIX
+
 
 # Arquivos fonte
 FREERTOS_SRC := $(wildcard $(FREERTOS_DIR)/*.c) \
