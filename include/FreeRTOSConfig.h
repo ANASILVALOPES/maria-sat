@@ -37,8 +37,9 @@
 #define configUSE_PORT_OPTIMISED_TASK_SELECTION 1
 #define configENABLE_BACKWARD_COMPATIBILITY     0
 
-/* 🚫 REMOVIDO:
-   typedef int BaseType_t;
-   typedef unsigned long TickType_t;
-   Isso é definido automaticamente por portmacro.h */
+/* Definir portMAX_DELAY para evitar erro de símbolo não encontrado */
+#ifndef portMAX_DELAY
+    #define portMAX_DELAY ( ( TickType_t ) 0xffffffffUL )
+#endif
+
 #endif /* FREERTOS_CONFIG_H */
