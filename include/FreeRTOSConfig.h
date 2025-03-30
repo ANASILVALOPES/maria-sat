@@ -54,6 +54,6 @@
  *----------------------------------------------------------*/
 typedef int BaseType_t;       // Tipo base para valores inteiros
 typedef unsigned int UBaseType_t;  // Tipo base sem sinal para valores inteiros
-typedef unsigned long TickType_t;  // Tipo para contar os ticks de tempo
+
 
 #endif /* FREERTOS_CONFIG_H */
