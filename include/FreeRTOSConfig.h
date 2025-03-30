@@ -31,7 +31,7 @@
 
 /* Stack e memória */
 #define configSTACK_DEPTH_TYPE          uint16_t
-#define portBYTE_ALIGNMENT              4
+#define portBYTE_ALIGNMENT              8
 
 /* Otimizações e compatibilidade */
 #define configUSE_PORT_OPTIMISED_TASK_SELECTION 1
@@ -41,5 +41,7 @@
 #ifndef portMAX_DELAY
     #define portMAX_DELAY ( ( TickType_t ) 0xffffffffUL )
 #endif
+
+#define configRECORD_STACK_HIGH_ADDRESS 0
 
 #endif /* FREERTOS_CONFIG_H */

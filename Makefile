@@ -3,7 +3,6 @@ PROJECT_DIR := $(shell pwd)
 SRC_DIR := $(PROJECT_DIR)/src
 INCLUDE_DIR := $(PROJECT_DIR)/include
 FREERTOS_DIR := $(PROJECT_DIR)/FreeRTOS-Kernel
-PORT_DIR := $(FREERTOS_DIR)/portable/GCC/Posix
 BUILD_DIR := $(PROJECT_DIR)/build
 
 # Nome do arquivo de saída
@@ -14,18 +13,17 @@ CC := gcc
 CFLAGS := -Wall -Wextra -g \
 	-I$(INCLUDE_DIR) \
 	-I$(FREERTOS_DIR)/include \
-	-I$(PORT_DIR) \
-	-DFREERTOS_POSIX \
-	-DportUSING_POSIX \
-	-DTickType_t=uint32_t
+	-I$(FREERTOS_DIR)/portable/GCC/Posix \
+	-DportUSING_POSIX
+
 
 # Arquivos fonte
 FREERTOS_SRC := $(wildcard $(FREERTOS_DIR)/*.c) \
-				$(wildcard $(PORT_DIR)/*.c)
+				$(wildcard $(FREERTOS_DIR)/portable/GCC/Posix/*.c)
 SRC_FILES := $(wildcard $(SRC_DIR)/*.c) $(FREERTOS_SRC)
 
-# Arquivos objeto (mantendo estrutura de pastas no build)
-OBJ_FILES := $(patsubst $(PROJECT_DIR)/%.c, $(BUILD_DIR)/%.o, $(SRC_FILES))
+# Arquivos objeto
+OBJ_FILES := $(SRC_FILES:$(PROJECT_DIR)/%.c=$(BUILD_DIR)/%.o)
 
 # Criação da pasta build caso não exista
 $(shell mkdir -p $(BUILD_DIR))
@@ -37,7 +35,7 @@ all: $(OUTPUT)
 $(OUTPUT): $(OBJ_FILES)
 	$(CC) $(OBJ_FILES) -o $(OUTPUT)
 
-# Compilação dos arquivos fonte (com suporte a subpastas)
+# Compilação dos arquivos fonte (com suporte a subdiretórios)
 $(BUILD_DIR)/%.o: $(PROJECT_DIR)/%.c
 	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -c $< -o $@
