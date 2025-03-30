@@ -1,23 +1,39 @@
-# Definindo os arquivos fonte e objetos
-SRC = src/main.c src/MAIN_SO.c FreeRTOS-Kernel/portable/GCC/Posix/port.c
-OBJ = $(SRC:.c=.o)
+# Diretórios do projeto
+PROJECT_DIR := $(shell pwd)
+SRC_DIR := $(PROJECT_DIR)/src
+INCLUDE_DIR := $(PROJECT_DIR)/include
+FREERTOS_DIR := $(PROJECT_DIR)/FreeRTOS-Kernel
+BUILD_DIR := $(PROJECT_DIR)/build
 
-# Diretórios de inclusão
+# Nome do arquivo de saída
+OUTPUT := maria-sat.elf
+
+# Compilador e flags
+CC := gcc
 CFLAGS := -Wall -Wextra -g -I$(INCLUDE_DIR) -I$(FREERTOS_DIR)/include -I$(FREERTOS_DIR)/portable/GCC/Posix
 
-# Nome final do executável
-TARGET = maria-sat.elf
+# Diretórios de origem e objetos
+SRC_FILES := $(wildcard $(SRC_DIR)/*.c)
+OBJ_FILES := $(SRC_FILES:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
 
-# Regras de compilação
-all: $(TARGET)
+# Criação da pasta build caso não exista
+$(shell mkdir -p $(BUILD_DIR))
 
-$(TARGET): $(OBJ)
-	$(CC) -o $@ $^ $(CFLAGS)
+# Tarefa padrão
+all: $(OUTPUT)
 
-# Compilação dos arquivos .c em .o
-%.o: %.c
-	$(CC) -c $< -o $@ $(CFLAGS)
+# Linkando os arquivos objeto
+$(OUTPUT): $(OBJ_FILES)
+	$(CC) $(OBJ_FILES) -o $(OUTPUT) -L$(FREERTOS_DIR)/Source -lfreertos
 
-# Limpeza dos arquivos gerados
+# Compilação dos arquivos fonte
+$(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+# Limpeza de arquivos temporários
 clean:
-	rm -f $(OBJ) $(TARGET)
+	rm -rf $(BUILD_DIR) $(OUTPUT)
+
+# Regra para rodar o programa (opcional)
+run: $(OUTPUT)
+	./$(OUTPUT)
