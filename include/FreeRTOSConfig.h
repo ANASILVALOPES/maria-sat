@@ -9,12 +9,12 @@
 #define configUSE_PREEMPTION            1      // Habilita a preempção de tarefas
 #define configUSE_IDLE_HOOK            0      // Não usa o hook de idle
 #define configUSE_TICK_HOOK            0      // Não usa o hook de tick
-#define configUSE_16_BIT_TICKS         0      // Usa ticks de 32 bits
+#define configUSE_16_BIT_TICKS         0      // Usa ticks de 32 bits (0 significa 32-bit)
 #define configCPU_CLOCK_HZ             ( ( unsigned long ) 16000000 )  // Ajuste conforme o seu clock (16MHz é um exemplo)
 #define configTICK_RATE_HZ             ( ( TickType_t ) 1000 )         // Taxa de tick 1ms
 #define configMAX_PRIORITIES           ( 5 )    // Número máximo de prioridades (ajuste conforme necessário)
 #define configMINIMAL_STACK_SIZE       ( ( unsigned short ) 128 )      // Tamanho mínimo da pilha de tarefas
-#define configTOTAL_HEAP_SIZE          ( ( size_t ) ( 2 * 1024 ) )    // Tamanho do heap (2KB, ajuste conforme necessário)
+#define configTOTAL_HEAP_SIZE          ( ( size_t ) ( 4 * 1024 ) )    // Tamanho do heap (4KB, ajuste conforme necessário)
 #define configMAX_TASK_NAME_LEN        ( 16 )   // Comprimento máximo dos nomes das tarefas
 #define configUSE_TRACE_FACILITY       0      // Não usa trace para depuração
 
@@ -36,6 +36,24 @@
 /*-----------------------------------------------------------
  * Funções de stack e memória
  *----------------------------------------------------------*/
+#define configSTACK_DEPTH_TYPE         uint16_t  // Tamanho da pilha da tarefa
 #define configTOTAL_HEAP_SIZE          ( 4 * 1024 )  // Tamanho total do heap (4KB)
+
+#define portBYTE_ALIGNMENT             4           // Alinhamento de byte de 4 bytes para arquitetura 32-bit
+
+/*-----------------------------------------------------------
+ * Definições de tipo de dados do FreeRTOS
+ *----------------------------------------------------------*/
+#define configUSE_PORT_OPTIMISED_TASK_SELECTION 1    // Habilita a seleção otimizada de tarefas
+
+/* Definições adicionais para plataformas específicas */
+#define configENABLE_BACKWARD_COMPATIBILITY 0 // Desabilita compatibilidade com versões antigas
+
+/*-----------------------------------------------------------
+ * Definindo os tipos para arquitetura 32 bits
+ *----------------------------------------------------------*/
+typedef int BaseType_t;       // Tipo base para valores inteiros
+typedef unsigned int UBaseType_t;  // Tipo base sem sinal para valores inteiros
+typedef unsigned long TickType_t;  // Tipo para contar os ticks de tempo
 
 #endif /* FREERTOS_CONFIG_H */
