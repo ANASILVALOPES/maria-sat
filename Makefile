@@ -10,11 +10,18 @@ OUTPUT := maria-sat.elf
 
 # Compilador e flags
 CC := gcc
-CFLAGS := -Wall -Wextra -g -I$(INCLUDE_DIR) -I$(FREERTOS_DIR)/include -I$(FREERTOS_DIR)/portable/GCC/Posix
+CFLAGS := -Wall -Wextra -g \
+	-I$(INCLUDE_DIR) \
+	-I$(FREERTOS_DIR)/include \
+	-I$(FREERTOS_DIR)/portable/GCC/Posix
 
-# Diretórios de origem e objetos
-SRC_FILES := $(wildcard $(SRC_DIR)/*.c)
-OBJ_FILES := $(SRC_FILES:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
+# Arquivos fonte
+FREERTOS_SRC := $(wildcard $(FREERTOS_DIR)/*.c) \
+				$(wildcard $(FREERTOS_DIR)/portable/GCC/Posix/*.c)
+SRC_FILES := $(wildcard $(SRC_DIR)/*.c) $(FREERTOS_SRC)
+
+# Arquivos objeto
+OBJ_FILES := $(SRC_FILES:$(PROJECT_DIR)/%.c=$(BUILD_DIR)/%.o)
 
 # Criação da pasta build caso não exista
 $(shell mkdir -p $(BUILD_DIR))
@@ -24,15 +31,19 @@ all: $(OUTPUT)
 
 # Linkando os arquivos objeto
 $(OUTPUT): $(OBJ_FILES)
-	$(CC) $(OBJ_FILES) -o $(OUTPUT) -L$(FREERTOS_DIR)/Source -lfreertos
+	$(CC) $(OBJ_FILES) -o $(OUTPUT)
 
-# Compilação dos arquivos fonte
-$(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
+# Compilação dos arquivos fonte (com suporte a subdiretórios)
+$(BUILD_DIR)/%.o: $(PROJECT_DIR)/%.c
+	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 # Limpeza de arquivos temporários
 clean:
 	rm -rf $(BUILD_DIR) $(OUTPUT)
+
+# Alias para limpeza
+clear: clean
 
 # Regra para rodar o programa (opcional)
 run: $(OUTPUT)
