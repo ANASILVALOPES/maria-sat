@@ -1,5 +1,6 @@
 {
     "files.associations": {
         "unistd.h": "c"
-    }
+    },
+    "cmake.sourceDirectory": "/home/allan/maria_sat/FreeRTOS-Kernel"
 }

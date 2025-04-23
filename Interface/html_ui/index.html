@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MARIA-SAT Interface Avançada</title>
+  <link rel="stylesheet" href="styleS.css">
+  <script defer src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="logo"><img src="LOGOMARIA.png" alt="MARIA SAT Logo"></div>
+      <nav>
+        <ul>
+          <li>Painel</li>
+          <li>Alertas</li>
+          <li>Histórico</li>
+          <li><button id="exportBtn">📁 Baixar Logs</button></li>
+          <li>Documentação</li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="main">
+      <header>
+        <h1>Status de Processos</h1>
+      </header>
+
+      <section class="dashboard" id="process-panel">
+        <!-- Os cards de processo serão preenchidos dinamicamente via JS -->
+      </section>
+
+      <section class="charts">
+        <div class="chart-container">
+          <h4>Temperatura da Bateria</h4>
+          <canvas id="tempChart"></canvas>
+        </div>
+        <div class="chart-container">
+          <h4>Uso da CPU</h4>
+          <canvas id="cpuChart"></canvas>
+        </div>
+      </section>
+
+      <footer class="terminal">
+        <h3>Terminal de Log</h3>
+        <pre id="terminal-log"></pre>
+      </footer>
+    </main>
+  </div>
+</body>
+
+</html>

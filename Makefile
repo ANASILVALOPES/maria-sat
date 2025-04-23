@@ -8,45 +8,50 @@ BUILD_DIR := $(PROJECT_DIR)/build
 # Nome do arquivo de saída
 OUTPUT := maria-sat.elf
 
-# Compilador e flags
-CC := gcc
-CFLAGS := -Wall -Wextra -g \
+# Compilador para ARM Cortex-M3
+CC := arm-none-eabi-gcc
+
+# Flags de compilação
+CFLAGS := -mcpu=cortex-m3 -mthumb -Wall -Wextra -g \
 	-I$(INCLUDE_DIR) \
 	-I$(FREERTOS_DIR)/include \
-	-I$(FREERTOS_DIR)/portable/GCC/Posix \
-	-DportUSING_POSIX
+	-I$(FREERTOS_DIR)/portable/GCC/ARM_CM3 \
+	-DARM_CM3
 
+# Flags de linkagem
+LDFLAGS := -T linker.ld -nostartfiles -Wl,--gc-sections
 
-# Arquivos fonte
+# Fontes do FreeRTOS + fontes do projeto
 FREERTOS_SRC := $(wildcard $(FREERTOS_DIR)/*.c) \
-				$(wildcard $(FREERTOS_DIR)/portable/GCC/Posix/*.c)
-SRC_FILES := $(wildcard $(SRC_DIR)/*.c) $(FREERTOS_SRC)
+                $(wildcard $(FREERTOS_DIR)/portable/GCC/ARM_CM3/*.c)
+
+SRC_FILES := $(shell find $(SRC_DIR) -name "*.c") $(FREERTOS_SRC) syscalls.c startup.c FreeRTOS-Kernel/portable/MemMang/heap_4.c
+
 
 # Arquivos objeto
 OBJ_FILES := $(SRC_FILES:$(PROJECT_DIR)/%.c=$(BUILD_DIR)/%.o)
 
-# Criação da pasta build caso não exista
+# Garante que a pasta build existe
 $(shell mkdir -p $(BUILD_DIR))
 
-# Tarefa padrão
+# Regra padrão
 all: $(OUTPUT)
 
-# Linkando os arquivos objeto
+# Linkagem
 $(OUTPUT): $(OBJ_FILES)
-	$(CC) $(OBJ_FILES) -o $(OUTPUT)
+	$(CC) $(CFLAGS) $(OBJ_FILES) -o $(OUTPUT) $(LDFLAGS)
 
-# Compilação dos arquivos fonte (com suporte a subdiretórios)
+# Compilação
 $(BUILD_DIR)/%.o: $(PROJECT_DIR)/%.c
 	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-# Limpeza de arquivos temporários
+# Limpeza
 clean:
 	rm -rf $(BUILD_DIR) $(OUTPUT)
 
-# Alias para limpeza
 clear: clean
 
-# Regra para rodar o programa (opcional)
+# Simulação QEMU
 run: $(OUTPUT)
-	./$(OUTPUT)
+	qemu-system-arm -M lm3s6965evb -nographic -kernel $(OUTPUT)
