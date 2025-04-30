@@ -29,6 +29,9 @@
 #define configUSE_TRACE_FACILITY        1
 #define configUSE_STATS_FORMATTING_FUNCTIONS 1  // Permite vTaskList()
 
+
+
+
 /* Timer task config */
 #define configUSE_TIMERS                1
 #define configTIMER_TASK_PRIORITY       2
@@ -64,5 +67,6 @@
 
 /* Correção importante para builds */
 #define portDISABLEINTERRUPTS portDISABLE_INTERRUPTS
+
 
 #endif /* FREERTOS_CONFIG_H */

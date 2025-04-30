@@ -1,49 +1,41 @@
-#include "FreeRTOS.h"
-#include "task.h"
-#include "queue.h"
-#include <stdio.h>
+#include "alert.h"
 #include "shared.h"
+#include <stdio.h>
 
-void vALERTProcTask(void *pvParameters)
-{
+void send_alert(int tipo, float valor) {
+    switch (tipo) {
+        case ALERT_TEMP_HIGH:
+            printf("[ALERT] 🚨 Temperatura crítica detectada: %.2f ºC\n", valor);
+            break;
+        case ALERT_LOW_VOLTAGE:
+            printf("[ALERT] ⚠️ Baixa tensão detectada: %.2f V\n", valor);
+            break;
+        case ALERT_CPU_HIGH:
+            printf("[ALERT] 🚨 Uso de CPU muito alto: %.2f %%\n", valor);
+            break;
+        case ALERT_GPS_FAIL:
+            printf("[ALERT] 🚨 Falha no GPS detectada!\n");
+            break;
+        case ALERT_STAR_FAIL:
+            printf("[ALERT] 🚨 Falha no Star Tracker detectada!\n");
+            break;
+        default:
+            printf("[ALERT] ⚠️ Alerta desconhecido (tipo %d): %.2f\n", tipo, valor);
+            break;
+    }
+}
+
+void vALERTProcTask(void *pvParameters) {
     (void)pvParameters;
 
     printf("[ALERT_PROC] iniciado.\n");
 
     BMSData_t leitura;
 
-    while (1)
-    {
-        // Espera por nova leitura da fila
-        if (xQueueReceive(xBMSQueue, &leitura, portMAX_DELAY) == pdTRUE)
-        {
-            // Verifica condição imediata
-            if (leitura.temperatura >= ALERTA_TEMPERATURA_CRITICA)
-            {
-                printf("[ALERT] Temperatura nominal: %d ºC\n", leitura.temperatura);
-            }
-
-            // Verifica anomalia no histórico (3 leituras consecutivas >= 45)
-            BMSData_t historico[BMS_HISTORY_SIZE];
-            int count = 0;
-            getBMSHistory(historico, &count);
-
-            int consecutivos = 0;
-            for (int i = 0; i < count; i++)
-            {
-                if (historico[i].temperatura >= ALERTA_TEMPERATURA_CRITICA)
-                {
-                    consecutivos++;
-                    if (consecutivos >= 3)
-                    {
-                        printf("[ALERT] 🚨 Alerta crítico: 3+ leituras consecutivas >= %d ºC\n", ALERTA_TEMPERATURA_CRITICA);
-                        break;
-                    }
-                }
-                else
-                {
-                    consecutivos = 0;
-                }
+    while (1) {
+        if (xQueueReceive(xBMSQueue, &leitura, portMAX_DELAY) == pdTRUE) {
+            if (leitura.temperature > 60.0) {
+                send_alert(ALERT_TEMP_HIGH, leitura.temperature);
             }
         }
     }

@@ -1,32 +1,50 @@
 #ifndef SHARED_H
 #define SHARED_H
 
+#include <time.h>
 #include "FreeRTOS.h"
-#include "queue.h"
 #include "semphr.h"
+#include "queue.h"
 
-#define ALERTA_TEMPERATURA_CRITICA 45
-#define BMS_HISTORY_SIZE 5
+#define BMS_HISTORY_SIZE 10
 
+// Estrutura de dados do BMS, compartilhada entre tarefas
 typedef struct {
-    int temperatura;
-    int tensao;
+    float voltage;
+    float current;
+    float temperature;
+    float soc;
+    time_t timestamp;
 } BMSData_t;
 
-// Fila de comunicação entre BMS e ALERT
+// Estrutura de dados para comandos do TTC
+typedef struct {
+    char comando[32];  // até 31 caracteres + \0
+} Command_t;
+
+// Estrutura de resposta
+typedef struct {
+    char comando[32];
+    char status[32];
+} CommandResponse_t;
+
+
+// Variáveis globais compartilhadas (definidas em shared.c)
 extern QueueHandle_t xBMSQueue;
-
-// Mutex para proteger acesso ao buffer histórico
 extern SemaphoreHandle_t xBMSMutex;
+extern QueueHandle_t xQueueHealth;
+extern QueueHandle_t xQueueTTC;
+extern QueueHandle_t xQueueTM;
+extern QueueHandle_t xQueueTTC_RX;
+extern QueueHandle_t xQueueTTC_to_MAIN;
+extern QueueHandle_t xQueueMAIN_to_TTC;
+extern QueueHandle_t xQueueTM_Request;
 
-// Buffer circular para armazenar histórico das leituras
-extern BMSData_t xBMSHistory[BMS_HISTORY_SIZE];
-extern int bmsHistoryIndex;
 
-// Função para adicionar uma leitura ao buffer
-void addBMSHistory(BMSData_t novaLeitura);
 
-// Função para obter uma cópia segura do histórico
-void getBMSHistory(BMSData_t *destino, int *count);
+// Funções para manipular histórico circular
+void addBMSHistory(BMSData_t data);
+void getBMSHistory(BMSData_t *buffer, int *outCount);
+void printBMSHistory(void); // (opcional) Para debug no terminal
 
-#endif /* SHARED_H */
+#endif // SHARED_H

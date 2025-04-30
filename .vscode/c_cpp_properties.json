@@ -1,0 +1,25 @@
+{
+    "configurations": [
+      {
+        "name": "WSL",
+        "includePath": [
+          "${workspaceFolder}/include",
+          "${workspaceFolder}/FreeRTOS-Kernel/include",
+          "${workspaceFolder}/FreeRTOS-Kernel/portable/GCC/ARM_CM3"
+        ],
+        "defines": [
+          "ARM_CM3"
+        ],
+        "compilerPath": "/usr/bin/arm-none-eabi-gcc",
+        "cStandard": "c99",
+        "intelliSenseMode": "linux-gcc-arm",
+        "browse": {
+          "path": [
+            "${workspaceFolder}/include",
+            "${workspaceFolder}/FreeRTOS-Kernel/include"
+          ]
+        }
+      }
+    ],
+    "version": 4
+  }

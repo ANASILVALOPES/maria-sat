@@ -2,104 +2,2452 @@ Initializing MARIA-SAT system...
 All tasks successfully created!
 Starting scheduler...
 [ALERT_PROC] iniciado.
+[HEALTH_PROC] iniciado.
+[HEALTH_PROC] CPU: 33% | Power: 3.63V | GPS: OK | STAR: OK
+[FDIR_PROC] iniciado.
 [MAIN_SO] iniciado.
-[MAIN_SO] MARIA-SAT está operando normalmente.
-[BMS_PROC] iniciado.
+[BMS] V=4.04V I=1.98A T=29.15°C SoC=87.0% Timestamp=0
 [MPPT_PROC] iniciado.
-[TM_PROC] iniciado.
-[TM_PROC] Enviando telemetria...
+[MPPT_PROC] Analisando carga solar...
 [RF_TC_PROC] iniciado.
-[RF_TM_PROC] Enviando d[TTC_PROC] Comando STATUS processado. Tudo OK!
-[PACKET_PROC] Pacote gerado: <P[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[RF_TC_PROC] Aguardando comando de solo...
+[TM_PROC] iniciado.
+[RF_TM_PROC] iniciado.
+[PACKET_PROC] Pacote gerado: <PKT:TEMP=42;TENS=3900>
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
 [HK_PWR_PROC] Tarefa iniciada
 [HK_PWR_PROC] Monitorando consumo de energia...
 [HK_STAR_PROC] Tarefa iniciada
-[HEALTH_PROC] Tarefa iniciada
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
 [CCSDS_PROC] Tarefa iniciada
+[TTC_PROC] iniciado. Aguardando comando de solo...
+[TTC_PROC] Enviado comando: LIGAR_CAMERA
 [CCSDS_PROC] Empacotando dados no formato CCSDS...
-[FDIR_PROC] Tarefa iniciada
-[FDIR_PROC] Verificando falhas no sistema...
-[BMS_PROC] Temp: 43 ºC | Tensão: 3943 mV
-[MPPT_PROC] Analisando carga solar...
-[MPPT_PROC] Analisando carga solar...
-3 mV
-lar...
-3 mV
-.
-DS...
->
-[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
-[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
-[HEALTH_PROC] Coletando dados de HK...
- dados de HK...
-| Yaw: -3°
- Lo[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
-[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
-[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[MAIN_SO] Comando recebido: LIGAR_CAMERA
+[MAIN_SO] 📷 Camera ligada.
+[TTC_PROC] Resposta: LIGAR_CAMERA => 
+[HEALTH_PROC] CPU: 43% | Power: 3.64V | GPS: OK | STAR: OK
+[BMS] V=4.12V I=1.16A T=30.66°C SoC=93.1% Timestamp=1
+[RF_TM_PROC] Nenhum dado TM recebido.
 [HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HEALTH_PROC] CPU: 10% | Power: 3.56V | GPS: FAIL | STAR: FAIL
+[FDIR_PROC] 🚨 Falha no GPS detectada!
+[ALERT] 🚨 Falha no GPS detectada!
+[FDIR_PROC] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Falha no Star Tracker detectada!
+[MPPT_PROC] Analisando carga solar...
+[ALERT] ⚠️ Baixa tensão detectada: 3.03 V
+[BMS] V=3.03V I=1.25A T=34.27°C SoC=2.2% Timestamp=2
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
 [CCSDS_PROC] Empacotando dados no formato CCSDS...
-[HEALTH_PROC] Coletando dados de HK...
-[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
-[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
-[RF_TM_PROC] Enviando dados simulados para a Terra...
-[TTC_PROC] Comando STATUS processado. Tudo OK!
-[HK_PWR_PROC] Monitorando consumo de energia...
-[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
-[FDIR_PROC] Verificando falhas no sistema...
+[HEALTH_PROC] CPU: 57% | Power: 3.26V | GPS: OK | STAR: FAIL
+[FDIR_PROC] 🚨 Baixa tensão detectada (3.26V)
+[ALERT] ⚠️ Baixa tensão detectada: 326.00 V
+[FDIR_PROC] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Falha no Star Tracker detectada!
 [PACKET_PROC] Pacote gerado: <PKT:TEMP=42;TENS=3900>
-[BMS_PROC] Temp: 42 ºC | Tensão: 3929 mV
+[HK_PWR_PROC] Monitorando consumo de energia...
+[BMS] V=3.39V I=1.28A T=51.74°C SoC=32.6% Timestamp=3
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
 [HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
 [HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
-[HK_CPU_PROC] Uso [CCSDS_PROC] Empacotando dados no formato CCS[HEALTH_PROC] Coletando dados de HK...
-tando dados de HK...
-to CCSDS...
-[RF_TM_PROC] Enviando dados simulados para a Terra...
+[HEALTH_PROC] CPU: 28% | Power: 3.73V | GPS: FAIL | STAR: OK
+[FDIR_PROC] 🚨 Falha no GPS detectada!
+[ALERT] 🚨 Falha no GPS detectada!
+[MPPT_PROC] Analisando carga solar...
+[BMS] V=3.29V I=1.93A T=52.12°C SoC=23.9% Timestamp=4
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
 [HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
 [HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HEALTH_PROC] CPU: 35% | Power: 4.07V | GPS: OK | STAR: OK
+[ALERT] 🚨 Temperatura crítica detectada: 61.75 ºC
+[BMS] V=3.51V I=1.56A T=61.75°C SoC=42.3% Timestamp=5
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HEALTH_PROC] CPU: 86% | Power: 3.48V | GPS: OK | STAR: FAIL
+[FDIR_PROC] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Falha no Star Tracker detectada!
+[PACKET_PROC] Pacote gerado: <PKT:TEMP=42;TENS=3900>
+[HK_PWR_PROC] Monitorando consumo de energia...
+[MPPT_PROC] Analisando carga solar...
+[ALERT] 🚨 Temperatura crítica detectada: 63.36 ºC
+[BMS] V=4.15V I=0.67A T=63.36°C SoC=95.9% Timestamp=6
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
 [MAIN_SO] MARIA-SAT está operando normalmente.
-[MPPT_PROC] Analisando carga solar...
-[TM_PROC] Enviando telemetria...
-[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
-[HK_GPS_PROC] Localização simulad[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
-0° | Yaw: -3°
- Lon -46.6333
-[TTC_PROC] Comando STATUS processado. Tudo OK!
-[HK_PWR_PROC] Monitorando consumo de energia...
-[FDIR_PROC] Verificando falhas no sistema...
-[PACKET_PROC] Pacote gerado: <PKT:TEMP=42;TENS=3900>
-[HEALTH_PROC] Coletando dados de HK...
-[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
-[BMS_PROC] Temp: 40 ºC | Tensão: 3908 mV
-[CCSDS_PROC] Empacotando dados no formato CCSDS...
-[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
-[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
-[RF_TM_PROC] Enviando dados simulados para a Terra...
+[HEALTH_PROC] CPU: 14% | Power: 3.66V | GPS: OK | STAR: FAIL
+[FDIR_PROC] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Falha no Star Tracker detectada!
 [RF_TC_PROC] Aguardando comando de solo...
+[ALERT] 🚨 Temperatura crítica detectada: 66.09 ºC
+[BMS] V=3.82V I=0.65A T=66.09°C SoC=68.3% Timestamp=7
+[RF_TM_PROC] Nenhum dado TM recebido.
 [HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
-[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
 [HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
-[HEALTH_PROC] Coletando dados de HK...
-[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
-[CCSDS_PROC] Empacotando dados no formato CCSDS...
 [HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
-[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
-[RF_TM_PROC] Enviando dados simulados para a Terra...
-[TTC_PROC] Comando STATUS processado. Tudo OK!
-[HK_PWR_PROC] Monitorando consumo de energia...
-[FDIR_PROC] Verificando falhas no sistema...
-[PACKET_PROC] Pacote gerado: <PKT:TEMP=42;TENS=3900>
-[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
-[BMS_PROC] Temp: 42 ºC | Tensão: 3956 mV
-[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
-[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
-[MAIN_SO] MARIA-SAT está operando normalmente.
+[HEALTH_PROC] CPU: 50% | Power: 3.18V | GPS: OK | STAR: OK
+[FDIR_PROC] 🚨 Baixa tensão detectada (3.18V)
+[ALERT] ⚠️ Baixa tensão detectada: 318.00 V
 [MPPT_PROC] Analisando carga solar...
-[TM_PROC] Enviando telemetria...
-[HEALTH_PROC] Coletando dados de HK...
+[ALERT] 🚨 Temperatura crítica detectada: 64.78 ºC
+[BMS] V=3.58V I=1.77A T=64.78°C SoC=48.2% Timestamp=8
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HEALTH_PROC] CPU: 37% | Power: 3.41V | GPS: OK | STAR: FAIL
+[FDIR_PROC] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Falha no Star Tracker detectada!
+[PACKET_PROC] Pacote gerado: <PKT:TEMP=42;TENS=3900>
+[HK_PWR_PROC] Monitorando consumo de energia...
+[ALERT] 🚨 Temperatura crítica detectada: 63.51 ºC
+[BMS] V=3.74V I=1.18A T=63.51°C SoC=62.0% Timestamp=9
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HEALTH_PROC] CPU: 63% | Power: 3.65V | GPS: OK | STAR: OK
+[MPPT_PROC] Analisando carga solar...
+[BMS] V=3.59V I=1.41A T=27.14°C SoC=49.3% Timestamp=10
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[TTC_PROC] Enviado comando: REPORTAR_TELEMETRIA
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HEALTH_PROC] CPU: 2% | Power: 3.24V | GPS: OK | STAR: OK
+[FDIR_PROC] 🚨 Baixa tensão detectada (3.24V)
+[ALERT] ⚠️ Baixa tensão detectada: 324.00 V
+[BMS] V=4.03V I=0.66A T=50.69°C SoC=85.7% Timestamp=11
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[MAIN_SO] Comando recebido: REPORTAR_TELEMETRIA
+[MAIN_SO] 📡 Solicitando telemetria ao TM_PROC...
+[TM_PROC] TM enviada após solicitação.
+[TTC_PROC] Resposta: REPORTAR_TELEMETRIA => 
+[HEALTH_PROC] CPU: 19% | Power: 3.84V | GPS: FAIL | STAR: OK
+[FDIR_PROC] 🚨 Falha no GPS detectada!
+[ALERT] 🚨 Falha no GPS detectada!
+[PACKET_PROC] Pacote gerado: <PKT:TEMP=42;TENS=3900>
+[HK_PWR_PROC] Monitorando consumo de energia...
+[MPPT_PROC] Analisando carga solar...
+[BMS] V=4.01V I=0.89A T=54.64°C SoC=83.8% Timestamp=12
+[RF_TM_PROC] Enviando TM:
+CPU=55% | RAM=64KB
+GPS=(-23.5505, -46.6333)
+PWR=3.95V 1.10A
+STAR=(Roll=3° Pitch=7° Yaw=-1°)
+
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HEALTH_PROC] CPU: 36% | Power: 3.50V | GPS: FAIL | STAR: OK
+[FDIR_PROC] 🚨 Falha no GPS detectada!
+[ALERT] 🚨 Falha no GPS detectada!
+[BMS] V=3.83V I=1.67A T=55.25°C SoC=69.2% Timestamp=13
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HEALTH_PROC] CPU: 98% | Power: 3.09V | GPS: FAIL | STAR: OK
+[FDIR_PROC] 🚨 CPU alta detectada (98%)
+[ALERT] 🚨 Uso de CPU muito alto: 98.00 %
+[FDIR_PROC] 🚨 Baixa tensão detectada (3.09V)
+[ALERT] ⚠️ Baixa tensão detectada: 309.00 V
+[FDIR_PROC] 🚨 Falha no GPS detectada!
+[ALERT] 🚨 Falha no GPS detectada!
+[RF_TC_PROC] Aguardando comando de solo...
+[MPPT_PROC] Analisando carga solar...
+[BMS] V=4.00V I=1.94A T=56.95°C SoC=83.1% Timestamp=14
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HEALTH_PROC] CPU: 52% | Power: 4.15V | GPS: OK | STAR: OK
+[PACKET_PROC] Pacote gerado: <PKT:TEMP=42;TENS=3900>
+[HK_PWR_PROC] Monitorando consumo de energia...
+[BMS] V=3.36V I=1.64A T=59.26°C SoC=30.4% Timestamp=15
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HEALTH_PROC] CPU: 40% | Power: 3.67V | GPS: FAIL | STAR: OK
+[FDIR_PROC] 🚨 Falha no GPS detectada!
+[ALERT] 🚨 Falha no GPS detectada!
+[MPPT_PROC] Analisando carga solar...
+[ALERT] 🚨 Temperatura crítica detectada: 65.82 ºC
+[BMS] V=3.66V I=0.74A T=65.82°C SoC=55.0% Timestamp=16
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HEALTH_PROC] CPU: 89% | Power: 3.08V | GPS: FAIL | STAR: OK
+[FDIR_PROC] 🚨 Baixa tensão detectada (3.08V)
+[ALERT] ⚠️ Baixa tensão detectada: 308.00 V
+[FDIR_PROC] 🚨 Falha no GPS detectada!
+[ALERT] 🚨 Falha no GPS detectada!
+[ALERT] ⚠️ Baixa tensão detectada: 3.13 V
+[BMS] V=3.13V I=1.36A T=46.75°C SoC=10.7% Timestamp=17
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[MAIN_SO] MARIA-SAT está operando normalmente.
+[HEALTH_PROC] CPU: 3% | Power: 3.59V | GPS: OK | STAR: FAIL
+[FDIR_PROC] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Falha no Star Tracker detectada!
+[PACKET_PROC] Pacote gerado: <PKT:TEMP=42;TENS=3900>
+[HK_PWR_PROC] Monitorando consumo de energia...
+[MPPT_PROC] Analisando carga solar...
+[ALERT] 🚨 Temperatura crítica detectada: 60.67 ºC
+[BMS] V=3.54V I=1.89A T=60.67°C SoC=44.7% Timestamp=18
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HEALTH_PROC] CPU: 14% | Power: 3.41V | GPS: OK | STAR: OK
+[ALERT] 🚨 Temperatura crítica detectada: 67.71 ºC
+[ALERT] ⚠️ Baixa tensão detectada: 3.16 V
+[BMS] V=3.16V I=0.85A T=67.71°C SoC=13.3% Timestamp=19
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HEALTH_PROC] CPU: 10% | Power: 3.25V | GPS: OK | STAR: OK
+[FDIR_PROC] 🚨 Baixa tensão detectada (3.25V)
+[ALERT] ⚠️ Baixa tensão detectada: 325.00 V
+[MPPT_PROC] Analisando carga solar...
+[ALERT] 🚨 Temperatura crítica detectada: 60.24 ºC
+[BMS] V=3.22V I=1.27A T=60.24°C SoC=18.6% Timestamp=20
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HEALTH_PROC] CPU: 98% | Power: 3.50V | GPS: OK | STAR: OK
+[FDIR_PROC] 🚨 CPU alta detectada (98%)
+[ALERT] 🚨 Uso de CPU muito alto: 98.00 %
+[RF_TC_PROC] Aguardando comando de solo...
+[PACKET_PROC] Pacote gerado: <PKT:TEMP=42;TENS=3900>
+[HK_PWR_PROC] Monitorando consumo de energia...
+[BMS] V=4.11V I=0.90A T=41.32°C SoC=92.7% Timestamp=21
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[TTC_PROC] Enviado comando: ATIVAR_MOTORES_3000
+[HEALTH_PROC] CPU: 60% | Power: 3.94V | GPS: OK | STAR: OK
+[MPPT_PROC] Analisando carga solar...
+[BMS] V=3.92V I=0.53A T=40.20°C SoC=76.5% Timestamp=22
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[MAIN_SO] Comando recebido: ATIVAR_MOTORES_3000
+[MAIN_SO] 🚀 Motores ativados por 3000 ms.
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[TTC_PROC] Resposta: ATIVAR_MOTORES_3000 => 
+[HEALTH_PROC] CPU: 24% | Power: 3.41V | GPS: OK | STAR: FAIL
+[FDIR_PROC] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Temperatura crítica detectada: 60.83 ºC
+[ALERT] ⚠️ Baixa tensão detectada: 3.08 V
+[BMS] V=3.08V I=0.92A T=60.83°C SoC=6.8% Timestamp=23
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HEALTH_PROC] CPU: 94% | Power: 3.19V | GPS: FAIL | STAR: OK
+[FDIR_PROC] 🚨 CPU alta detectada (94%)
+[ALERT] 🚨 Uso de CPU muito alto: 94.00 %
+[FDIR_PROC] 🚨 Baixa tensão detectada (3.19V)
+[ALERT] ⚠️ Baixa tensão detectada: 319.00 V
+[FDIR_PROC] 🚨 Falha no GPS detectada!
+[ALERT] 🚨 Falha no GPS detectada!
+[PACKET_PROC] Pacote gerado: <PKT:TEMP=42;TENS=3900>
+[HK_PWR_PROC] Monitorando consumo de energia...
+[MPPT_PROC] Analisando carga solar...
+[BMS] V=4.19V I=0.69A T=34.47°C SoC=99.4% Timestamp=24
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HEALTH_PROC] CPU: 17% | Power: 3.14V | GPS: OK | STAR: OK
+[FDIR_PROC] 🚨 Baixa tensão detectada (3.14V)
+[ALERT] ⚠️ Baixa tensão detectada: 314.00 V
+[ALERT] 🚨 Temperatura crítica detectada: 61.87 ºC
+[BMS] V=4.07V I=0.51A T=61.87°C SoC=88.8% Timestamp=25
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HEALTH_PROC] CPU: 13% | Power: 4.13V | GPS: OK | STAR: OK
+[MPPT_PROC] Analisando carga solar...
+[BMS] V=4.19V I=0.95A T=49.56°C SoC=99.0% Timestamp=26
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HEALTH_PROC] CPU: 38% | Power: 3.56V | GPS: OK | STAR: OK
+[PACKET_PROC] Pacote gerado: <PKT:TEMP=42;TENS=3900>
+[HK_PWR_PROC] Monitorando consumo de energia...
+[BMS] V=4.00V I=0.87A T=52.86°C SoC=83.7% Timestamp=27
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[[HEALTH_PROC] CPU: 58% | Power: 3.42V | GPS: OK | STAR: FAIL
+[FDIR_PROC] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Falha no Star Tracker detectada!
+[RF_TC_PROC] Aguardando comando de solo...
+[MPPT_PROC] Analisando carga solar...
+[ALERT] 🚨 Temperatura crítica detectada: 60.16 ºC
+[ALERT] ⚠️ Baixa tensão detectada: 3.10 V
+[BMS] V=3.10V I=1.90A T=60.16°C SoC=8.6% Timestamp=28
+[RF_TM_PROC] Nenhum dado TM recebido.
 [HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
 [CCSDS_PROC] Empacotando dados no formato CCSDS...
 [HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
-[RF_TM_PROC] Enviando dados simulados para a Te[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
-505, Lo[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[MAIN_SO] MARIA-SAT está operando normalmente.
 [HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 99% | Power: 3.40V | GPS: OK | STAR: OK
+[FDIR_PROC] 🚨 CPU alta detectada (99%)
+[ALERT] 🚨 Uso de CPU muito alto: 99.00 %
+[BMS] V=3.34V I=1.52A T=49.41°C SoC=28.0% Timestamp=29
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
 [HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 91% | Power: 3.53V | GPS: OK | STAR: FAIL
+[FDIR_PROC] 🚨 CPU alta detectada (91%)
+[ALERT] 🚨 Uso de CPU muito alto: 91.00 %
+[FDIR_PROC] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Falha no Star Tracker detectada!
+[PACKET_PROC] Pacote gerado: <PKT:TEMP=42;TENS=3900>
+[HK_PWR_PROC] Monitorando consumo de energia...
+[MPPT_PROC] Analisando carga solar...
+[BMS] V=3.34V I=0.81A T=39.11°C SoC=28.6% Timestamp=30
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 35% | Power: 4.02V | GPS: OK | STAR: OK
+[BMS] V=3.95V I=1.17A T=27.35°C SoC=79.3% Timestamp=31
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 52% | Power: 3.32V | GPS: FAIL | STAR: OK
+[FDIR_PROC] 🚨 Falha no GPS detectada!
+[ALERT] 🚨 Falha no GPS detectada!
+[MPPT_PROC] Analisando carga solar...
+[ALERT] 🚨 Temperatura crítica detectada: 69.05 ºC
+[BMS] V=3.86V I=1.83A T=69.05°C SoC=71.8% Timestamp=32
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[TTC_PROC] Enviado comando: LIGAR_CAMERA
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 3% | Power: 3.27V | GPS: FAIL | STAR: OK
+[FDIR_PROC] 🚨 Baixa tensão detectada (3.27V)
+[ALERT] ⚠️ Baixa tensão detectada: 327.00 V
+[FDIR_PROC] 🚨 Falha no GPS detectada!
+[ALERT] 🚨 Falha no GPS detectada!
+[PACKET_PROC] Pacote gerado: <PKT:TEMP=42;TENS=3900>
+[HK_PWR_PROC] Monitorando consumo de energia...
+[BMS] V=3.58V I=0.91A T=39.57°C SoC=48.1% Timestamp=33
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[MAIN_SO] Comando recebido: LIGAR_CAMERA
+[MAIN_SO] 📷 Camera ligada.
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[TTC_PROC] Resposta: LIGAR_CAMERA => 
+[HEALTH_PROC] CPU: 23% | Power: 3.67V | GPS: OK | STAR: OK
+[MPPT_PROC] Analisando carga solar...
+[BMS] V=4.07V I=0.51A T=50.06°C SoC=89.4% Timestamp=34
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 97% | Power: 3.57V | GPS: OK | STAR: OK
+[FDIR_PROC] 🚨 CPU alta detectada (97%)
+[ALERT] 🚨 Uso de CPU muito alto: 97.00 %
+[RF_TC_PROC] Aguardando comando de solo...
+[BMS] V=3.45V I=1.49A T=58.28°C SoC=37.4% Timestamp=35
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 95% | Power: 3.25V | GPS: OK | STAR: OK
+[FDIR_PROC] 🚨 CPU alta detectada (95%)
+[ALERT] 🚨 Uso de CPU muito alto: 95.00 %
+[FDIR_PROC] 🚨 Baixa tensão detectada (3.25V)
+[ALERT] ⚠️ Baixa tensão detectada: 325.00 V
+[PACKET_PROC] Pacote gerado: <PKT:TEMP=42;TENS=3900>
+[HK_PWR_PROC] Monitorando consumo de energia...
+[MPPT_PROC] Analisando carga solar...
+[ALERT] ⚠️ Baixa tensão detectada: 3.16 V
+[BMS] V=3.16V I=1.88A T=32.76°C SoC=13.7% Timestamp=36
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 81% | Power: 3.55V | GPS: OK | STAR: FAIL
+[FDIR_PROC] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Temperatura crítica detectada: 63.10 ºC
+[BMS] V=3.73V I=1.90A T=63.10°C SoC=61.1% Timestamp=37
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 42% | Power: 3.48V | GPS: OK | STAR: OK
+[MPPT_PROC] Analisando carga solar...
+[ALERT] 🚨 Temperatura crítica detectada: 62.04 ºC
+[BMS] V=4.14V I=0.63A T=62.04°C SoC=94.6% Timestamp=38
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 57% | Power: 3.76V | GPS: OK | STAR: OK
+[PACKET_PROC] Pacote gerado: <PKT:TEMP=42;TENS=3900>
+[HK_PWR_PROC] Monitorando consumo de energia...
+[BMS] V=3.53V I=0.81A T=30.96°C SoC=43.8% Timestamp=39
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[MAIN_SO] MARIA-SAT está operando normalmente.
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 98% | Power: 3.84V | GPS: OK | STAR: FAIL
+[FDIR_PROC] 🚨 CPU alta detectada (98%)
+[ALERT] 🚨 Uso de CPU muito alto: 98.00 %
+[FDIR_PROC] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Falha no Star Tracker detectada!
+[MPPT_PROC] Analisando carga solar...
+[BMS] V=3.34V I=1.71A T=50.07°C SoC=28.6% Timestamp=40
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 67% | Power: 3.89V | GPS: FAIL | STAR: OK
+[FDIR_PROC] 🚨 Falha no GPS detectada!
+[ALERT] 🚨 Falha no GPS detectada!
+[BMS] V=3.83V I=1.56A T=31.50°C SoC=69.2% Timestamp=41
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 23% | Power: 3.38V | GPS: OK | STAR: OK
+[RF_TC_PROC] Aguardando comando de solo...
+[PACKET_PROC] Pacote gerado: <PKT:TEMP=42;TENS=3900>
+[HK_PWR_PROC] Monitorando consumo de energia...
+[MPPT_PROC] Analisando carga solar...
+[ALERT] 🚨 Temperatura crítica detectada: 65.59 ºC
+[BMS] V=3.83V I=1.68A T=65.59°C SoC=69.0% Timestamp=42
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 32% | Power: 3.15V | GPS: FAIL | STAR: OK
+[FDIR_PROC] 🚨 Baixa tensão detectada (3.15V)
+[ALERT] ⚠️ Baixa tensão detectada: 315.00 V
+[FDIR_PROC] 🚨 Falha no GPS detectada!
+[ALERT] 🚨 Falha no GPS detectada!
+[BMS] V=3.59V I=0.92A T=44.83°C SoC=49.2% Timestamp=43
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[TTC_PROC] Enviado comando: REPORTAR_TELEMETRIA
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 87% | Power: 4.08V | GPS: OK | STAR: OK
+[MPPT_PROC] Analisando carga solar...
+[ALERT] ⚠️ Baixa tensão detectada: 3.07 V
+[BMS] V=3.07V I=0.82A T=57.30°C SoC=5.9% Timestamp=44
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[MAIN_SO] Comando recebido: REPORTAR_TELEMETRIA
+[MAIN_SO] 📡 Solicitando telemetria ao TM_PROC...
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[TM_PROC] TM enviada após solicitação.
+[TTC_PROC] Resposta: REPORTAR_TELEMETRIA => 
+[HEALTH_PROC] CPU: 73% | Power: 3.36V | GPS: OK | STAR: FAIL
+[FDIR_PROC] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Falha no Star Tracker detectada!
+[PACKET_PROC] Pacote gerado: <PKT:TEMP=42;TENS=3900>
+[HK_PWR_PROC] Monitorando consumo de energia...
+[BMS] V=3.48V I=1.06A T=34.94°C SoC=40.3% Timestamp=45
+[RF_TM_PROC] Enviando TM:
+CPU=55% | RAM=64KB
+GPS=(-23.5505, -46.6333)
+PWR=3.95V 1.10A
+STAR=(Roll=3° Pitch=7° Yaw=-1°)
+
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 55% | Power: 3.14V | GPS: FAIL | STAR: FAIL
+[FDIR_PROC] 🚨 Baixa tensão detectada (3.14V)
+[ALERT] ⚠️ Baixa tensão detectada: 314.00 V
+[FDIR_PROC] 🚨 Falha no GPS detectada!
+[ALERT] 🚨 Falha no GPS detectada!
+[FDIR_PROC] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Falha no Star Tracker detectada!
+[MPPT_PROC] Analisando carga solar...
+[BMS] V=3.80V I=1.84A T=39.67°C SoC=67.0% Timestamp=46
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 40% | Power: 3.04V | GPS: FAIL | STAR: FAIL
+[FDIR_PROC] 🚨 Baixa tensão detectada (3.04V)
+[ALERT] ⚠️ Baixa tensão detectada: 304.00 V
+[FDIR_PROC] 🚨 Falha no GPS detectada!
+[ALERT] 🚨 Falha no GPS detectada!
+[FDIR_PROC] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Falha no Star Tracker detectada!
+[ALERT] ⚠️ Baixa tensão detectada: 3.10 V
+[BMS] V=3.10V I=1.41A T=58.99°C SoC=8.3% Timestamp=47
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 27% | Power: 3.47V | GPS: OK | STAR: OK
+[PACKET_PROC] Pacote gerado: <PKT:TEMP=42;TENS=3900>
+[HK_PWR_PROC] Monitorando consumo de energia...
+[MPPT_PROC] Analisando carga solar...
+[BMS] V=3.33V I=1.24A T=59.41°C SoC=27.3% Timestamp=48
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 66% | Power: 3.48V | GPS: OK | STAR: OK
+[RF_TC_PROC] Aguardando comando de solo...
+[BMS] V=4.02V I=1.86A T=35.25°C SoC=84.8% Timestamp=49
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 60% | Power: 3.40V | GPS: OK | STAR: OK
+[MPPT_PROC] Analisando carga solar...
+[BMS] V=3.95V I=1.39A T=35.91°C SoC=79.0% Timestamp=50
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[MAIN_SO] MARIA-SAT está operando normalmente.
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 38% | Power: 3.57V | GPS: OK | STAR: OK
+[PACKET_PROC] Pacote gerado: <PKT:TEMP=42;TENS=3900>
+[HK_PWR_PROC] Monitorando consumo de energia...
+[BMS] V=3.41V I=1.55A T=38.68°C SoC=34.0% Timestamp=51
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 31% | Power: 3.12V | GPS: OK | STAR: OK
+[FDIR_PROC] 🚨 Baixa tensão detectada (3.12V)
+[ALERT] ⚠️ Baixa tensão detectada: 312.00 V
+[MPPT_PROC] Analisando carga solar...
+[BMS] V=4.01V I=1.57A T=49.24°C SoC=84.4% Timestamp=52
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 3% | Power: 4.16V | GPS: FAIL | STAR: OK
+[FDIR_PROC] 🚨 Falha no GPS detectada!
+[ALERT] 🚨 Falha no GPS detectada!
+[ALERT] ⚠️ Baixa tensão detectada: 3.18 V
+[BMS] V=3.18V I=1.65A T=45.23°C SoC=15.4% Timestamp=53
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 34% | Power: 3.50V | GPS: FAIL | STAR: FAIL
+[FDIR_PROC] 🚨 Falha no GPS detectada!
+[ALERT] 🚨 Falha no GPS detectada!
+[FDIR_PROC] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Falha no Star Tracker detectada!
+[PACKET_PROC] Pacote gerado: <PKT:TEMP=42;TENS=3900>
+[HK_PWR_PROC] Monitorando consumo de energia...
+[MPPT_PROC] Analisando carga solar...
+[BMS] V=3.45V I=1.75A T=47.07°C SoC=37.4% Timestamp=54
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[TTC_PROC] Enviado comando: ATIVAR_MOTORES_3000
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 77% | Power: 3.54V | GPS: OK | STAR: OK
+[BMS] V=3.76V I=0.75A T=48.84°C SoC=63.2% Timestamp=55
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[MAIN_SO] Comando recebido: ATIVAR_MOTORES_3000
+[MAIN_SO] 🚀 Motores ativados por 3000 ms.
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[TTC_PROC] Resposta: ATIVAR_MOTORES_3000 => 
+[HEALTH_PROC] CPU: 17% | Power: 3.37V | GPS: OK | STAR: OK
+[RF_TC_PROC] Aguardando comando de solo...
+[MPPT_PROC] Analisando carga solar...
+[ALERT] 🚨 Temperatura crítica detectada: 65.25 ºC
+[BMS] V=3.52V I=1.89A T=65.25°C SoC=43.0% Timestamp=56
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 65% | Power: 3.77V | GPS: OK | STAR: FAIL
+[FDIR_PROC] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Falha no Star Tracker detectada!
+[PACKET_PROC] Pacote gerado: <PKT:TEMP=42;TENS=3900>
+[HK_PWR_PROC] Monitorando consumo de energia...
+[ALERT] ⚠️ Baixa tensão detectada: 3.15 V
+[BMS] V=3.15V I=1.20A T=47.44°C SoC=12.8% Timestamp=57
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 80% | Power: 3.86V | GPS: OK | STAR: FAIL
+[FDIR_PROC] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Falha no Star Tracker detectada!
+[MPPT_PROC] Analisando carga solar...
+[BMS] V=3.90V I=1.67A T=52.85°C SoC=75.0% Timestamp=58
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 23% | Power: 3.35V | GPS: OK | STAR: FAIL
+[FDIR_PROC] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Falha no Star Tracker detectada!
+[BMS] V=4.10V I=1.86A T=31.72°C SoC=91.9% Timestamp=59
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 62% | Power: 3.67V | GPS: OK | STAR: FAIL
+[FDIR_PROC] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Falha no Star Tracker detectada!
+[PACKET_PROC] Pacote gerado: <PKT:TEMP=42;TENS=3900>
+[HK_PWR_PROC] Monitorando consumo de energia...
+[MPPT_PROC] Analisando carga solar...
+[BMS] V=3.23V I=1.44A T=59.36°C SoC=18.9% Timestamp=60
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 56% | Power: 3.98V | GPS: OK | STAR: OK
+[BMS] V=3.52V I=0.74A T=35.99°C SoC=43.5% Timestamp=61
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[MAIN_SO] MARIA-SAT está operando normalmente.
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 21% | Power: 3.09V | GPS: OK | STAR: FAIL
+[FDIR_PROC] 🚨 Baixa tensão detectada (3.09V)
+[ALERT] ⚠️ Baixa tensão detectada: 309.00 V
+[FDIR_PROC] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Falha no Star Tracker detectada!
+[MPPT_PROC] Analisando carga solar...
+[ALERT] ⚠️ Baixa tensão detectada: 3.10 V
+[BMS] V=3.10V I=1.03A T=52.36°C SoC=8.4% Timestamp=62
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 20% | Power: 3.16V | GPS: OK | STAR: FAIL
+[FDIR_PROC] 🚨 Baixa tensão detectada (3.16V)
+[ALERT] ⚠️ Baixa tensão detectada: 316.00 V
+[FDIR_PROC] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Falha no Star Tracker detectada!
+[RF_TC_PROC] Aguardando comando de solo...
+[PACKET_PROC] Pacote gerado: <PKT:TEMP=42;TENS=3900>
+[HK_PWR_PROC] Monitorando consumo de energia...
+[BMS] V=3.25V I=1.34A T=51.63°C SoC=20.9% Timestamp=63
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 12% | Power: 3.75V | GPS: OK | STAR: OK
+[MPPT_PROC] Analisando carga solar...
+[BMS] V=3.35V I=1.36A T=29.16°C SoC=29.2% Timestamp=64
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 10% | Power: 3.71V | GPS: OK | STAR: OK
+[ALERT] 🚨 Temperatura crítica detectada: 68.77 ºC
+[BMS] V=3.31V I=0.84A T=68.77°C SoC=25.6% Timestamp=65
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[TTC_PROC] Enviado comando: LIGAR_CAMERA
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 8% | Power: 3.92V | GPS: OK | STAR: OK
+[PACKET_PROC] Pacote gerado: <PKT:TEMP=42;TENS=3900>
+[HK_PWR_PROC] Monitorando consumo de energia...
+[MPPT_PROC] Analisando carga solar...
+[BMS] V=3.47V I=0.87A T=32.13°C SoC=39.0% Timestamp=66
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[MAIN_SO] Comando recebido: LIGAR_CAMERA
+[MAIN_SO] 📷 Camera ligada.
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[TTC_PROC] Resposta: LIGAR_CAMERA => 
+[HEALTH_PROC] CPU: 69% | Power: 4.10V | GPS: OK | STAR: OK
+[BMS] V=4.16V I=1.48A T=58.16°C SoC=97.0% Timestamp=67
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 99% | Power: 3.81V | GPS: OK | STAR: OK
+[FDIR_PROC] 🚨 CPU alta detectada (99%)
+[ALERT] 🚨 Uso de CPU muito alto: 99.00 %
+[MPPT_PROC] Analisando carga solar...
+[BMS] V=3.50V I=1.75A T=42.44°C SoC=41.3% Timestamp=68
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 93% | Power: 3.98V | GPS: OK | STAR: FAIL
+[FDIR_PROC] 🚨 CPU alta detectada (93%)
+[ALERT] 🚨 Uso de CPU muito alto: 93.00 %
+[FDIR_PROC] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Falha no Star Tracker detectada!
+[PACKET_PROC] Pacote gerado: <PKT:TEMP=42;TENS=3900>
+[HK_PWR_PROC] Monitorando consumo de energia...
+[BMS] V=4.09V I=1.28A T=51.45°C SoC=90.9% Timestamp=69
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 83% | Power: 3.18V | GPS: OK | STAR: FAIL
+[FDIR_PROC] 🚨 Baixa tensão detectada (3.18V)
+[ALERT] ⚠️ Baixa tensão detectada: 318.00 V
+[FDIR_PROC] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Falha no Star Tracker detectada!
+[RF_TC_PROC] Aguardando comando de solo...
+[MPPT_PROC] Analisando carga solar...
+[BMS] V=4.07V I=1.84A T=37.11°C SoC=88.9% Timestamp=70
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 35% | Power: 3.37V | GPS: OK | STAR: FAIL
+[FDIR_PROC] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Falha no Star Tracker detectada!
+[BMS] V=3.96V I=1.19A T=44.16°C SoC=80.2% Timestamp=71
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 24% | Power: 3.69V | GPS: OK | STAR: OK
+[PACKET_PROC] Pacote gerado: <PKT:TEMP=42;TENS=3900>
+[HK_PWR_PROC] Monitorando consumo de energia...
+[MPPT_PROC] Analisando carga solar...
+[ALERT] 🚨 Temperatura crítica detectada: 67.03 ºC
+[BMS] V=4.20V I=1.34A T=67.03°C SoC=99.9% Timestamp=72
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[MAIN_SO] MARIA-SAT está operando normalmente.
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 14% | Power: 3.17V | GPS: OK | STAR: OK
+[FDIR_PROC] 🚨 Baixa tensão detectada (3.17V)
+[ALERT] ⚠️ Baixa tensão detectada: 317.00 V
+[BMS] V=3.74V I=0.58A T=45.76°C SoC=61.8% Timestamp=73
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 91% | Power: 3.04V | GPS: OK | STAR: OK
+[FDIR_PROC] 🚨 CPU alta detectada (91%)
+[ALERT] 🚨 Uso de CPU muito alto: 91.00 %
+[FDIR_PROC] 🚨 Baixa tensão detectada (3.04V)
+[ALERT] ⚠️ Baixa tensão detectada: 304.00 V
+[MPPT_PROC] Analisando carga solar...
+[ALERT] ⚠️ Baixa tensão detectada: 3.12 V
+[BMS] V=3.12V I=1.47A T=51.08°C SoC=10.3% Timestamp=74
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 22% | Power: 3.40V | GPS: OK | STAR: OK
+[PACKET_PROC] Pacote gerado: <PKT:TEMP=42;TENS=3900>
+[HK_PWR_PROC] Monitorando consumo de energia...
+[ALERT] 🚨 Temperatura crítica detectada: 67.77 ºC
+[BMS] V=3.95V I=0.88A T=67.77°C SoC=78.9% Timestamp=75
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 5% | Power: 3.03V | GPS: OK | STAR: FAIL
+[FDIR_PROC] 🚨 Baixa tensão detectada (3.03V)
+[ALERT] ⚠️ Baixa tensão detectada: 303.00 V
+[FDIR_PROC] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Falha no Star Tracker detectada!
+[MPPT_PROC] Analisando carga solar...
+[BMS] V=3.51V I=0.84A T=52.85°C SoC=42.2% Timestamp=76
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[TTC_PROC] Enviado comando: REPORTAR_TELEMETRIA
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 35% | Power: 3.13V | GPS: FAIL | STAR: FAIL
+[FDIR_PROC] 🚨 Baixa tensão detectada (3.13V)
+[ALERT] ⚠️ Baixa tensão detectada: 313.00 V
+[FDIR_PROC] 🚨 Falha no GPS detectada!
+[ALERT] 🚨 Falha no GPS detectada!
+[FDIR_PROC] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Falha no Star Tracker detectada!
+[RF_TC_PROC] Aguardando comando de solo...
+[BMS] V=4.13V I=0.65A T=39.03°C SoC=94.4% Timestamp=77
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[MAIN_SO] Comando recebido: REPORTAR_TELEMETRIA
+[MAIN_SO] 📡 Solicitando telemetria ao TM_PROC...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[TM_PROC] TM enviada após solicitação.
+[TTC_PROC] Resposta: REPORTAR_TELEMETRIA => 
+[HEALTH_PROC] CPU: 46% | Power: 3.59V | GPS: OK | STAR: FAIL
+[FDIR_PROC] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Falha no Star Tracker detectada!
+[PACKET_PROC] Pacote gerado: <PKT:TEMP=42;TENS=3900>
+[HK_PWR_PROC] Monitorando consumo de energia...
+[MPPT_PROC] Analisando carga solar...
+[BMS] V=3.83V I=1.89A T=25.21°C SoC=68.8% Timestamp=78
+[RF_TM_PROC] Enviando TM:
+CPU=55% | RAM=64KB
+GPS=(-23.5505, -46.6333)
+PWR=3.95V 1.10A
+STAR=(Roll=3° Pitch=7° Yaw=-1°)
+
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 83% | Power: 4.01V | GPS: OK | STAR: OK
+[BMS] V=3.23V I=1.85A T=33.45°C SoC=19.5% Timestamp=79
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 35% | Power: 3.01V | GPS: FAIL | STAR: FAIL
+[FDIR_PROC] 🚨 Baixa tensão detectada (3.01V)
+[ALERT] ⚠️ Baixa tensão detectada: 301.00 V
+[FDIR_PROC] 🚨 Falha no GPS detectada!
+[ALERT] 🚨 Falha no GPS detectada!
+[FDIR_PROC] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Falha no Star Tracker detectada!
+[MPPT_PROC] Analisando carga solar...
+[ALERT] 🚨 Temperatura crítica detectada: 69.34 ºC
+[BMS] V=4.18V I=1.42A T=69.34°C SoC=98.5% Timestamp=80
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 82% | Power: 3.06V | GPS: OK | STAR: OK
+[FDIR_PROC] 🚨 Baixa tensão detectada (3.06V)
+[ALERT] ⚠️ Baixa tensão detectada: 306.00 V
+[PACKET_PROC] Pacote gerado: <PKT:TEMP=42;TENS=3900>
+[HK_PWR_PROC] Monitorando consumo de energia...
+[ALERT] ⚠️ Baixa tensão detectada: 3.07 V
+[BMS] V=3.07V I=1.35A T=41.99°C SoC=6.0% Timestamp=81
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 9% | Power: 3.62V | GPS: OK | STAR: OK
+[MPPT_PROC] Analisando carga solar...
+[BMS] V=3.54V I=1.06A T=32.66°C SoC=45.2% Timestamp=82
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 23% | Power: 3.11V | GPS: OK | STAR: FAIL
+[FDIR_PROC] 🚨 Baixa tensão detectada (3.11V)
+[ALERT] ⚠️ Baixa tensão detectada: 311.00 V
+[FDIR_PROC] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Falha no Star Tracker detectada!
+[BMS] V=3.44V I=1.41A T=36.94°C SoC=36.9% Timestamp=83
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[MAIN_SO] MARIA-SAT está operando normalmente.
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 25% | Power: 3.47V | GPS: OK | STAR: FAIL
+[FDIR_PROC] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Falha no Star Tracker detectada!
+[RF_TC_PROC] Aguardando comando de solo...
+[PACKET_PROC] Pacote gerado: <PKT:TEMP=42;TENS=3900>
+[HK_PWR_PROC] Monitorando consumo de energia...
+[MPPT_PROC] Analisando carga solar...
+[BMS] V=3.56V I=0.79A T=44.87°C SoC=46.8% Timestamp=84
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 48% | Power: 3.18V | GPS: OK | STAR: OK
+[FDIR_PROC] 🚨 Baixa tensão detectada (3.18V)
+[ALERT] ⚠️ Baixa tensão detectada: 318.00 V
+[ALERT] 🚨 Temperatura crítica detectada: 67.76 ºC
+[BMS] V=3.93V I=0.79A T=67.76°C SoC=77.4% Timestamp=85
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 81% | Power: 3.31V | GPS: OK | STAR: OK
+[MPPT_PROC] Analisando carga solar...
+[ALERT] ⚠️ Baixa tensão detectada: 3.03 V
+[BMS] V=3.03V I=0.74A T=30.15°C SoC=2.3% Timestamp=86
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 56% | Power: 3.41V | GPS: OK | STAR: OK
+[PACKET_PROC] Pacote gerado: <PKT:TEMP=42;TENS=3900>
+[HK_PWR_PROC] Monitorando consumo de energia...
+[BMS] V=4.15V I=0.50A T=50.50°C SoC=95.9% Timestamp=87
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[TTC_PROC] Enviado comando: ATIVAR_MOTORES_3000
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 51% | Power: 3.67V | GPS: OK | STAR: OK
+[MPPT_PROC] Analisando carga solar...
+[ALERT] ⚠️ Baixa tensão detectada: 3.01 V
+[BMS] V=3.01V I=1.44A T=32.96°C SoC=1.2% Timestamp=88
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[MAIN_SO] Comando recebido: ATIVAR_MOTORES_3000
+[MAIN_SO] 🚀 Motores ativados por 3000 ms.
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[TTC_PROC] Resposta: ATIVAR_MOTORES_3000 => 
+[HEALTH_PROC] CPU: 34% | Power: 3.86V | GPS: OK | STAR: OK
+[ALERT] ⚠️ Baixa tensão detectada: 3.03 V
+[BMS] V=3.03V I=1.44A T=30.99°C SoC=2.7% Timestamp=89
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 91% | Power: 3.15V | GPS: OK | STAR: OK
+[FDIR_PROC] 🚨 CPU alta detectada (91%)
+[ALERT] 🚨 Uso de CPU muito alto: 91.00 %
+[FDIR_PROC] 🚨 Baixa tensão detectada (3.15V)
+[ALERT] ⚠️ Baixa tensão detectada: 315.00 V
+[PACKET_PROC] Pacote gerado: <PKT:TEMP=42;TENS=3900>
+[HK_PWR_PROC] Monitorando consumo de energia...
+[MPPT_PROC] Analisando carga solar...
+[BMS] V=4.15V I=1.54A T=47.93°C SoC=95.5% Timestamp=90
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 52% | Power: 3.29V | GPS: OK | STAR: OK
+[FDIR_PROC] 🚨 Baixa tensão detectada (3.29V)
+[ALERT] ⚠️ Baixa tensão detectada: 329.00 V
+[RF_TC_PROC] Aguardando comando de solo...
+[BMS] V=3.67V I=0.94A T=31.77°C SoC=55.8% Timestamp=91
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 98% | Power: 3.22V | GPS: OK | STAR: FAIL
+[FDIR_PROC] 🚨 CPU alta detectada (98%)
+[ALERT] 🚨 Uso de CPU muito alto: 98.00 %
+[FDIR_PROC] 🚨 Baixa tensão detectada (3.22V)
+[ALERT] ⚠️ Baixa tensão detectada: 322.00 V
+[FDIR_PROC] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Falha no Star Tracker detectada!
+[MPPT_PROC] Analisando carga solar...
+[BMS] V=3.87V I=0.92A T=53.33°C SoC=72.2% Timestamp=92
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 66% | Power: 4.06V | GPS: OK | STAR: OK
+[PACKET_PROC] Pacote gerado: <PKT:TEMP=42;TENS=3900>
+[HK_PWR_PROC] Monitorando consumo de energia...
+[BMS] V=3.29V I=1.86A T=54.81°C SoC=24.1% Timestamp=93
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 96% | Power: 3.41V | GPS: OK | STAR: FAIL
+[FDIR_PROC] 🚨 CPU alta detectada (96%)
+[ALERT] 🚨 Uso de CPU muito alto: 96.00 %
+[FDIR_PROC] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Falha no Star Tracker detectada!
+[MPPT_PROC] Analisando carga solar...
+[BMS] V=3.68V I=0.88A T=56.32°C SoC=56.5% Timestamp=94
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[MAIN_SO] MARIA-SAT está operando normalmente.
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 57% | Power: 3.09V | GPS: OK | STAR: FAIL
+[FDIR_PROC] 🚨 Baixa tensão detectada (3.09V)
+[ALERT] ⚠️ Baixa tensão detectada: 309.00 V
+[FDIR_PROC] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Temperatura crítica detectada: 65.45 ºC
+[BMS] V=3.28V I=0.67A T=65.45°C SoC=23.3% Timestamp=95
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 26% | Power: 4.00V | GPS: OK | STAR: FAIL
+[FDIR_PROC] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Falha no Star Tracker detectada!
+[PACKET_PROC] Pacote gerado: <PKT:TEMP=42;TENS=3900>
+[HK_PWR_PROC] Monitorando consumo de energia...
+[MPPT_PROC] Analisando carga solar...
+[BMS] V=3.25V I=1.38A T=53.20°C SoC=20.7% Timestamp=96
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 98% | Power: 3.38V | GPS: OK | STAR: OK
+[FDIR_PROC] 🚨 CPU alta detectada (98%)
+[ALERT] 🚨 Uso de CPU muito alto: 98.00 %
+[BMS] V=4.10V I=1.78A T=38.38°C SoC=91.3% Timestamp=97
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 37% | Power: 3.20V | GPS: OK | STAR: FAIL
+[FDIR_PROC] 🚨 Baixa tensão detectada (3.20V)
+[ALERT] ⚠️ Baixa tensão detectada: 320.00 V
+[FDIR_PROC] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Falha no Star Tracker detectada!
+[RF_TC_PROC] Aguardando comando de solo...
+[MPPT_PROC] Analisando carga solar...
+[BMS] V=3.80V I=1.85A T=48.66°C SoC=66.6% Timestamp=98
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[TTC_PROC] Enviado comando: LIGAR_CAMERA
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 15% | Power: 3.75V | GPS: OK | STAR: FAIL
+[FDIR_PROC] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Falha no Star Tracker detectada!
+[PACKET_PROC] Pacote gerado: <PKT:TEMP=42;TENS=3900>
+[HK_PWR_PROC] Monitorando consumo de energia...
+[BMS] V=4.03V I=0.55A T=58.50°C SoC=85.7% Timestamp=99
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[MAIN_SO] Comando recebido: LIGAR_CAMERA
+[MAIN_SO] 📷 Camera ligada.
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[TTC_PROC] Resposta: LIGAR_CAMERA => 
+[HEALTH_PROC] CPU: 96% | Power: 3.01V | GPS: OK | STAR: OK
+[FDIR_PROC] 🚨 CPU alta detectada (96%)
+[ALERT] 🚨 Uso de CPU muito alto: 96.00 %
+[FDIR_PROC] 🚨 Baixa tensão detectada (3.01V)
+[ALERT] ⚠️ Baixa tensão detectada: 301.00 V
+[MPPT_PROC] Analisando carga solar...
+[BMS] V=3.73V I=0.61A T=41.83°C SoC=60.8% Timestamp=100
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 48% | Power: 3.84V | GPS: OK | STAR: FAIL
+[FDIR_PROC] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Falha no Star Tracker detectada!
+[BMS] V=3.71V I=1.93A T=56.01°C SoC=59.4% Timestamp=101
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 15% | Power: 3.65V | GPS: OK | STAR: OK
+[PACKET_PROC] Pacote gerado: <PKT:TEMP=42;TENS=3900>
+[HK_PWR_PROC] Monitorando consumo de energia...
+[MPPT_PROC] Analisando carga solar...
+[ALERT] ⚠️ Baixa tensão detectada: 3.08 V
+[BMS] V=3.08V I=1.11A T=39.03°C SoC=7.0% Timestamp=102
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 93% | Power: 3.08V | GPS: FAIL | STAR: OK
+[FDIR_PROC] 🚨 CPU alta detectada (93%)
+[ALERT] 🚨 Uso de CPU muito alto: 93.00 %
+[FDIR_PROC] 🚨 Baixa tensão detectada (3.08V)
+[ALERT] ⚠️ Baixa tensão detectada: 308.00 V
+[FDIR_PROC] 🚨 Falha no GPS detectada!
+[ALERT] 🚨 Falha no GPS detectada!
+[BMS] V=3.40V I=0.67A T=41.28°C SoC=33.6% Timestamp=103
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 42% | Power: 3.01V | GPS: OK | STAR: OK
+[FDIR_PROC] 🚨 Baixa tensão detectada (3.01V)
+[ALERT] ⚠️ Baixa tensão detectada: 301.00 V
+[MPPT_PROC] Analisando carga solar...
+[ALERT] 🚨 Temperatura crítica detectada: 61.41 ºC
+[BMS] V=3.43V I=1.89A T=61.41°C SoC=35.9% Timestamp=104
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 38% | Power: 3.82V | GPS: FAIL | STAR: OK
+[FDIR_PROC] 🚨 Falha no GPS detectada!
+[ALERT] 🚨 Falha no GPS detectada!
+[RF_TC_PROC] Aguardando comando de solo...
+[PACKET_PROC] Pacote gerado: <PKT:TEMP=42;TENS=3900>
+[HK_PWR_PROC] Monitorando consumo de energia...
+[ALERT] 🚨 Temperatura crítica detectada: 68.51 ºC
+[BMS] V=4.09V I=0.83A T=68.51°C SoC=91.0% Timestamp=105
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[MAIN_SO] MARIA-SAT está operando normalmente.
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 38% | Power: 4.17V | GPS: OK | STAR: OK
+[MPPT_PROC] Analisando carga solar...
+[ALERT] ⚠️ Baixa tensão detectada: 3.05 V
+[BMS] V=3.05V I=0.96A T=25.28°C SoC=4.0% Timestamp=106
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 12% | Power: 3.59V | GPS: OK | STAR: OK
+[ALERT] 🚨 Temperatura crítica detectada: 61.44 ºC
+[BMS] V=4.00V I=1.46A T=61.44°C SoC=83.7% Timestamp=107
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 84% | Power: 3.60V | GPS: OK | STAR: OK
+[PACKET_PROC] Pacote gerado: <PKT:TEMP=42;TENS=3900>
+[HK_PWR_PROC] Monitorando consumo de energia...
+[MPPT_PROC] Analisando carga solar...
+[BMS] V=3.64V I=0.88A T=37.53°C SoC=53.2% Timestamp=108
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 38% | Power: 4.02V | GPS: OK | STAR: OK
+[BMS] V=3.50V I=1.90A T=30.22°C SoC=41.8% Timestamp=109
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[TTC_PROC] Enviado comando: REPORTAR_TELEMETRIA
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 76% | Power: 4.13V | GPS: OK | STAR: OK
+[MPPT_PROC] Analisando carga solar...
+[BMS] V=3.61V I=1.18A T=57.33°C SoC=50.7% Timestamp=110
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[MAIN_SO] Comando recebido: REPORTAR_TELEMETRIA
+[MAIN_SO] 📡 Solicitando telemetria ao TM_PROC...
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[TM_PROC] TM enviada após solicitação.
+[TTC_PROC] Resposta: REPORTAR_TELEMETRIA => 
+[HEALTH_PROC] CPU: 65% | Power: 3.49V | GPS: FAIL | STAR: FAIL
+[FDIR_PROC] 🚨 Falha no GPS detectada!
+[ALERT] 🚨 Falha no GPS detectada!
+[FDIR_PROC] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Falha no Star Tracker detectada!
+[PACKET_PROC] Pacote gerado: <PKT:TEMP=42;TENS=3900>
+[HK_PWR_PROC] Monitorando consumo de energia...
+[ALERT] 🚨 Temperatura crítica detectada: 64.10 ºC
+[BMS] V=4.17V I=1.69A T=64.10°C SoC=97.1% Timestamp=111
+[RF_TM_PROC] Enviando TM:
+CPU=55% | RAM=64KB
+GPS=(-23.5505, -46.6333)
+PWR=3.95V 1.10A
+STAR=(Roll=3° Pitch=7° Yaw=-1°)
+
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 57% | Power: 3.53V | GPS: OK | STAR: OK
+[RF_TC_PROC] Aguardando comando de solo...
+[MPPT_PROC] Analisando carga solar...
+[BMS] V=3.25V I=1.64A T=47.18°C SoC=20.5% Timestamp=112
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 76% | Power: 3.92V | GPS: OK | STAR: OK
+[BMS] V=3.54V I=0.62A T=51.29°C SoC=44.6% Timestamp=113
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 84% | Power: 3.11V | GPS: OK | STAR: FAIL
+[FDIR_PROC] 🚨 Baixa tensão detectada (3.11V)
+[ALERT] ⚠️ Baixa tensão detectada: 311.00 V
+[FDIR_PROC] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Falha no Star Tracker detectada!
+[PACKET_PROC] Pacote gerado: <PKT:TEMP=42;TENS=3900>
+[HK_PWR_PROC] Monitorando consumo de energia...
+[MPPT_PROC] Analisando carga solar...
+[ALERT] 🚨 Temperatura crítica detectada: 66.73 ºC
+[BMS] V=3.73V I=1.21A T=66.73°C SoC=61.1% Timestamp=114
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 17% | Power: 3.46V | GPS: OK | STAR: OK
+[BMS] V=3.28V I=1.27A T=49.15°C SoC=23.5% Timestamp=115
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 6% | Power: 3.09V | GPS: OK | STAR: FAIL
+[FDIR_PROC] 🚨 Baixa tensão detectada (3.09V)
+[ALERT] ⚠️ Baixa tensão detectada: 309.00 V
+[FDIR_PROC] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Falha no Star Tracker detectada!
+[MPPT_PROC] Analisando carga solar...
+[ALERT] 🚨 Temperatura crítica detectada: 61.21 ºC
+[BMS] V=3.39V I=1.88A T=61.21°C SoC=32.3% Timestamp=116
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[MAIN_SO] MARIA-SAT está operando normalmente.
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 12% | Power: 3.54V | GPS: OK | STAR: FAIL
+[FDIR_PROC] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Falha no Star Tracker detectada!
+[PACKET_PROC] Pacote gerado: <PKT:TEMP=42;TENS=3900>
+[HK_PWR_PROC] Monitorando consumo de energia...
+[BMS] V=3.96V I=1.57A T=33.16°C SoC=80.0% Timestamp=117
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 22% | Power: 3.58V | GPS: OK | STAR: FAIL
+[FDIR_PROC] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Falha no Star Tracker detectada!
+[MPPT_PROC] Analisando carga solar...
+[BMS] V=4.10V I=1.27A T=45.99°C SoC=91.7% Timestamp=118
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 63% | Power: 3.23V | GPS: OK | STAR: OK
+[FDIR_PROC] 🚨 Baixa tensão detectada (3.23V)
+[ALERT] ⚠️ Baixa tensão detectada: 323.00 V
+[RF_TC_PROC] Aguardando comando de solo...
+[BMS] V=3.85V I=0.96A T=33.39°C SoC=70.9% Timestamp=119
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 91% | Power: 3.12V | GPS: FAIL | STAR: OK
+[FDIR_PROC] 🚨 CPU alta detectada (91%)
+[ALERT] 🚨 Uso de CPU muito alto: 91.00 %
+[FDIR_PROC] 🚨 Baixa tensão detectada (3.12V)
+[ALERT] ⚠️ Baixa tensão detectada: 312.00 V
+[FDIR_PROC] 🚨 Falha no GPS detectada!
+[ALERT] 🚨 Falha no GPS detectada!
+[PACKET_PROC] Pacote gerado: <PKT:TEMP=42;TENS=3900>
+[HK_PWR_PROC] Monitorando consumo de energia...
+[MPPT_PROC] Analisando carga solar...
+[BMS] V=4.04V I=1.00A T=32.64°C SoC=86.4% Timestamp=120
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[TTC_PROC] Enviado comando: ATIVAR_MOTORES_3000
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 49% | Power: 3.60V | GPS: OK | STAR: OK
+[BMS] V=3.64V I=1.75A T=40.47°C SoC=53.5% Timestamp=121
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[MAIN_SO] Comando recebido: ATIVAR_MOTORES_3000
+[MAIN_SO] 🚀 Motores ativados por 3000 ms.
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[TTC_PROC] Resposta: ATIVAR_MOTORES_3000 => 
+[HEALTH_PROC] CPU: 0% | Power: 3.86V | GPS: OK | STAR: FAIL
+[FDIR_PROC] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Falha no Star Tracker detectada!
+[MPPT_PROC] Analisando carga solar...
+[BMS] V=3.33V I=1.24A T=35.64°C SoC=27.4% Timestamp=122
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 72% | Power: 3.16V | GPS: OK | STAR: OK
+[FDIR_PROC] 🚨 Baixa tensão detectada (3.16V)
+[ALERT] ⚠️ Baixa tensão detectada: 316.00 V
+[PACKET_PROC] Pacote gerado: <PKT:TEMP=42;TENS=3900>
+[HK_PWR_PROC] Monitorando consumo de energia...
+[BMS] V=4.13V I=1.68A T=26.78°C SoC=93.8% Timestamp=123
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 31% | Power: 3.32V | GPS: OK | STAR: OK
+[MPPT_PROC] Analisando carga solar...
+[BMS] V=3.68V I=1.48A T=25.24°C SoC=56.3% Timestamp=124
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 35% | Power: 3.65V | GPS: FAIL | STAR: OK
+[FDIR_PROC] 🚨 Falha no GPS detectada!
+[ALERT] 🚨 Falha no GPS detectada!
+[BMS] V=4.12V I=1.47A T=42.94°C SoC=93.1% Timestamp=125
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 14% | Power: 3.88V | GPS: OK | STAR: OK
+[RF_TC_PROC] Aguardando comando de solo...
+[PACKET_PROC] Pacote gerado: <PKT:TEMP=42;TENS=3900>
+[HK_PWR_PROC] Monitorando consumo de energia...
+[MPPT_PROC] Analisando carga solar...
+[BMS] V=4.00V I=1.37A T=49.05°C SoC=82.9% Timestamp=126
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 41% | Power: 3.94V | GPS: OK | STAR: FAIL
+[FDIR_PROC] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Temperatura crítica detectada: 65.51 ºC
+[BMS] V=3.81V I=1.35A T=65.51°C SoC=67.1% Timestamp=127
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[MAIN_SO] MARIA-SAT está operando normalmente.
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 39% | Power: 3.00V | GPS: OK | STAR: FAIL
+[FDIR_PROC] 🚨 Baixa tensão detectada (3.00V)
+[ALERT] ⚠️ Baixa tensão detectada: 300.00 V
+[FDIR_PROC] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Falha no Star Tracker detectada!
+[MPPT_PROC] Analisando carga solar...
+[ALERT] ⚠️ Baixa tensão detectada: 3.02 V
+[BMS] V=3.02V I=1.79A T=30.61°C SoC=1.3% Timestamp=128
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 72% | Power: 4.12V | GPS: OK | STAR: OK
+[PACKET_PROC] Pacote gerado: <PKT:TEMP=42;TENS=3900>
+[HK_PWR_PROC] Monitorando consumo de energia...
+[BMS] V=3.57V I=1.64A T=44.78°C SoC=47.2% Timestamp=129
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 47% | Power: 3.03V | GPS: OK | STAR: OK
+[FDIR_PROC] 🚨 Baixa tensão detectada (3.03V)
+[ALERT] ⚠️ Baixa tensão detectada: 303.00 V
+[MPPT_PROC] Analisando carga solar...
+[BMS] V=4.12V I=1.78A T=48.60°C SoC=93.0% Timestamp=130
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 27% | Power: 3.06V | GPS: FAIL | STAR: OK
+[FDIR_PROC] 🚨 Baixa tensão detectada (3.06V)
+[ALERT] ⚠️ Baixa tensão detectada: 306.00 V
+[FDIR_PROC] 🚨 Falha no GPS detectada!
+[ALERT] 🚨 Falha no GPS detectada!
+[ALERT] 🚨 Temperatura crítica detectada: 66.07 ºC
+[BMS] V=3.85V I=1.74A T=66.07°C SoC=70.5% Timestamp=131
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[TTC_PROC] Enviado comando: LIGAR_CAMERA
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 1% | Power: 3.13V | GPS: OK | STAR: FAIL
+[FDIR_PROC] 🚨 Baixa tensão detectada (3.13V)
+[ALERT] ⚠️ Baixa tensão detectada: 313.00 V
+[FDIR_PROC] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Falha no Star Tracker detectada!
+[PACKET_PROC] Pacote gerado: <PKT:TEMP=42;TENS=3900>
+[HK_PWR_PROC] Monitorando consumo de energia...
+[MPPT_PROC] Analisando carga solar...
+[BMS] V=3.67V I=1.38A T=57.01°C SoC=55.9% Timestamp=132
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[MAIN_SO] Comando recebido: LIGAR_CAMERA
+[MAIN_SO] 📷 Camera ligada.
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[TTC_PROC] Resposta: LIGAR_CAMERA => 
+[HEALTH_PROC] CPU: 4% | Power: 3.59V | GPS: OK | STAR: OK
+[RF_TC_PROC] Aguardando comando de solo...
+[BMS] V=3.55V I=0.93A T=25.94°C SoC=46.1% Timestamp=133
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 32% | Power: 3.01V | GPS: FAIL | STAR: OK
+[FDIR_PROC] 🚨 Baixa tensão detectada (3.01V)
+[ALERT] ⚠️ Baixa tensão detectada: 301.00 V
+[FDIR_PROC] 🚨 Falha no GPS detectada!
+[ALERT] 🚨 Falha no GPS detectada!
+[MPPT_PROC] Analisando carga solar...
+[BMS] V=3.88V I=1.92A T=32.36°C SoC=73.2% Timestamp=134
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 49% | Power: 3.96V | GPS: OK | STAR: FAIL
+[FDIR_PROC] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Falha no Star Tracker detectada!
+[PACKET_PROC] Pacote gerado: <PKT:TEMP=42;TENS=3900>
+[HK_PWR_PROC] Monitorando consumo de energia...
+[ALERT] ⚠️ Baixa tensão detectada: 3.20 V
+[BMS] V=3.20V I=0.55A T=44.02°C SoC=16.3% Timestamp=135
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 91% | Power: 3.92V | GPS: OK | STAR: FAIL
+[FDIR_PROC] 🚨 CPU alta detectada (91%)
+[ALERT] 🚨 Uso de CPU muito alto: 91.00 %
+[FDIR_PROC] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Falha no Star Tracker detectada!
+[MPPT_PROC] Analisando carga solar...
+[BMS] V=3.33V I=0.75A T=47.42°C SoC=27.4% Timestamp=136
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 31% | Power: 3.93V | GPS: OK | STAR: OK
+[ALERT] 🚨 Temperatura crítica detectada: 67.48 ºC
+[BMS] V=4.18V I=1.85A T=67.48°C SoC=98.2% Timestamp=137
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 66% | Power: 3.17V | GPS: OK | STAR: FAIL
+[FDIR_PROC] 🚨 Baixa tensão detectada (3.17V)
+[ALERT] ⚠️ Baixa tensão detectada: 317.00 V
+[FDIR_PROC] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Falha no Star Tracker detectada!
+[PACKET_PROC] Pacote gerado: <PKT:TEMP=42;TENS=3900>
+[HK_PWR_PROC] Monitorando consumo de energia...
+[MPPT_PROC] Analisando carga solar...
+[ALERT] 🚨 Temperatura crítica detectada: 62.34 ºC
+[ALERT] ⚠️ Baixa tensão detectada: 3.11 V
+[BMS] V=3.11V I=1.93A T=62.34°C SoC=9.1% Timestamp=138
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[MAIN_SO] MARIA-SAT está operando normalmente.
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 37% | Power: 3.95V | GPS: OK | STAR: OK
+[BMS] V=3.40V I=0.55A T=37.20°C SoC=33.2% Timestamp=139
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 98% | Power: 3.51V | GPS: OK | STAR: OK
+[FDIR_PROC] 🚨 CPU alta detectada (98%)
+[ALERT] 🚨 Uso de CPU muito alto: 98.00 %
+[RF_TC_PROC] Aguardando comando de solo...
+[MPPT_PROC] Analisando carga solar...
+[BMS] V=3.51V I=1.00A T=58.46°C SoC=42.7% Timestamp=140
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 70% | Power: 3.59V | GPS: OK | STAR: OK
+[PACKET_PROC] Pacote gerado: <PKT:TEMP=42;TENS=3900>
+[HK_PWR_PROC] Monitorando consumo de energia...
+[ALERT] 🚨 Temperatura crítica detectada: 64.16 ºC
+[BMS] V=3.34V I=1.78A T=64.16°C SoC=28.2% Timestamp=141
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 19% | Power: 3.79V | GPS: OK | STAR: OK
+[MPPT_PROC] Analisando carga solar...
+[BMS] V=3.99V I=1.84A T=39.24°C SoC=82.1% Timestamp=142
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[TTC_PROC] Enviado comando: REPORTAR_TELEMETRIA
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 26% | Power: 3.18V | GPS: OK | STAR: OK
+[FDIR_PROC] 🚨 Baixa tensão detectada (3.18V)
+[ALERT] ⚠️ Baixa tensão detectada: 318.00 V
+[BMS] V=3.49V I=1.49A T=30.22°C SoC=40.5% Timestamp=143
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[MAIN_SO] Comando recebido: REPORTAR_TELEMETRIA
+[MAIN_SO] 📡 Solicitando telemetria ao TM_PROC...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[TM_PROC] TM enviada após solicitação.
+[TTC_PROC] Resposta: REPORTAR_TELEMETRIA => 
+[HEALTH_PROC] CPU: 99% | Power: 3.52V | GPS: OK | STAR: FAIL
+[FDIR_PROC] 🚨 CPU alta detectada (99%)
+[ALERT] 🚨 Uso de CPU muito alto: 99.00 %
+[FDIR_PROC] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Falha no Star Tracker detectada!
+[PACKET_PROC] Pacote gerado: <PKT:TEMP=42;TENS=3900>
+[HK_PWR_PROC] Monitorando consumo de energia...
+[MPPT_PROC] Analisando carga solar...
+[ALERT] 🚨 Temperatura crítica detectada: 68.58 ºC
+[BMS] V=3.62V I=0.59A T=68.58°C SoC=51.9% Timestamp=144
+[RF_TM_PROC] Enviando TM:
+CPU=55% | RAM=64KB
+GPS=(-23.5505, -46.6333)
+PWR=3.95V 1.10A
+STAR=(Roll=3° Pitch=7° Yaw=-1°)
+
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 94% | Power: 3.68V | GPS: OK | STAR: FAIL
+[FDIR_PROC] 🚨 CPU alta detectada (94%)
+[ALERT] 🚨 Uso de CPU muito alto: 94.00 %
+[FDIR_PROC] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Falha no Star Tracker detectada!
+[BMS] V=3.95V I=1.36A T=34.91°C SoC=79.2% Timestamp=145
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 89% | Power: 3.65V | GPS: OK | STAR: OK
+[MPPT_PROC] Analisando carga solar...
+[BMS] V=3.23V I=0.69A T=47.96°C SoC=19.1% Timestamp=146
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 28% | Power: 3.50V | GPS: OK | STAR: OK
+[RF_TC_PROC] Aguardando comando de solo...
+[PACKET_PROC] Pacote gerado: <PKT:TEMP=42;TENS=3900>
+[HK_PWR_PROC] Monitorando consumo de energia...
+[BMS] V=3.38V I=1.00A T=41.35°C SoC=31.3% Timestamp=147
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 93% | Power: 4.13V | GPS: FAIL | STAR: OK
+[FDIR_PROC] 🚨 CPU alta detectada (93%)
+[ALERT] 🚨 Uso de CPU muito alto: 93.00 %
+[FDIR_PROC] 🚨 Falha no GPS detectada!
+[ALERT] 🚨 Falha no GPS detectada!
+[MPPT_PROC] Analisando carga solar...
+[ALERT] 🚨 Temperatura crítica detectada: 61.98 ºC
+[BMS] V=4.03V I=0.85A T=61.98°C SoC=86.2% Timestamp=148
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 19% | Power: 3.97V | GPS: OK | STAR: OK
+[ALERT] 🚨 Temperatura crítica detectada: 67.14 ºC
+[BMS] V=3.67V I=0.84A T=67.14°C SoC=55.7% Timestamp=149
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[MAIN_SO] MARIA-SAT está operando normalmente.
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 2% | Power: 3.96V | GPS: OK | STAR: FAIL
+[FDIR_PROC] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Falha no Star Tracker detectada!
+[PACKET_PROC] Pacote gerado: <PKT:TEMP=42;TENS=3900>
+[HK_PWR_PROC] Monitorando consumo de energia...
+[MPPT_PROC] Analisando carga solar...
+[BMS] V=4.18V I=0.72A T=49.85°C SoC=98.5% Timestamp=150
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 92% | Power: 4.04V | GPS: FAIL | STAR: FAIL
+[FDIR_PROC] 🚨 CPU alta detectada (92%)
+[ALERT] 🚨 Uso de CPU muito alto: 92.00 %
+[FDIR_PROC] 🚨 Falha no GPS detectada!
+[ALERT] 🚨 Falha no GPS detectada!
+[FDIR_PROC] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Falha no Star Tracker detectada!
+[BMS] V=3.24V I=1.69A T=57.88°C SoC=20.0% Timestamp=151
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 74% | Power: 3.64V | GPS: OK | STAR: FAIL
+[FDIR_PROC] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Falha no Star Tracker detectada!
+[MPPT_PROC] Analisando carga solar...
+[BMS] V=3.86V I=1.10A T=34.64°C SoC=71.7% Timestamp=152
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 67% | Power: 3.23V | GPS: OK | STAR: FAIL
+[FDIR_PROC] 🚨 Baixa tensão detectada (3.23V)
+[ALERT] ⚠️ Baixa tensão detectada: 323.00 V
+[FDIR_PROC] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Falha no Star Tracker detectada!
+[PACKET_PROC] Pacote gerado: <PKT:TEMP=42;TENS=3900>
+[HK_PWR_PROC] Monitorando consumo de energia...
+[BMS] V=3.78V I=1.46A T=31.69°C SoC=65.2% Timestamp=153
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[TTC_PROC] Enviado comando: ATIVAR_MOTORES_3000
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 11% | Power: 3.50V | GPS: OK | STAR: OK
+[RF_TC_PROC] Aguardando comando de solo...
+[MPPT_PROC] Analisando carga solar...
+[BMS] V=3.47V I=1.23A T=58.39°C SoC=39.1% Timestamp=154
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[MAIN_SO] Comando recebido: ATIVAR_MOTORES_3000
+[MAIN_SO] 🚀 Motores ativados por 3000 ms.
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[TTC_PROC] Resposta: ATIVAR_MOTORES_3000 => 
+[HEALTH_PROC] CPU: 6% | Power: 3.37V | GPS: OK | STAR: OK
+[ALERT] ⚠️ Baixa tensão detectada: 3.06 V
+[BMS] V=3.06V I=1.24A T=59.91°C SoC=4.9% Timestamp=155
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 54% | Power: 3.07V | GPS: OK | STAR: FAIL
+[FDIR_PROC] 🚨 Baixa tensão detectada (3.07V)
+[ALERT] ⚠️ Baixa tensão detectada: 307.00 V
+[FDIR_PROC] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Falha no Star Tracker detectada!
+[PACKET_PROC] Pacote gerado: <PKT:TEMP=42;TENS=3900>
+[HK_PWR_PROC] Monitorando consumo de energia...
+[MPPT_PROC] Analisando carga solar...
+[BMS] V=3.99V I=0.69A T=38.11°C SoC=82.3% Timestamp=156
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 89% | Power: 3.28V | GPS: OK | STAR: OK
+[FDIR_PROC] 🚨 Baixa tensão detectada (3.28V)
+[ALERT] ⚠️ Baixa tensão detectada: 328.00 V
+[ALERT] 🚨 Temperatura crítica detectada: 65.30 ºC
+[BMS] V=3.60V I=0.68A T=65.30°C SoC=50.4% Timestamp=157
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 28% | Power: 3.31V | GPS: OK | STAR: FAIL
+[FDIR_PROC] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Falha no Star Tracker detectada!
+[MPPT_PROC] Analisando carga solar...
+[ALERT] ⚠️ Baixa tensão detectada: 3.01 V
+[BMS] V=3.01V I=0.90A T=54.42°C SoC=1.2% Timestamp=158
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 89% | Power: 3.55V | GPS: FAIL | STAR: OK
+[FDIR_PROC] 🚨 Falha no GPS detectada!
+[ALERT] 🚨 Falha no GPS detectada!
+[PACKET_PROC] Pacote gerado: <PKT:TEMP=42;TENS=3900>
+[HK_PWR_PROC] Monitorando consumo de energia...
+[ALERT] ⚠️ Baixa tensão detectada: 3.13 V
+[BMS] V=3.13V I=0.78A T=35.21°C SoC=11.2% Timestamp=159
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 85% | Power: 3.99V | GPS: OK | STAR: FAIL
+[FDIR_PROC] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Falha no Star Tracker detectada!
+[MPPT_PROC] Analisando carga solar...
+[BMS] V=3.68V I=0.86A T=55.11°C SoC=57.0% Timestamp=160
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[MAIN_SO] MARIA-SAT está operando normalmente.
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 87% | Power: 3.16V | GPS: FAIL | STAR: OK
+[FDIR_PROC] 🚨 Baixa tensão detectada (3.16V)
+[ALERT] ⚠️ Baixa tensão detectada: 316.00 V
+[FDIR_PROC] 🚨 Falha no GPS detectada!
+[ALERT] 🚨 Falha no GPS detectada!
+[RF_TC_PROC] Aguardando comando de solo...
+[ALERT] ⚠️ Baixa tensão detectada: 3.01 V
+[BMS] V=3.01V I=1.05A T=32.60°C SoC=0.7% Timestamp=161
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 58% | Power: 3.70V | GPS: OK | STAR: FAIL
+[FDIR_PROC] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Falha no Star Tracker detectada!
+[PACKET_PROC] Pacote gerado: <PKT:TEMP=42;TENS=3900>
+[HK_PWR_PROC] Monitorando consumo de energia...
+[MPPT_PROC] Analisando carga solar...
+[BMS] V=3.47V I=1.90A T=41.45°C SoC=38.8% Timestamp=162
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 54% | Power: 3.23V | GPS: OK | STAR: OK
+[FDIR_PROC] 🚨 Baixa tensão detectada (3.23V)
+[ALERT] ⚠️ Baixa tensão detectada: 323.00 V
+[ALERT] 🚨 Temperatura crítica detectada: 63.62 ºC
+[BMS] V=3.36V I=1.16A T=63.62°C SoC=30.3% Timestamp=163
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 72% | Power: 3.18V | GPS: OK | STAR: OK
+[FDIR_PROC] 🚨 Baixa tensão detectada (3.18V)
+[ALERT] ⚠️ Baixa tensão detectada: 318.00 V
+[MPPT_PROC] Analisando carga solar...
+[BMS] V=3.91V I=0.71A T=28.95°C SoC=75.4% Timestamp=164
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[TTC_PROC] Enviado comando: LIGAR_CAMERA
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 26% | Power: 3.29V | GPS: OK | STAR: FAIL
+[FDIR_PROC] 🚨 Baixa tensão detectada (3.29V)
+[ALERT] ⚠️ Baixa tensão detectada: 329.00 V
+[FDIR_PROC] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Falha no Star Tracker detectada!
+[PACKET_PROC] Pacote gerado: <PKT:TEMP=42;TENS=3900>
+[HK_PWR_PROC] Monitorando consumo de energia...
+[BMS] V=3.69V I=1.85A T=41.54°C SoC=57.1% Timestamp=165
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[MAIN_SO] Comando recebido: LIGAR_CAMERA
+[MAIN_SO] 📷 Camera ligada.
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[TTC_PROC] Resposta: LIGAR_CAMERA => 
+[HEALTH_PROC] CPU: 42% | Power: 4.14V | GPS: OK | STAR: OK
+[MPPT_PROC] Analisando carga solar...
+[BMS] V=3.75V I=0.70A T=45.03°C SoC=62.2% Timestamp=166
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 55% | Power: 3.39V | GPS: OK | STAR: OK
+[BMS] V=3.45V I=0.78A T=31.25°C SoC=37.5% Timestamp=167
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 28% | Power: 4.18V | GPS: OK | STAR: OK
+[RF_TC_PROC] Aguardando comando de solo...
+[PACKET_PROC] Pacote gerado: <PKT:TEMP=42;TENS=3900>
+[HK_PWR_PROC] Monitorando consumo de energia...
+[MPPT_PROC] Analisando carga solar...
+[BMS] V=3.24V I=1.00A T=43.29°C SoC=20.2% Timestamp=168
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 95% | Power: 3.88V | GPS: OK | STAR: FAIL
+[FDIR_PROC] 🚨 CPU alta detectada (95%)
+[ALERT] 🚨 Uso de CPU muito alto: 95.00 %
+[FDIR_PROC] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Falha no Star Tracker detectada!
+[BMS] V=4.05V I=1.61A T=37.02°C SoC=87.5% Timestamp=169
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 3% | Power: 3.25V | GPS: OK | STAR: OK
+[FDIR_PROC] 🚨 Baixa tensão detectada (3.25V)
+[ALERT] ⚠️ Baixa tensão detectada: 325.00 V
+[MPPT_PROC] Analisando carga solar...
+[BMS] V=3.67V I=1.24A T=46.35°C SoC=55.6% Timestamp=170
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 95% | Power: 3.55V | GPS: FAIL | STAR: FAIL
+[FDIR_PROC] 🚨 CPU alta detectada (95%)
+[ALERT] 🚨 Uso de CPU muito alto: 95.00 %
+[FDIR_PROC] 🚨 Falha no GPS detectada!
+[ALERT] 🚨 Falha no GPS detectada!
+[FDIR_PROC] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Falha no Star Tracker detectada!
+[PACKET_PROC] Pacote gerado: <PKT:TEMP=42;TENS=3900>
+[HK_PWR_PROC] Monitorando consumo de energia...
+[BMS] V=3.24V I=1.24A T=36.98°C SoC=19.7% Timestamp=171
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[MAIN_SO] MARIA-SAT está operando normalmente.
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 32% | Power: 3.55V | GPS: FAIL | STAR: FAIL
+[FDIR_PROC] 🚨 Falha no GPS detectada!
+[ALERT] 🚨 Falha no GPS detectada!
+[FDIR_PROC] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Falha no Star Tracker detectada!
+[MPPT_PROC] Analisando carga solar...
+[BMS] V=3.53V I=1.37A T=55.81°C SoC=43.8% Timestamp=172
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 77% | Power: 3.86V | GPS: FAIL | STAR: OK
+[FDIR_PROC] 🚨 Falha no GPS detectada!
+[ALERT] 🚨 Falha no GPS detectada!
+[BMS] V=3.53V I=1.76A T=29.56°C SoC=43.8% Timestamp=173
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 8% | Power: 3.65V | GPS: OK | STAR: OK
+[PACKET_PROC] Pacote gerado: <PKT:TEMP=42;TENS=3900>
+[HK_PWR_PROC] Monitorando consumo de energia...
+[MPPT_PROC] Analisando carga solar...
+[ALERT] 🚨 Temperatura crítica detectada: 60.06 ºC
+[BMS] V=3.45V I=1.15A T=60.06°C SoC=37.8% Timestamp=174
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 82% | Power: 3.21V | GPS: OK | STAR: OK
+[FDIR_PROC] 🚨 Baixa tensão detectada (3.21V)
+[ALERT] ⚠️ Baixa tensão detectada: 321.00 V
+[RF_TC_PROC] Aguardando comando de solo...
+[ALERT] 🚨 Temperatura crítica detectada: 68.50 ºC
+[BMS] V=4.12V I=0.76A T=68.50°C SoC=92.9% Timestamp=175
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[TTC_PROC] Enviado comando: REPORTAR_TELEMETRIA
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 43% | Power: 4.04V | GPS: OK | STAR: FAIL
+[FDIR_PROC] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Falha no Star Tracker detectada!
+[MPPT_PROC] Analisando carga solar...
+[ALERT] ⚠️ Baixa tensão detectada: 3.03 V
+[BMS] V=3.03V I=1.10A T=45.05°C SoC=2.9% Timestamp=176
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[MAIN_SO] Comando recebido: REPORTAR_TELEMETRIA
+[MAIN_SO] 📡 Solicitando telemetria ao TM_PROC...
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[TM_PROC] TM enviada após solicitação.
+[TTC_PROC] Resposta: REPORTAR_TELEMETRIA => 
+[HEALTH_PROC] CPU: 47% | Power: 4.00V | GPS: FAIL | STAR: FAIL
+[FDIR_PROC] 🚨 Falha no GPS detectada!
+[ALERT] 🚨 Falha no GPS detectada!
+[FDIR_PROC] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Falha no Star Tracker detectada!
+[PACKET_PROC] Pacote gerado: <PKT:TEMP=42;TENS=3900>
+[HK_PWR_PROC] Monitorando consumo de energia...
+[ALERT] ⚠️ Baixa tensão detectada: 3.09 V
+[BMS] V=3.09V I=1.30A T=44.13°C SoC=7.7% Timestamp=177
+[RF_TM_PROC] Enviando TM:
+CPU=55% | RAM=64KB
+GPS=(-23.5505, -46.6333)
+PWR=3.95V 1.10A
+STAR=(Roll=3° Pitch=7° Yaw=-1°)
+
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 2% | Power: 4.11V | GPS: OK | STAR: FAIL
+[FDIR_PROC] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Falha no Star Tracker detectada!
+[MPPT_PROC] Analisando carga solar...
+[ALERT] ⚠️ Baixa tensão detectada: 3.08 V
+[BMS] V=3.08V I=1.92A T=28.68°C SoC=6.9% Timestamp=178
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 67% | Power: 3.16V | GPS: FAIL | STAR: OK
+[FDIR_PROC] 🚨 Baixa tensão detectada (3.16V)
+[ALERT] ⚠️ Baixa tensão detectada: 316.00 V
+[FDIR_PROC] 🚨 Falha no GPS detectada!
+[ALERT] 🚨 Falha no GPS detectada!
+[BMS] V=3.41V I=1.61A T=26.65°C SoC=33.8% Timestamp=179
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 64% | Power: 3.43V | GPS: OK | STAR: OK
+[PACKET_PROC] Pacote gerado: <PKT:TEMP=42;TENS=3900>
+[HK_PWR_PROC] Monitorando consumo de energia...
+[MPPT_PROC] Analisando carga solar...
+[ALERT] 🚨 Temperatura crítica detectada: 62.82 ºC
+[BMS] V=3.79V I=1.14A T=62.82°C SoC=65.9% Timestamp=180
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 0% | Power: 3.81V | GPS: OK | STAR: FAIL
+[FDIR_PROC] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Falha no Star Tracker detectada!
+[BMS] V=4.09V I=1.48A T=55.88°C SoC=90.7% Timestamp=181
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 59% | Power: 3.14V | GPS: OK | STAR: OK
+[FDIR_PROC] 🚨 Baixa tensão detectada (3.14V)
+[ALERT] ⚠️ Baixa tensão detectada: 314.00 V
+[RF_TC_PROC] Aguardando comando de solo...
+[MPPT_PROC] Analisando carga solar...
+[ALERT] 🚨 Temperatura crítica detectada: 69.76 ºC
+[BMS] V=4.04V I=1.38A T=69.76°C SoC=86.5% Timestamp=182
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[MAIN_SO] MARIA-SAT está operando normalmente.
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 44% | Power: 3.68V | GPS: OK | STAR: FAIL
+[FDIR_PROC] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Falha no Star Tracker detectada!
+[PACKET_PROC] Pacote gerado: <PKT:TEMP=42;TENS=3900>
+[HK_PWR_PROC] Monitorando consumo de energia...
+[BMS] V=3.57V I=1.53A T=49.69°C SoC=47.2% Timestamp=183
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 24% | Power: 3.18V | GPS: FAIL | STAR: OK
+[FDIR_PROC] 🚨 Baixa tensão detectada (3.18V)
+[ALERT] ⚠️ Baixa tensão detectada: 318.00 V
+[FDIR_PROC] 🚨 Falha no GPS detectada!
+[ALERT] 🚨 Falha no GPS detectada!
+[MPPT_PROC] Analisando carga solar...
+[ALERT] 🚨 Temperatura crítica detectada: 64.53 ºC
+[ALERT] ⚠️ Baixa tensão detectada: 3.01 V
+[BMS] V=3.01V I=1.46A T=64.53°C SoC=1.2% Timestamp=184
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 34% | Power: 3.73V | GPS: OK | STAR: OK
+[BMS] V=4.11V I=0.54A T=26.12°C SoC=92.6% Timestamp=185
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 54% | Power: 4.07V | GPS: OK | STAR: OK
+[PACKET_PROC] Pacote gerado: <PKT:TEMP=42;TENS=3900>
+[HK_PWR_PROC] Monitorando consumo de energia...
+[MPPT_PROC] Analisando carga solar...
+[BMS] V=3.30V I=0.70A T=54.29°C SoC=25.1% Timestamp=186
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[TTC_PROC] Enviado comando: ATIVAR_MOTORES_3000
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 78% | Power: 3.13V | GPS: OK | STAR: OK
+[FDIR_PROC] 🚨 Baixa tensão detectada (3.13V)
+[ALERT] ⚠️ Baixa tensão detectada: 313.00 V
+[BMS] V=4.17V I=1.35A T=48.87°C SoC=97.7% Timestamp=187
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[MAIN_SO] Comando recebido: ATIVAR_MOTORES_3000
+[MAIN_SO] 🚀 Motores ativados por 3000 ms.
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[TTC_PROC] Resposta: ATIVAR_MOTORES_3000 => 
+[HEALTH_PROC] CPU: 61% | Power: 3.56V | GPS: OK | STAR: FAIL
+[FDIR_PROC] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Falha no Star Tracker detectada!
+[MPPT_PROC] Analisando carga solar...
+[ALERT] 🚨 Temperatura crítica detectada: 65.65 ºC
+[BMS] V=3.47V I=1.89A T=65.65°C SoC=38.9% Timestamp=188
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 23% | Power: 3.09V | GPS: OK | STAR: OK
+[FDIR_PROC] 🚨 Baixa tensão detectada (3.09V)
+[ALERT] ⚠️ Baixa tensão detectada: 309.00 V
+[RF_TC_PROC] Aguardando comando de solo...
+[PACKET_PROC] Pacote gerado: <PKT:TEMP=42;TENS=3900>
+[HK_PWR_PROC] Monitorando consumo de energia...
+[ALERT] 🚨 Temperatura crítica detectada: 62.78 ºC
+[BMS] V=3.81V I=1.54A T=62.78°C SoC=67.2% Timestamp=189
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 2% | Power: 3.61V | GPS: OK | STAR: OK
+[MPPT_PROC] Analisando carga solar...
+[BMS] V=3.41V I=0.81A T=36.20°C SoC=34.2% Timestamp=190
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 35% | Power: 3.23V | GPS: OK | STAR: FAIL
+[FDIR_PROC] 🚨 Baixa tensão detectada (3.23V)
+[ALERT] ⚠️ Baixa tensão detectada: 323.00 V
+[FDIR_PROC] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Falha no Star Tracker detectada!
+[BMS] V=3.53V I=1.61A T=42.11°C SoC=44.5% Timestamp=191
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 69% | Power: 3.15V | GPS: FAIL | STAR: FAIL
+[FDIR_PROC] 🚨 Baixa tensão detectada (3.15V)
+[ALERT] ⚠️ Baixa tensão detectada: 315.00 V
+[FDIR_PROC] 🚨 Falha no GPS detectada!
+[ALERT] 🚨 Falha no GPS detectada!
+[FDIR_PROC] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Falha no Star Tracker detectada!
+[PACKET_PROC] Pacote gerado: <PKT:TEMP=42;TENS=3900>
+[HK_PWR_PROC] Monitorando consumo de energia...
+[MPPT_PROC] Analisando carga solar...
+[BMS] V=3.24V I=1.66A T=29.61°C SoC=20.4% Timestamp=192
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 94% | Power: 3.37V | GPS: OK | STAR: OK
+[FDIR_PROC] 🚨 CPU alta detectada (94%)
+[ALERT] 🚨 Uso de CPU muito alto: 94.00 %
+[BMS] V=3.96V I=1.90A T=59.12°C SoC=79.6% Timestamp=193
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[MAIN_SO] MARIA-SAT está operando normalmente.
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 75% | Power: 3.59V | GPS: OK | STAR: OK
+[MPPT_PROC] Analisando carga solar...
+[BMS] V=3.63V I=0.71A T=48.09°C SoC=52.6% Timestamp=194
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 81% | Power: 3.95V | GPS: FAIL | STAR: OK
+[FDIR_PROC] 🚨 Falha no GPS detectada!
+[ALERT] 🚨 Falha no GPS detectada!
+[PACKET_PROC] Pacote gerado: <PKT:TEMP=42;TENS=3900>
+[HK_PWR_PROC] Monitorando consumo de energia...
+[BMS] V=3.79V I=0.83A T=52.48°C SoC=65.9% Timestamp=195
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 25% | Power: 3.66V | GPS: OK | STAR: OK
+[RF_TC_PROC] Aguardando comando de solo...
+[MPPT_PROC] Analisando carga solar...
+[BMS] V=3.52V I=1.55A T=48.99°C SoC=43.2% Timestamp=196
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 45% | Power: 3.54V | GPS: OK | STAR: FAIL
+[FDIR_PROC] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Falha no Star Tracker detectada!
+[BMS] V=3.71V I=1.00A T=59.05°C SoC=58.9% Timestamp=197
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[TTC_PROC] Enviado comando: LIGAR_CAMERA
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 68% | Power: 3.61V | GPS: OK | STAR: OK
+[PACKET_PROC] Pacote gerado: <PKT:TEMP=42;TENS=3900>
+[HK_PWR_PROC] Monitorando consumo de energia...
+[MPPT_PROC] Analisando carga solar...
+[BMS] V=3.58V I=1.03A T=57.97°C SoC=48.5% Timestamp=198
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[MAIN_SO] Comando recebido: LIGAR_CAMERA
+[MAIN_SO] 📷 Camera ligada.
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[TTC_PROC] Resposta: LIGAR_CAMERA => 
+[HEALTH_PROC] CPU: 62% | Power: 3.47V | GPS: OK | STAR: OK
+[BMS] V=3.43V I=1.06A T=52.35°C SoC=35.9% Timestamp=199
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 37% | Power: 3.03V | GPS: FAIL | STAR: OK
+[FDIR_PROC] 🚨 Baixa tensão detectada (3.03V)
+[ALERT] ⚠️ Baixa tensão detectada: 303.00 V
+[FDIR_PROC] 🚨 Falha no GPS detectada!
+[ALERT] 🚨 Falha no GPS detectada!
+[MPPT_PROC] Analisando carga solar...
+[ALERT] ⚠️ Baixa tensão detectada: 3.18 V
+[BMS] V=3.18V I=0.84A T=40.74°C SoC=14.9% Timestamp=200
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 31% | Power: 3.48V | GPS: FAIL | STAR: OK
+[FDIR_PROC] 🚨 Falha no GPS detectada!
+[ALERT] 🚨 Falha no GPS detectada!
+[PACKET_PROC] Pacote gerado: <PKT:TEMP=42;TENS=3900>
+[HK_PWR_PROC] Monitorando consumo de energia...
+[BMS] V=3.80V I=1.82A T=34.48°C SoC=66.7% Timestamp=201
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 34% | Power: 3.12V | GPS: OK | STAR: OK
+[FDIR_PROC] 🚨 Baixa tensão detectada (3.12V)
+[ALERT] ⚠️ Baixa tensão detectada: 312.00 V
+[MPPT_PROC] Analisando carga solar...
+[BMS] V=3.70V I=1.16A T=30.98°C SoC=58.0% Timestamp=202
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 60% | Power: 4.08V | GPS: OK | STAR: OK
+[RF_TC_PROC] Aguardando comando de solo...
+[ALERT] ⚠️ Baixa tensão detectada: 3.06 V
+[BMS] V=3.06V I=0.69A T=57.49°C SoC=4.6% Timestamp=203
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HEALTH_PROC] CPU: 76% | Power: 3.67V | GPS: OK | STAR: OK
+[PACKET_PROC] Pacote gerado: <PKT:TEMP=42;TENS=3900>
+[HK_PWR_PROC] Monitorando consumo de energia...
+[MPPT_PROC] Analisando carga solar...
+[BMS] V=3.20V I=1.54A T=42.75°C SoC=16.8% Timestamp=204
+[HK_CPU_PROC[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[MAIN_SO] MARIA-SAT está operando normalmente.
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+] Localização simulada: Lat -23[HEALTH_PROC] CPU: 77% | Power: 3.15V | GPS: OK | STAR: FAIL
+[FDIR_PROC] 🚨 Baixa tensão detectada (3.15V)
+[ALERT] ⚠️ Baixa tensão detectada: 315.00 V
+[FDIR_PROC] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Falha no Star Tracker detectada!
+[BMS] V=4.12V I=1.25A T=49.78°C SoC=93.3% Timestamp=205
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HEALTH_PROC] CPU: 37% | Power: 3.66V | GPS: FAIL | STAR: OK
+[FDIR_PROC] 🚨 Falha no GPS detectada!
+[ALERT] 🚨 Falha no GPS detectada!
+[MPPT_PROC] Analisando carga solar...
+[BMS] V=3.29V I=1.20A T=42.53°C SoC=24.4% Timestamp=206
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HEALTH_PROC] CPU: 28% | Power: 4.05V | GPS: FAIL | STAR: OK
+[FDIR_PROC] 🚨 Falha no GPS detectada!
+[ALERT] 🚨 Falha no GPS detectada!
+[PACKET_PROC] Pacote gerado: <PKT:TEMP=42;TENS=3900>
+[HK_PWR_PROC] Monitorando consumo de energia...
+[BMS] V=3.23V I=0.73A T=52.60°C SoC=19.3% Timestamp=207
+[RF_TM_PROC] Nenhum dado TM recebido.
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HEALTH_PROC] CPU: 32% | Power: 3.02V | GPS: OK | STAR: OK
+[FDIR_PROC] 🚨 Baixa tensão detectada (3.02V)
+[ALERT] ⚠️ Baixa tensão detectada: 302.00 V
+[MPPT_PROC] Analisando carga solar...
+[BMS] V=4.16V I=1.66A T=31.47°C SoC=96.8% Timestamp=208
+[TTC_PROC] Enviado comando: REPORTAR_TELEMETRIA
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HEALTH_PROC] CPU: 77% | Power: 4.01V | GPS: OK | STAR: OK
+[BMS] V=3.88V I=1.89A T=46.22°C SoC=73.4% Timestamp=209
+[RF_TM_PROC] Nenhum dado TM recebido.
+[MAIN_SO] Comando recebido: REPORTAR_TELEMETRIA
+[MAIN_SO] 📡 Solicitando telemetria ao TM_PROC...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[TM_PROC] TM enviada após solicitação.
+[TTC_PROC] Resposta: REPORTAR_TELEMETRIA => 
+[HEALTH_PROC] CPU: 2% | Power: 3.11V | GPS: FAIL | STAR: FAIL
+[FDIR_PROC] 🚨 Baixa tensão detectada (3.11V)
+[ALERT] ⚠️ Baixa tensão detectada: 311.00 V
+[FDIR_PROC] 🚨 Falha no GPS detectada!
+[ALERT] 🚨 Falha no GPS detectada!
+[FDIR_PROC] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Falha no Star Tracker detectada!
+[RF_TC_PROC] Aguardando comando de solo...
+[PACKET_PROC] Pacote gerado: <PKT:TEMP=42;TENS=3900>
+[HK_PWR_PROC] Monitorando consumo de energia...
+[MPPT_PROC] Analisando carga solar...
+[ALERT] 🚨 Temperatura crítica detectada: 68.16 ºC
+[BMS] V=3.24V I=0.83A T=68.16°C SoC=20.0% Timestamp=210
+[RF_TM_PROC] Enviando TM:
+CPU=55% | RAM=64KB
+GPS=(-23.5505, -46.6333)
+PWR=3.95V 1.10A
+STAR=(Roll=3° Pitch=7° Yaw=-1°)
+
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HEALTH_PROC] CPU: 31% | Power: 3.14V | GPS: OK | STAR: FAIL
+[FDIR_PROC] 🚨 Baixa tensão detectada (3.14V)
+[ALERT] ⚠️ Baixa tensão detectada: 314.00 V
+[FDIR_PROC] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Temperatura crítica detectada: 60.24 ºC
+[BMS] V=4.08V I=0.85A T=60.24°C SoC=89.9% Timestamp=211
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HEALTH_PROC] CPU: 77% | Power: 3.87V | GPS: FAIL | STAR: OK
+[FDIR_PROC] 🚨 Falha no GPS detectada!
+[ALERT] 🚨 Falha no GPS detectada!
+[MPPT_PROC] Analisando carga solar...
+[ALERT] 🚨 Temperatura crítica detectada: 67.06 ºC
+[BMS] V=3.63V I=0.75A T=67.06°C SoC=52.3% Timestamp=212
+[RF_TM_PROC] Nenhum dado TM recebido.
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HEALTH_PROC] CPU: 98% | Power: 3.10V | GPS: OK | STAR: FAIL
+[FDIR_PROC] 🚨 CPU alta detectada (98%)
+[ALERT] 🚨 Uso de CPU muito alto: 98.00 %
+[FDIR_PROC] 🚨 Baixa tensão detectada (3.10V)
+[ALERT] ⚠️ Baixa tensão detectada: 310.00 V
+[FDIR_PROC] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Falha no Star Tracker detectada!
+[PACKET_PROC] Pacote gerado: <PKT:TEMP=42;TENS=3900>
+[HK_PWR_PROC] Monitorando consumo de energia...
+[ALERT] 🚨 Temperatura crítica detectada: 64.94 ºC
+[BMS] V=3.89V I=1.62A T=64.94°C SoC=74.1% Timestamp=213
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HEALTH_PROC] CPU: 97% | Power: 3.23V | GPS: OK | STAR: OK
+[FDIR_PROC] 🚨 CPU alta detectada (97%)
+[ALERT] 🚨 Uso de CPU muito alto: 97.00 %
+[FDIR_PROC] 🚨 Baixa tensão detectada (3.23V)
+[ALERT] ⚠️ Baixa tensão detectada: 323.00 V
+[MPPT_PROC] Analisando carga solar...
+[ALERT] 🚨 Temperatura crítica detectada: 61.15 ºC
+[BMS] V=3.90V I=0.81A T=61.15°C SoC=74.8% Timestamp=214
+[RF_TM_PROC] Nenhum dado TM recebido.
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HEALTH_PROC] CPU: 66% | Power: 3.85V | GPS: OK | STAR: OK
+[BMS] V=3.90V I=1.09A T=29.22°C SoC=74.7% Timestamp=215
+[MAIN_SO] MARIA-SAT está operando normalmente.
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HEALTH_PROC] CPU: 46% | Power: 3.75V | GPS: FAIL | STAR: FAIL
+[FDIR_PROC] 🚨 Falha no GPS detectada!
+[ALERT] 🚨 Falha no GPS detectada!
+[FDIR_PROC] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Falha no Star Tracker detectada!
+[PACKET_PROC] Pacote gerado: <PKT:TEMP=42;TENS=3900>
+[HK_PWR_PROC] Monitorando consumo de energia...
+[MPPT_PROC] Analisando carga solar...
+[BMS] V=3.85V I=0.69A T=51.11°C SoC=70.9% Timestamp=216
+[RF_TM_PROC] Nenhum dado TM recebido.
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HEALTH_PROC] CPU: 2% | Power: 3.39V | GPS: OK | STAR: FAIL
+[FDIR_PROC] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Falha no Star Tracker detectada!
+[RF_TC_PROC] Aguardando comando de solo...
+[ALERT] ⚠️ Baixa tensão detectada: 3.17 V
+[BMS] V=3.17V I=0.61A T=41.10°C SoC=13.9% Timestamp=217
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HEALTH_PROC] CPU: 60% | Power: 4.16V | GPS: OK | STAR: OK
+[MPPT_PROC] Analisando carga solar...
+[BMS] V=3.49V I=1.00A T=34.41°C SoC=40.8% Timestamp=218
+[RF_TM_PROC] Nenhum dado TM recebido.
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HEALTH_PROC] CPU: 75% | Power: 4.13V | GPS: OK | STAR: OK
+[PACKET_PROC] Pacote gerado: <PKT:TEMP=42;TENS=3900>
+[HK_PWR_PROC] Monitorando consumo de energia...
+[ALERT] ⚠️ Baixa tensão detectada: 3.01 V
+[BMS] V=3.01V I=1.65A T=29.32°C SoC=0.9% Timestamp=219
+[TTC_PROC] Enviado comando: ATIVAR_MOTORES_3000
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HEALTH_PROC] CPU: 73% | Power: 3.73V | GPS: OK | STAR: OK
+[MPPT_PROC] Analisando carga solar...
+[ALERT] 🚨 Temperatura crítica detectada: 64.10 ºC
+[BMS] V=3.67V I=1.49A T=64.10°C SoC=55.7% Timestamp=220
+[RF_TM_PROC] Nenhum dado TM recebido.
+[MAIN_SO] Comando recebido: ATIVAR_MOTORES_3000
+[MAIN_SO] 🚀 Motores ativados por 3000 ms.
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[TTC_PROC] Resposta: ATIVAR_MOTORES_3000 => 
+[HEALTH_PROC] CPU: 56% | Power: 3.74V | GPS: OK | STAR: FAIL
+[FDIR_PROC] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Falha no Star Tracker detectada!
+[BMS] V=3.27V I=1.09A T=53.39°C SoC=22.6% Timestamp=221
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HEALTH_PROC] CPU: 60% | Power: 3.25V | GPS: OK | STAR: OK
+[FDIR_PROC] 🚨 Baixa tensão detectada (3.25V)
+[ALERT] ⚠️ Baixa tensão detectada: 325.00 V
+[PACKET_PROC] Pacote gerado: <PKT:TEMP=42;TENS=3900>
+[HK_PWR_PROC] Monitorando consumo de energia...
+[MPPT_PROC] Analisando carga solar...
+[ALERT] 🚨 Temperatura crítica detectada: 61.76 ºC
+[BMS] V=3.23V I=1.81A T=61.76°C SoC=18.8% Timestamp=222
+[RF_TM_PROC] Nenhum dado TM recebido.
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HEALTH_PROC] CPU: 2% | Power: 3.08V | GPS: OK | STAR: OK
+[FDIR_PROC] 🚨 Baixa tensão detectada (3.08V)
+[ALERT] ⚠️ Baixa tensão detectada: 308.00 V
+[BMS] V=3.55V I=1.86A T=31.04°C SoC=46.0% Timestamp=223
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HEALTH_PROC] CPU: 11% | Power: 3.41V | GPS: OK | STAR: FAIL
+[FDIR_PROC] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Falha no Star Tracker detectada!
+[RF_TC_PROC] Aguardando comando de solo...
+[MPPT_PROC] Analisando carga solar...
+[BMS] V=4.08V I=1.94A T=57.44°C SoC=89.7% Timestamp=224
+[RF_TM_PROC] Nenhum dado TM recebido.
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HEALTH_PROC] CPU: 93% | Power: 4.13V | GPS: FAIL | STAR: FAIL
+[FDIR_PROC] 🚨 CPU alta detectada (93%)
+[ALERT] 🚨 Uso de CPU muito alto: 93.00 %
+[FDIR_PROC] 🚨 Falha no GPS detectada!
+[ALERT] 🚨 Falha no GPS detectada!
+[FDIR_PROC] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Falha no Star Tracker detectada!
+[PACKET_PROC] Pacote gerado: <PKT:TEMP=42;TENS=3900>
+[HK_PWR_PROC] Monitorando consumo de energia...
+[BMS] V=3.62V I=0.53A T=50.33°C SoC=51.4% Timestamp=225
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HEALTH_PROC] CPU: 39% | Power: 3.26V | GPS: OK | STAR: OK
+[FDIR_PROC] 🚨 Baixa tensão detectada (3.26V)
+[ALERT] ⚠️ Baixa tensão detectada: 326.00 V
+[MPPT_PROC] Analisando carga solar...
+[BMS] V=3.20V I=1.69A T=57.87°C SoC=16.9% Timestamp=226
+[RF_TM_PROC] Nenhum dado TM recebido.
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[MAIN_SO] MARIA-SAT está operando normalmente.
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HEALTH_PROC] CPU: 0% | Power: 3.13V | GPS: FAIL | STAR: OK
+[FDIR_PROC] 🚨 Baixa tensão detectada (3.13V)
+[ALERT] ⚠️ Baixa tensão detectada: 313.00 V
+[FDIR_PROC] 🚨 Falha no GPS detectada!
+[ALERT] 🚨 Falha no GPS detectada!
+[BMS] V=3.97V I=1.86A T=38.34°C SoC=81.2% Timestamp=227
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HEALTH_PROC] CPU: 1% | Power: 3.52V | GPS: OK | STAR: OK
+[PACKET_PROC] Pacote gerado: <PKT:TEMP=42;TENS=3900>
+[HK_PWR_PROC] Monitorando consumo de energia...
+[MPPT_PROC] Analisando carga solar...
+[BMS] V=4.19V I=1.69A T=28.72°C SoC=98.9% Timestamp=228
+[RF_TM_PROC] Nenhum dado TM recebido.
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HEALTH_PROC] CPU: 60% | Power: 3.63V | GPS: OK | STAR: OK
+[BMS] V=4.04V I=1.55A T=46.21°C SoC=86.6% Timestamp=229
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HEALTH_PROC] CPU: 74% | Power: 3.90V | GPS: OK | STAR: FAIL
+[FDIR_PROC] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Falha no Star Tracker detectada!
+[MPPT_PROC] Analisando carga solar...
+[BMS] V=4.15V I=0.65A T=56.93°C SoC=95.9% Timestamp=230
+[RF_TM_PROC] Nenhum dado TM recebido.
+[TTC_PROC] Enviado comando: LIGAR_CAMERA
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HEALTH_PROC] CPU: 38% | Power: 4.06V | GPS: OK | STAR: FAIL
+[FDIR_PROC] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Falha no Star Tracker detectada!
+[RF_TC_PROC] Aguardando comando de solo...
+[PACKET_PROC] Pacote gerado: <PKT:TEMP=42;TENS=3900>
+[HK_PWR_PROC] Monitorando consumo de energia...
+[BMS] V=4.10V I=1.96A T=44.70°C SoC=91.7% Timestamp=231
+[MAIN_SO] Comando recebido: LIGAR_CAMERA
+[MAIN_SO] 📷 Camera ligada.
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[TTC_PROC] Resposta: LIGAR_CAMERA => 
+[HEALTH_PROC] CPU: 77% | Power: 3.85V | GPS: OK | STAR: OK
+[MPPT_PROC] Analisando carga solar...
+[BMS] V=4.14V I=1.98A T=53.28°C SoC=95.2% Timestamp=232
+[RF_TM_PROC] Nenhum dado TM recebido.
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HEALTH_PROC] CPU: 22% | Power: 3.00V | GPS: FAIL | STAR: OK
+[FDIR_PROC] 🚨 Baixa tensão detectada (3.00V)
+[ALERT] ⚠️ Baixa tensão detectada: 300.00 V
+[FDIR_PROC] 🚨 Falha no GPS detectada!
+[ALERT] 🚨 Falha no GPS detectada!
+[BMS] V=3.93V I=1.41A T=50.44°C SoC=77.9% Timestamp=233
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HEALTH_PROC] CPU: 3% | Power: 3.71V | GPS: OK | STAR: OK
+[PACKET_PROC] Pacote gerado: <PKT:TEMP=42;TENS=3900>
+[HK_PWR_PROC] Monitorando consumo de energia...
+[MPPT_PROC] Analisando carga solar...
+[BMS] V=3.20V I=1.47A T=47.94°C SoC=16.7% Timestamp=234
+[RF_TM_PROC] Nenhum dado TM recebido.
+[CCSDS_PROC] Empacotando dados no formato CCSDS...
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
+[HEALTH_PROC] CPU: 91% | Power: 3.13V | GPS: OK | STAR: FAIL
+[FDIR_PROC] 🚨 CPU alta detectada (91%)
+[ALERT] 🚨 Uso de CPU muito alto: 91.00 %
+[FDIR_PROC] 🚨 Baixa tensão detectada (3.13V)
+[ALERT] ⚠️ Baixa tensão detectada: 313.00 V
+[FDIR_PROC] 🚨 Falha no Star Tracker detectada!
+[ALERT] 🚨 Falha no Star Tracker detectada!
+[BMS] V=3.61V I=1.63A T=53.27°C SoC=51.0% Timestamp=235
+[HK_STAR_PROC] Roll: 5° | Pitch: 10° | Yaw: -3°
+[HK_GPS_PROC] Localização simulada: Lat -23.5505, Lon -46.6333
+[HK_CPU_PROC] Uso CPU: 57% | RAM livre: 68KB
