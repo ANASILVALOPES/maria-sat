@@ -8,6 +8,8 @@ SemaphoreHandle_t xBMSMutex = NULL;
 QueueHandle_t xQueueTM = NULL;
 QueueHandle_t xQueueTTC_RX;
 QueueHandle_t xQueueTTC_to_MAIN;
+QueueHandle_t xQueueTM_RF = NULL;
+QueueHandle_t xQueueTM_CCSDS = NULL;
 
 // Histórico circular de leituras
 static BMSData_t bmsHistory[BMS_HISTORY_SIZE];

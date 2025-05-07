@@ -30,6 +30,9 @@
 QueueHandle_t xQueueMAIN_to_TTC;
 QueueHandle_t xQueueTM_Request;
 
+
+
+
 // === Task Prototypes ===
 void vALERTProcTask(void *pvParameters);
 void vBMSProcTask(void *pvParameters);
@@ -63,11 +66,13 @@ int main(void)
     xBMSMutex = xSemaphoreCreateMutex();
     xQueueHealth = xQueueCreate(5, sizeof(HealthData_t));
     xQueueTTC = xQueueCreate(10, sizeof(Command_t));
-    xQueueTM = xQueueCreate(5, sizeof(TelemetryPacket_t));
     xQueueTTC_RX = xQueueCreate(5, sizeof(Command_t));
     xQueueTTC_to_MAIN = xQueueCreate(5, sizeof(Command_t));
     xQueueMAIN_to_TTC = xQueueCreate(5, sizeof(Command_t));
     xQueueTM_Request = xQueueCreate(3, sizeof(char[16]));
+    xQueueTM = xQueueCreate(5, sizeof(TelemetryPacket_t));
+    xQueueTM_RF = xQueueCreate(5, sizeof(TelemetryPacket_t));
+    xQueueTM_CCSDS = xQueueCreate(5, sizeof(TelemetryPacket_t));
 
 
 
@@ -87,15 +92,15 @@ int main(void)
     CREATE_TASK(vBMSProcTask,   "BMS_PROC",      STACK_STD,                PRIORITY_STD);
     CREATE_TASK(vALERTProcTask, "ALERT_PROC",    configMINIMAL_STACK_SIZE, PRIORITY_ALERT);
     CREATE_TASK(vMPPTProcTask,  "MPPT_PROC",     configMINIMAL_STACK_SIZE, PRIORITY_STD);
-    CREATE_TASK(vRFTCTask,      "RF_TC_PROC",    configMINIMAL_STACK_SIZE, PRIORITY_STD);
-    CREATE_TASK(vTMTask,        "TM_PROC", 512, PRIORITY_STD);
-    CREATE_TASK(vRFTMTask,      "RF_TM_PROC", 512, PRIORITY_STD);
+    CREATE_TASK(vRFTCTask,      "RF_TC_PROC",    512, PRIORITY_STD);
+    xTaskCreate(vTMTask, "TM_PROC", 1024, NULL, 2, NULL);
+    CREATE_TASK(vRFTMTask,      "RF_TM_PROC",    512, PRIORITY_STD);
     CREATE_TASK(vPacketProcTask,"PACKET_PROC",   STACK_STD,                PRIORITY_STD);
     CREATE_TASK(vHKCPUTask,     "HK_CPU_PROC",   STACK_STD,                PRIORITY_STD);
     CREATE_TASK(vHKGpsTask,     "HK_GPS_PROC",   STACK_STD,                PRIORITY_STD);
     CREATE_TASK(vHKPWRTask,     "HK_PWR_PROC",   STACK_STD,                PRIORITY_STD);
     CREATE_TASK(vHKStarTask,    "HK_STAR_PROC",  STACK_STD,                PRIORITY_STD);
-    CREATE_TASK(vCCSDSTask,     "CCSDS_PROC",    STACK_STD,                PRIORITY_STD);
+    CREATE_TASK(vCCSDSTask,     "CCSDS_PROC",    512, PRIORITY_STD);
     CREATE_TASK(vHEALTHProcTask,"HEALTH",        256,                      2);
     CREATE_TASK(vFDIRProcTask,  "FDIR",          256,                      2);
     CREATE_TASK(vTTCTask,       "TTC",           512, PRIORITY_STD);

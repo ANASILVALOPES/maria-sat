@@ -5,6 +5,10 @@
 #include "FreeRTOS.h"
 #include "semphr.h"
 #include "queue.h"
+#include "hk_cpu_task.h"
+#include "hk_gps_task.h"
+#include "hk_pwr_task.h"
+#include "hk_star_task.h"
 
 #define BMS_HISTORY_SIZE 10
 
@@ -28,6 +32,13 @@ typedef struct {
     char status[32];
 } CommandResponse_t;
 
+typedef struct {
+    HKCPUData_t cpuData;
+    HKGPSData_t gpsData;
+    HKPWRData_t pwrData;
+    HKSTARData_t starData;
+} TelemetryPacket_t;
+
 
 // Variáveis globais compartilhadas (definidas em shared.c)
 extern QueueHandle_t xBMSQueue;
@@ -39,6 +50,8 @@ extern QueueHandle_t xQueueTTC_RX;
 extern QueueHandle_t xQueueTTC_to_MAIN;
 extern QueueHandle_t xQueueMAIN_to_TTC;
 extern QueueHandle_t xQueueTM_Request;
+extern QueueHandle_t xQueueTM_RF;
+extern QueueHandle_t xQueueTM_CCSDS;
 
 
 

@@ -10,7 +10,7 @@
 // Filas externas
 extern QueueHandle_t xQueueTTC_to_MAIN;
 extern QueueHandle_t xQueueMAIN_to_TTC;
-extern QueueHandle_t xQueueTM_Request;  // <- Fila para sinalizar coleta de TM
+extern QueueHandle_t xQueueTM_Request;  
 
 // Protótipos
 void ligar_camera(void);
@@ -47,7 +47,7 @@ void vMainTask(void *pvParameters)
             }
             else if (strcmp(recebido.comando, "REPORTAR_TELEMETRIA") == 0)
             {
-                reportar_telemetria();  // Envia sinal para vTMTask
+                reportar_telemetria();
                 strcpy(resposta.status, "Implementado");
             }
             else if (strncmp(recebido.comando, "ATIVAR_MOTORES_", 15) == 0)
@@ -76,14 +76,19 @@ void vMainTask(void *pvParameters)
     }
 }
 
-// Implementações
+// Ações simuladas
 void ligar_camera(void)        { printf("[MAIN_SO] 📷 Camera ligada.\n"); }
 void desligar_camera(void)     { printf("[MAIN_SO] 📷 Camera desligada.\n"); }
-void reportar_telemetria(void) {
+
+void reportar_telemetria(void)
+{
     printf("[MAIN_SO] 📡 Solicitando telemetria ao TM_PROC...\n");
 
-    const char signal[] = "REQUEST";  // ou qualquer string
-    if (xQueueSend(xQueueTM_Request, &signal, pdMS_TO_TICKS(100)) != pdPASS)
+    char signal[16];
+    strncpy(signal, "REQUEST", sizeof(signal));
+    signal[sizeof(signal) - 1] = '\0';  // Segurança extra
+
+    if (xQueueSend(xQueueTM_Request, signal, pdMS_TO_TICKS(100)) != pdPASS)
     {
         printf("[MAIN_SO] Erro ao solicitar telemetria.\n");
     }

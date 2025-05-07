@@ -22,7 +22,7 @@ def get_status():
 @app.route("/logs")
 def get_logs():
     try:
-        with open("logs.txt", "r", encoding="latin1") as file: 
+        with open("./logs/logs.txt", "r", encoding="utf-8") as file: 
             lines = file.readlines()[-15:]
             return jsonify(lines)
     except Exception as e:

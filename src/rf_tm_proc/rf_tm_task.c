@@ -2,11 +2,11 @@
 #include "task.h"
 #include "queue.h"
 #include <stdio.h>
-#include <stdlib.h> // Para abs()
+#include <stdlib.h>
 #include "shared.h"
 #include "tm_task.h"
 
-extern QueueHandle_t xQueueTM;
+extern QueueHandle_t xQueueTM_RF;  
 
 void vRFTMTask(void *pvParameters)
 {
@@ -17,7 +17,7 @@ void vRFTMTask(void *pvParameters)
 
     while (1)
     {
-        if (xQueueReceive(xQueueTM, &tmData, pdMS_TO_TICKS(1000)) == pdTRUE)
+        if (xQueueReceive(xQueueTM_RF, &tmData, pdMS_TO_TICKS(1000)) == pdTRUE)
         {
             char buffer[256];
 
@@ -29,17 +29,14 @@ void vRFTMTask(void *pvParameters)
                 "STAR=(Roll=%d° Pitch=%d° Yaw=%d°)\n",
                 tmData.cpuData.cpu_usage,
                 tmData.cpuData.ram_free_kb,
-
                 (int)tmData.gpsData.lat,
                 abs((int)(tmData.gpsData.lat * 10000) % 10000),
                 (int)tmData.gpsData.lon,
                 abs((int)(tmData.gpsData.lon * 10000) % 10000),
-
                 (int)tmData.pwrData.voltage,
                 abs((int)(tmData.pwrData.voltage * 100) % 100),
                 (int)tmData.pwrData.current,
                 abs((int)(tmData.pwrData.current * 100) % 100),
-
                 tmData.starData.roll,
                 tmData.starData.pitch,
                 tmData.starData.yaw
@@ -52,6 +49,6 @@ void vRFTMTask(void *pvParameters)
             puts("[RF_TM_PROC] Nenhum dado TM recebido.");
         }
 
-        vTaskDelay(pdMS_TO_TICKS(1000)); // Intervalo de envio
+        vTaskDelay(pdMS_TO_TICKS(1000));
     }
 }
