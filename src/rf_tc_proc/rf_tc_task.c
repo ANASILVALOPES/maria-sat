@@ -5,6 +5,7 @@
 #include <string.h>
 #include "shared.h"
 
+
 // Supondo que esta fila envia comandos simulados ao MAIN_SO
 extern QueueHandle_t xQueueTTC_to_MAIN;
 
@@ -15,6 +16,7 @@ void vRFTCTask(void *pvParameters)
     printf("[RF_TC_PROC] Aguardando comando de solo...\n");
 
     Command_t comando_simulado;
+    
 
     while (1)
     {

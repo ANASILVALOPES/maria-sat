@@ -2,11 +2,13 @@
 #include "FreeRTOS.h"
 #include "task.h"
 
+
 void vPacketProcTask(void *pvParameters) {
     int temperatura = 42;
     int tensao = 3900;
 
     char pacote[64];
+    
 
     for (;;) {
         // Simula codificação de pacote de telemetria

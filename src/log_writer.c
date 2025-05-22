@@ -3,6 +3,7 @@
 #include <string.h>
 #include <unistd.h>
 
+
 void write_logs_periodically() {
     while (1) {
         FILE *fp = fopen("logs.txt", "w");

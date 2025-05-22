@@ -1,15 +1,22 @@
-#include "shared.h"
 #include <stdio.h>
+#include <string.h>
+#include <unistd.h>
+#include <fcntl.h>
+#include "shared.h"
 
-// Fila de comunicação e proteção de histórico
-QueueHandle_t xQueueTTC = NULL;
+// Definição das filas globais
 QueueHandle_t xBMSQueue = NULL;
 SemaphoreHandle_t xBMSMutex = NULL;
+QueueHandle_t xQueueHealth = NULL;
+QueueHandle_t xQueueTTC = NULL;
 QueueHandle_t xQueueTM = NULL;
-QueueHandle_t xQueueTTC_RX;
-QueueHandle_t xQueueTTC_to_MAIN;
+QueueHandle_t xQueueTTC_RX = NULL;
+QueueHandle_t xQueueTTC_to_MAIN = NULL;
+QueueHandle_t xQueueMAIN_to_TTC = NULL;
+QueueHandle_t xQueueTM_Request = NULL;
 QueueHandle_t xQueueTM_RF = NULL;
 QueueHandle_t xQueueTM_CCSDS = NULL;
+QueueHandle_t xQueueAlerts = NULL;  // Adicionado para alertas
 
 // Histórico circular de leituras
 static BMSData_t bmsHistory[BMS_HISTORY_SIZE];
@@ -50,5 +57,27 @@ void printBMSHistory(void) {
     for (int i = 0; i < count; i++) {
         printf("  [%d] V=%.2fV | I=%.2fA | T=%.2f°C | SoC=%.1f%%\n",
                i, buffer[i].voltage, buffer[i].current, buffer[i].temperature, buffer[i].soc);
+    }
+}
+
+// Lê uma linha da UART (usando stdin no QEMU)
+bool shared_uart_read_line(char *buffer, size_t maxlen) {
+    // Configura o stdin para modo não-bloqueante
+    int flags = fcntl(STDIN_FILENO, F_GETFL, 0);
+    fcntl(STDIN_FILENO, F_SETFL, flags | O_NONBLOCK);
+
+    // Tenta ler uma linha do stdin
+    char *result = fgets(buffer, maxlen, stdin);
+    if (result) {
+        // Remove a nova linha, se presente
+        size_t len = strlen(buffer);
+        if (len > 0 && buffer[len - 1] == '\n') {
+            buffer[len - 1] = '\0';
+        }
+        printf("[SHARED] Dados UART lidos: %s\n", buffer);
+        return true;
+    } else {
+        printf("[SHARED] Nenhum dado UART disponível.\n");
+        return false;
     }
 }

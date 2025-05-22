@@ -1,57 +1,671 @@
 <!DOCTYPE html>
 <html lang="pt">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MARIA-SAT Interface Avançada</title>
-  <link rel="stylesheet" href="styleS.css">
-  <script defer src="script.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MARIA-SAT | Painel de Visualização</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Orbitron&display=swap" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-</head>
+  <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background-color: #0b0c10;
+      color: #c5c6c7;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
 
+    .app {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    .sidebar {
+      width: 200px;
+      background: linear-gradient(180deg, #1f2833, #0b0c10);
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border-right: 1px solid #2A3B50;
+      box-shadow: 0 0 10px rgba(102, 252, 241, 0.2);
+    }
+
+    .sidebar .logo img {
+      height: 80px;
+      object-fit: contain;
+      margin-bottom: 20px;
+      filter: drop-shadow(0 0 5px #66fcf1);
+    }
+
+    .sidebar .logo h2 {
+      color: #66fcf1;
+      font-family: 'Orbitron', sans-serif;
+      margin: 0;
+      text-shadow: 0 0 5px #66fcf1;
+    }
+
+    .sidebar nav ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin: 0;
+    }
+
+    .sidebar nav li a {
+      cursor: pointer;
+      color: #c5c6c7;
+      background: none;
+      border: none;
+      font-size: 0.95rem;
+      transition: color 0.2s ease, padding-left 0.3s ease;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px;
+    }
+
+    .sidebar nav li a:hover, .sidebar nav li a.active {
+      color: #66fcf1;
+      background: linear-gradient(90deg, #66fcf1, transparent);
+      padding-left: 15px;
+      border-left: 3px solid #66fcf1;
+      text-shadow: 0 0 5px rgba(102, 252, 241, 0.5);
+    }
+
+    .main {
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      background: linear-gradient(135deg, #0b0c10, #1f2833);
+    }
+
+    header {
+      background: linear-gradient(145deg, #1f2833, #2c3e50);
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3), 0 0 5px rgba(102, 252, 241, 0.2);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.5rem;
+      color: #ffffff;
+      font-family: 'Orbitron', sans-serif;
+      text-shadow: 0 0 5px #66fcf1;
+    }
+
+    .process-tabs {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .tab-button {
+      background: linear-gradient(90deg, #2c3e50, #1f2833);
+      color: #66fcf1;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: 'Roboto', sans-serif;
+      font-size: 0.9rem;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .tab-button:hover {
+      background: linear-gradient(90deg, #3b4e67, #2c3e50);
+      box-shadow: 0 2px 8px rgba(102, 252, 241, 0.3);
+    }
+
+    .tab-button.ativo {
+      background: linear-gradient(90deg, #66fcf1, #45a29e);
+      color: #0b0c10;
+      box-shadow: 0 0 10px rgba(102, 252, 241, 0.5);
+    }
+
+    .process-panel.hidden {
+      display: none;
+    }
+
+    .process-panel.active {
+      display: block;
+    }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .process-card {
+      background: linear-gradient(145deg, #2c3e50, #1f2833);
+      padding: 15px;
+      border-radius: 8px;
+      color: #ffffff;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3), 0 0 5px rgba(102, 252, 241, 0.2);
+      font-size: 0.85rem;
+      transition: all 0.3s ease;
+    }
+
+    .process-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4), 0 0 10px rgba(102, 252, 241, 0.5);
+    }
+
+    .process-card h3 {
+      margin: 0 0 8px 0;
+      font-size: 1rem;
+      color: #66fcf1;
+      font-family: 'Orbitron', sans-serif;
+      text-shadow: 0 0 3px rgba(102, 252, 241, 0.5);
+    }
+
+    .process-card p {
+      font-size: 0.85rem;
+      margin: 4px 0;
+    }
+
+    .status-ok {
+      color: #00ff88;
+      text-shadow: 0 0 3px rgba(0, 255, 136, 0.5);
+    }
+
+    .status-fail {
+      color: #ff3333;
+      text-shadow: 0 0 3px rgba(255, 51, 51, 0.5);
+    }
+
+    .status-alert {
+      color: orange;
+      text-shadow: 0 0 3px rgba(255, 165, 0, 0.5);
+    }
+
+    canvas {
+      width: 100% !important;
+      height: auto !important;
+      max-height: 200px;
+      background: linear-gradient(145deg, #1f2833, #2c3e50);
+      border: 1px solid #3B4E67;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .terminal {
+      background: linear-gradient(145deg, #1f2833, #2c3e50);
+      padding: 15px;
+      border-radius: 8px;
+      color: #00ff88;
+      font-family: monospace;
+      font-size: 0.85rem;
+      max-height: 180px;
+      overflow-y: auto;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3), 0 0 5px rgba(102, 252, 241, 0.2);
+    }
+
+    .terminal h2 {
+      margin: 0 0 10px;
+      font-size: 1rem;
+      color: #ffffff;
+      font-family: 'Orbitron', sans-serif;
+      text-shadow: 0 0 3px rgba(102, 252, 241, 0.5);
+    }
+
+    .terminal pre {
+      background: #000;
+      padding: 10px;
+      margin: 0;
+      border: 1px solid #3B4E67;
+      border-radius: 4px;
+    }
+
+    #alertsOutput {
+      background: #000;
+      padding: 10px;
+      color: orange;
+      border: 1px solid #3B4E67;
+      border-radius: 4px;
+    }
+
+    .log-command {
+      color: #66fcf1;
+    }
+
+    .log-success {
+      color: #00ff88;
+    }
+
+    .log-alert {
+      color: #ffa500;
+    }
+
+    .log-error {
+      color: #ff3333;
+    }
+
+    .log-metric {
+      color: #c5c6c7;
+    }
+
+    @media (max-width: 768px) {
+      .sidebar {
+        width: 100%;
+        height: auto;
+        flex-direction: row;
+        justify-content: space-around;
+        padding: 10px;
+      }
+      .main {
+        padding: 10px;
+      }
+      .process-grid {
+        grid-template-columns: 1fr;
+      }
+      .tab-button {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+      }
+    }
+  </style>
+</head>
 <body>
+  <!--
+    README:
+    Painel de Visualização para o sistema MARIA-SAT.
+    - Exibe logs, cartões de processos, gráficos (temperatura, CPU) e alertas em tempo real.
+    - Integra com Socket.IO (http://localhost:5000) para receber logs.
+    - Adaptado para o backend Flask-SocketIO original, suportando múltiplos formatos de log.
+    - Simula logs localmente para testes sem backend.
+    - Requer Chart.js, Socket.IO, e fontes Roboto/Orbitron.
+    Uso:
+    1. Salve como index.html na pasta html_ui.
+    2. Abra no navegador via http://localhost:5000/index.html com o backend ativo.
+    3. Para testes locais, abra via file:// com logs simulados.
+  -->
   <div class="app">
-    <aside class="sidebar">
-      <div class="logo"><img src="../images/LOGOMARIA.png" alt="MARIA SAT Logo"></div>
+    <aside class="sidebar" role="navigation" aria-label="Navegação principal">
+      <div class="logo">
+        <img src="images/LOGOMARIA.png" alt="MARIA SAT Logo" onerror="this.style.display='none';this.nextElementSibling.style.display='block'" />
+        <h2 style="display:none">MARIA-SAT</h2>
+      </div>
       <nav>
         <ul>
-          <li>Painel</li>
-          <li>Alertas</li>
-          <li>Histórico</li>
-          <li><button id="exportBtn"> Baixar Logs</button></li>
-          <li>Documentação</li>
+          <li><a href="index.html" class="active" aria-label="Ir para Painel de Visualização">Painel</a></li>
+          <li><a href="test_panel.html" aria-label="Ir para Painel de Teste">Painel de Teste</a></li>
         </ul>
       </nav>
     </aside>
-
     <main class="main">
       <header>
-        <h1>Status de Processos</h1>
+        <h1>Painel de Visualização MARIA-SAT</h1>
+        <div class="process-tabs" role="tablist">
+          <button class="tab-button ativo" data-target="process-grid" aria-label="Exibir processos" role="tab">Processos</button>
+          <button class="tab-button" data-target="telemetry" aria-label="Exibir telemetria" role="tab">Telemetria</button>
+          <button class="tab-button" data-target="alerts" aria-label="Exibir alertas" role="tab">Alertas</button>
+        </div>
       </header>
 
-      <section class="dashboard" id="process-panel">
-        <!-- Os cards de processo serão preenchidos dinamicamente via JS -->
+      <section class="process-panel active" id="process-grid" role="tabpanel">
+        <h2>Status de Processos</h2>
+        <div class="process-grid" id="processGrid"></div>
       </section>
 
-      <section class="charts">
-        <div class="chart-container">
-          <h4>Temperatura da Bateria</h4>
-          <canvas id="tempChart"></canvas>
-        </div>
-        <div class="chart-container">
-          <h4>Uso da CPU</h4>
-          <canvas id="cpuChart"></canvas>
-        </div>
+      <section class="process-panel hidden" id="telemetry" role="tabpanel">
+        <h2>Telemetria Geral</h2>
+        <canvas id="tempChart" aria-label="Gráfico de temperatura"></canvas>
+        <canvas id="cpuChart" aria-label="Gráfico de uso de CPU"></canvas>
       </section>
 
-      <footer class="terminal">
-        <h3>Terminal de Log</h3>
-        <pre id="terminal-log"></pre>
-      </footer>
+      <section class="process-panel hidden" id="alerts" role="tabpanel">
+        <h2>Alertas</h2>
+        <pre id="alertsOutput" aria-label="Logs de alertas"></pre>
+      </section>
+
+      <section class="terminal">
+        <h2>Logs do Sistema (ao vivo)</h2>
+        <pre id="live-log-output" aria-label="Logs do sistema em tempo real"></pre>
+      </section>
     </main>
   </div>
-</body>
 
+  <script>
+    // Dados iniciais dos processos com base no log
+    const processos = {
+      "MAIN_SO": { name: "MAIN_SO", status: "Aguardando", metrics: "🛰️", timestamp: "—" },
+      "BMS_PROC": { name: "BMS_PROC", status: "OK", metrics: "Temp: 43°C | V: 4.04V", timestamp: "—" },
+      "ALERT_PROC": { name: "ALERT_PROC", status: "OK", metrics: "Nenhum alerta", timestamp: "—" },
+      "CCSDS_PROC": { name: "CCSDS_PROC", status: "OK", metrics: "Encapsulados: 0", timestamp: "—" },
+      "HK_CPU_PROC": { name: "HK_CPU_PROC", status: "OK", metrics: "CPU: 33%", timestamp: "—" },
+      "HK_GPS_PROC": { name: "HK_GPS_PROC", status: "OK", metrics: "GPS: OK", timestamp: "—" },
+      "HK_STAR_PROC": { name: "HK_STAR_PROC", status: "OK", metrics: "Roll: 5°", timestamp: "—" },
+      "HEALTH_PROC": { name: "HEALTH_PROC", status: "OK", metrics: "CPU: 33%", timestamp: "—" },
+      "FDIR_PROC": { name: "FDIR_PROC", status: "OK", metrics: "Normal", timestamp: "—" },
+      "THERMAL_PROC": { name: "THERMAL_PROC", status: "OK", metrics: "Temp: 42°C", timestamp: "—" },
+      "POWER_PROC": { name: "POWER_PROC", status: "OK", metrics: "Power: 3.63V", timestamp: "—" },
+      "MPPT_PROC": { name: "MPPT_PROC", status: "OK", metrics: "Analisando carga solar...", timestamp: "—" },
+      "RF_TM_PROC": { name: "RF_TM_PROC", status: "OK", metrics: "Nenhum dado TM recebido", timestamp: "—" },
+      "HK_PWR_PROC": { name: "HK_PWR_PROC", status: "OK", metrics: "Monitorando consumo de energia...", timestamp: "—" },
+      "PACKET_PROC": { name: "PACKET_PROC", status: "OK", metrics: "Pacote gerado", timestamp: "—" },
+      "RF_TC_PROC": { name: "RF_TC_PROC", status: "OK", metrics: "Aguardando comandos", timestamp: "—" },
+      "TM_PROC": { name: "TM_PROC", status: "OK", metrics: "Aguardando sinal", timestamp: "—" },
+      "TTC_PROC": { name: "TTC_PROC", status: "OK", metrics: "Aguardando comandos", timestamp: "—" }
+    };
+
+    // Elementos do DOM
+    const liveLogOutput = document.getElementById('live-log-output');
+    const alertsOutput = document.getElementById('alertsOutput');
+    const processGrid = document.getElementById('processGrid');
+    let logMessages = [];
+    let temperaturaChart, cpuChart;
+    let lastUpdate = 0;
+
+    // Iniciar conexão SocketIO com reconexão automática
+    const socket = io('http://localhost:5000', { 
+      transports: ['websocket'], 
+      reconnection: true,
+      reconnectionAttempts: 5,
+      reconnectionDelay: 1000
+    });
+
+    // Função para sanitizar strings e evitar injeção de HTML ou erros de codificação
+    function sanitizeString(str) {
+      return str.replace(/[<>&\x80-\xFF]/g, '');
+    }
+
+    // Renderiza os cartões de processos na grade
+    function renderProcessCards() {
+      processGrid.innerHTML = '';
+      Object.values(processos).forEach(proc => {
+        const card = document.createElement('div');
+        card.className = 'process-card';
+        card.innerHTML = `
+          <h3>${proc.name}</h3>
+          <p class="status-${proc.status.toLowerCase()}">${proc.status}</p>
+          <p>${proc.metrics}</p>
+          <p>Atualização: ${proc.timestamp}</p>
+        `;
+        processGrid.appendChild(card);
+      });
+    }
+
+    // Processa logs recebidos, suportando múltiplos formatos
+    function processLog(log) {
+      const sanitizedLog = sanitizeString(log);
+      const timestamp = new Date().toLocaleTimeString();
+      let processName, metric, status = "OK";
+
+      // Formato [TIMESTAMP] [ALERT] MENSAGEM
+      const alertMatch = sanitizedLog.match(/\[(\d{2}:\d{2}:\d{2})\]\s*\[ALERT\]\s*(.*)/);
+      if (alertMatch) {
+        logMessages.push(sanitizedLog);
+        if (alertsOutput) {
+          const alertLogs = logMessages.filter(msg => msg.includes("[ALERT]"));
+          alertsOutput.innerHTML = alertLogs.join('\n');
+          alertsOutput.scrollTop = alertsOutput.scrollHeight;
+        }
+        return;
+      }
+
+      // Formato [TIMESTAMP] [PROCESSO] MÉTRICA
+      const timestampProcMatch = sanitizedLog.match(/\[(\d{6}|\d{2}:\d{2}:\d{2})\]\s*\[(\w+_PROC|MAIN_SO|BMS)\]\s*(.*)/);
+      if (timestampProcMatch) {
+        processName = timestampProcMatch[2];
+        metric = timestampProcMatch[3].trim();
+      }
+
+      // Formato [PROCESSO] MÉTRICA
+      const procMatch = sanitizedLog.match(/\[(\w+_PROC|MAIN_SO|BMS)\]\s*(.*)/);
+      if (procMatch) {
+        processName = procMatch[1];
+        metric = procMatch[2].trim();
+      }
+
+      // Ignorar logs malformados ou inicializações
+      if (!processName || !metric || metric.includes("Tarefa iniciada") || metric.includes("iniciado.") || metric.includes("Starting") || metric.includes("char device") || sanitizedLog.includes("Recebido comando")) {
+        return;
+      }
+
+      if (processName && metric) {
+        if (!processos[processName]) {
+          processos[processName] = { name: processName, status: "OK", metrics: metric, timestamp: timestamp };
+        }
+        processos[processName].metrics = metric;
+        processos[processName].timestamp = timestamp;
+        if (metric.includes("Falha") || metric.includes("Nenhum Alerta")) {
+          status = metric.includes("Falha") ? "FAIL" : "OK";
+        } else if (metric.includes("Temp") && parseFloat(metric.match(/Temp: (\d+)/)?.[1]) > 45) {
+          status = "ALERT";
+        } else if (metric.includes("CPU") && parseFloat(metric.match(/CPU: (\d+)/)?.[1]) > 80) {
+          status = "ALERT";
+        } else if (metric.includes("Alerta")) {
+          status = "ALERT";
+        }
+        processos[processName].status = status;
+        renderProcessCards();
+      }
+
+      // Logs estruturados (ex.: [HEALTH_PROC] CPU: 15% | Power: 4.01V)
+      const healthMatch = sanitizedLog.match(/\[HEALTH_PROC\]\s*(CPU: \d+%.*)/);
+      if (healthMatch) {
+        processName = "HEALTH_PROC";
+        metric = healthMatch[1].trim();
+        if (!processos[processName]) {
+          processos[processName] = { name: processName, status: "OK", metrics: metric, timestamp: timestamp };
+        }
+        processos[processName].metrics = metric;
+        processos[processName].timestamp = timestamp;
+        if (metric.includes("FAIL")) {
+          status = "FAIL";
+        } else if (metric.includes("CPU") && parseFloat(metric.match(/CPU: (\d+)/)?.[1]) > 80) {
+          status = "ALERT";
+        }
+        processos[processName].status = status;
+        renderProcessCards();
+      }
+    }
+
+    // Determina a classe CSS para colorir linhas do terminal
+    function getLogClass(log) {
+      if (log.includes("enviado") || log.includes("Comando processado")) {
+        return 'log-command';
+      } else if (log.includes("concluído com sucesso") || log.includes("Câmera ligada")) {
+        return 'log-success';
+      } else if (log.includes("[ALERT]") || log.includes("Alerta")) {
+        return 'log-alert';
+      } else if (log.includes("Falha") || log.includes("ERRO") || log.includes("não reconhecido") || log.includes("inválido")) {
+        return 'log-error';
+      } else {
+        return 'log-metric';
+      }
+    }
+
+    // Atualiza logs e gráficos com otimização de performance
+    function updateLiveLogs() {
+      const now = Date.now();
+      if (now - lastUpdate < 500) return; // Limita a 2 atualizações por segundo
+      lastUpdate = now;
+
+      if (liveLogOutput) {
+        const formattedLogs = logMessages.map(log => {
+          const logClass = getLogClass(log);
+          return `<span class="${logClass}">${log}</span>`;
+        }).join('\n');
+        liveLogOutput.innerHTML = formattedLogs;
+        liveLogOutput.scrollTop = liveLogOutput.scrollHeight;
+      }
+
+      logMessages.forEach(log => {
+        if (log.includes("BMS_PROC") || log.includes("THERMAL_PROC") || log.includes("[BMS]")) {
+          const tempMatch = log.match(/Temp: (\d+)|T=(\d+\.\d+)/);
+          const temp = tempMatch ? parseFloat(tempMatch[1] || tempMatch[2]) : NaN;
+          if (!isNaN(temp)) {
+            temperaturaChart.data.labels.push(new Date().toLocaleTimeString());
+            temperaturaChart.data.datasets[0].data.push(temp);
+            if (temperaturaChart.data.labels.length > 20) {
+              temperaturaChart.data.labels.shift();
+              temperaturaChart.data.datasets[0].data.shift();
+            }
+            temperaturaChart.update();
+          }
+        }
+        if (log.includes("HK_CPU_PROC") || log.includes("HEALTH_PROC")) {
+          const cpuMatch = log.match(/CPU: (\d+)%/);
+          const cpu = cpuMatch ? parseFloat(cpuMatch[1]) : NaN;
+          if (!isNaN(cpu)) {
+            cpuChart.data.labels.push(new Date().toLocaleTimeString());
+            cpuChart.data.datasets[0].data.push(cpu);
+            if (cpuChart.data.labels.length > 20) {
+              cpuChart.data.labels.shift();
+              cpuChart.data.datasets[0].data.shift();
+            }
+            cpuChart.update();
+          }
+        }
+      });
+    }
+
+    // Simula logs baseados no log original
+    function simulateLogs() {
+      const processesForLogs = [
+        "BMS_PROC", "HK_CPU_PROC", "ALERT_PROC", "HK_GPS_PROC", "HK_STAR_PROC",
+        "POWER_PROC", "THERMAL_PROC", "MPPT_PROC", "RF_TM_PROC", "HK_PWR_PROC",
+        "PACKET_PROC", "RF_TC_PROC", "TM_PROC", "TTC_PROC"
+      ];
+      const randomProcess = processesForLogs[Math.floor(Math.random() * processesForLogs.length)];
+      let logMsg;
+
+      if (randomProcess === "BMS_PROC") {
+        const temp = Math.floor(Math.random() * 10) + 40;
+        const voltage = (Math.random() * 0.5 + 3.9).toFixed(2);
+        logMsg = `[${new Date().toLocaleTimeString()}] [${randomProcess}] Temp: ${temp}°C | V: ${voltage}V`;
+      } else if (randomProcess === "HK_CPU_PROC" || randomProcess === "HEALTH_PROC") {
+        const cpu = Math.floor(Math.random() * 30) + 30;
+        const power = (Math.random() * 0.5 + 3.5).toFixed(2);
+        const gps = Math.random() > 0.8 ? "FAIL" : "OK";
+        const star = Math.random() > 0.8 ? "FAIL" : "OK";
+        logMsg = `[${new Date().toLocaleTimeString()}] [${randomProcess}] CPU: ${cpu}% | Power: ${power}V | GPS: ${gps} | STAR: ${star}`;
+      } else if (randomProcess === "ALERT_PROC") {
+        const alerts = ["Tensão Baixa", "Sobrecorrente", "Nenhum Alerta", "Temperatura Crítica", "Falha no GPS", "Falha no Star Tracker"];
+        const randomAlert = alerts[Math.floor(Math.random() * alerts.length)];
+        logMsg = `[${new Date().toLocaleTimeString()}] [ALERT] 🚨 ${randomAlert}`;
+      } else if (randomProcess === "HK_GPS_PROC") {
+        const status = Math.random() > 0.8 ? "Falha no GPS" : "Localização simulada: Lat -23.5505, Lon -46.6333";
+        logMsg = `[${new Date().toLocaleTimeString()}] [${randomProcess}] ${status}`;
+      } else if (randomProcess === "HK_STAR_PROC") {
+        const roll = Math.floor(Math.random() * 10) - 5;
+        logMsg = `[${new Date().toLocaleTimeString()}] [${randomProcess}] Roll: ${roll}° | Pitch: 10° | Yaw: -3°`;
+      } else if (randomProcess === "POWER_PROC" || randomProcess === "HK_PWR_PROC") {
+        logMsg = `[${new Date().toLocaleTimeString()}] [${randomProcess}] Monitorando consumo de energia...`;
+      } else if (randomProcess === "PACKET_PROC") {
+        logMsg = `[${new Date().toLocaleTimeString()}] [${randomProcess}] Pacote gerado: <PKT:TEMP=42;TENS=3900>`;
+      } else if (randomProcess === "RF_TM_PROC") {
+        logMsg = `[${new Date().toLocaleTimeString()}] [${randomProcess}] Nenhum dado TM recebido`;
+      } else if (randomProcess === "TM_PROC") {
+        const status = Math.random() > 0.5 ? "Nenhum sinal recebido. Enviando telemetria automaticamente." : "✅ TM enviada para RF_TM";
+        logMsg = `[${new Date().toLocaleTimeString()}] [${randomProcess}] ${status}`;
+      } else if (randomProcess === "RF_TC_PROC" || randomProcess === "TTC_PROC") {
+        logMsg = `[${new Date().toLocaleTimeString()}] [${randomProcess}] Aguardando comandos`;
+      } else if (randomProcess === "MPPT_PROC") {
+        logMsg = `[${new Date().toLocaleTimeString()}] [${randomProcess}] Analisando carga solar...`;
+      }
+
+      logMessages.push(logMsg);
+      if (logMessages.length > 20) logMessages.shift();
+      socket.emit('log', { message: logMsg });
+      processLog(logMsg);
+    }
+
+    // Inicializa a interface e configura eventos
+    document.addEventListener('DOMContentLoaded', () => {
+      renderProcessCards();
+
+      temperaturaChart = new Chart(document.getElementById("tempChart"), {
+        type: 'line',
+        data: {
+          labels: [],
+          datasets: [{
+            label: 'Temperatura (°C)',
+            data: [],
+            borderColor: '#f39c12',
+            backgroundColor: 'rgba(243, 156, 18, 0.2)',
+            tension: 0.3,
+            fill: true
+          }]
+        },
+        options: {
+          responsive: true,
+          scales: {
+            y: { beginAtZero: false, suggestedMax: 80 }
+          }
+        }
+      });
+
+      cpuChart = new Chart(document.getElementById("cpuChart"), {
+        type: 'line',
+        data: {
+          labels: [],
+          datasets: [{
+            label: 'Uso de CPU (%)',
+            data: [],
+            borderColor: '#00bcd4',
+            backgroundColor: 'rgba(0, 188, 212, 0.2)',
+            tension: 0.3,
+            fill: true
+          }]
+        },
+        options: {
+          responsive: true,
+          scales: {
+            y: { beginAtZero: true, suggestedMax: 100 }
+          }
+        }
+      });
+
+      socket.on('connect_error', () => {
+        logMessages.push(`[${new Date().toLocaleTimeString()}] [SISTEMA] ERRO: Falha na conexão com o servidor`);
+        updateLiveLogs();
+      });
+
+      socket.on('log', function(data) {
+        const logMessage = sanitizeString(data.message);
+        logMessages.push(logMessage);
+        if (logMessages.length > 20) logMessages.shift();
+        processLog(logMessage);
+        updateLiveLogs();
+      });
+
+      socket.on('process_update', function(data) {
+        const { name, status, metrics, timestamp } = data;
+        if (processos[name]) {
+          processos[name].status = status;
+          processos[name].metrics = metrics;
+          processos[name].timestamp = timestamp;
+          renderProcessCards();
+        }
+      });
+
+      setInterval(simulateLogs, 2000);
+
+      document.querySelectorAll('.tab-button').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.tab-button').forEach(b => b.classList.remove('ativo'));
+          document.querySelectorAll('.process-panel').forEach(p => p.classList.add('hidden'));
+          btn.classList.add('ativo');
+          const targetPanel = document.getElementById(btn.dataset.target);
+          if (targetPanel) targetPanel.classList.remove('hidden');
+        });
+      });
+    });
+  </script>
+</body>
 </html>

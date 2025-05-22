@@ -3,6 +3,8 @@
 #include <sys/stat.h>
 #include "FreeRTOS.h"
 #include "task.h"
+#include <errno.h>
+#include <sys/stat.h>
 
 // UART0 (simulado no QEMU)
 #define UART0_DR (*(volatile uint32_t *)0x4000C000)
@@ -13,10 +15,24 @@
 int _write(int file, char *ptr, int len) {
     (void)file;
     for (int i = 0; i < len; i++) {
-        while (UART0_FR & UART_FR_TXFF); // Espera espaço no buffer
+        // Adiciona um timeout para evitar travamento infinito
+        int timeout = 100000; // Ajuste conforme necessário
+        while (UART0_FR & UART_FR_TXFF) {
+            if (--timeout <= 0) {
+                // Log de erro e saída para evitar travamento
+                UART0_DR = 'E'; // Envia um 'E' para indicar erro
+                UART0_DR = '\n';
+                return i; // Retorna o número de bytes escritos até o momento
+            }
+        }
         UART0_DR = ptr[i];
     }
     return len;
+}
+
+int _unlink(const char *name) {
+    errno = ENOSYS;
+    return -1;
 }
 
 // Implementações mínimas exigidas pela Newlib
@@ -73,7 +89,6 @@ int _open(const char *name, int flags, int mode) {
     (void)mode;
     return -1; // Retorna erro pois não há sistema de arquivos
 }
-
 
 // Hooks exigidos pelo FreeRTOS
 void vApplicationMallocFailedHook(void) {

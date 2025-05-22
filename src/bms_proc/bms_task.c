@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+
 #define MAX_TEMP 60.0
 #define MIN_VOLTAGE 3.2
 
@@ -12,6 +13,7 @@ BMSData_t bmsData;
 
 // Simulador de tempo incremental
 static unsigned long fake_timestamp = 0;
+
 
 static float get_random(float min, float max) {
     return ((float)rand() / RAND_MAX) * (max - min) + min;
@@ -30,14 +32,18 @@ void vBMSProcTask(void *pvParameters) {
     srand(123); // Semente fixa para testes previsíveis
     xBMSQueue = xQueueCreate(10, sizeof(BMSData_t));
 
+
+
     while (1) {
         bmsData.voltage = get_random(3.0, 4.2);
         bmsData.current = get_random(0.5, 2.0);
         bmsData.temperature = get_random(25.0, 70.0);
         bmsData.timestamp = fake_timestamp++; // Simula o tempo
+        
 
         calculate_soc();
 
+        
         xQueueSend(xBMSQueue, &bmsData, 0);
         addBMSHistory(bmsData); // Atualiza histórico
 
@@ -55,4 +61,5 @@ void vBMSProcTask(void *pvParameters) {
 
         vTaskDelay(pdMS_TO_TICKS(1000)); // Espera 1 segundo
     }
-}
+} 
+

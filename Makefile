@@ -27,7 +27,6 @@ FREERTOS_SRC := $(wildcard $(FREERTOS_DIR)/*.c) \
 
 SRC_FILES := $(shell find $(SRC_DIR) -name "*.c") $(FREERTOS_SRC) syscalls.c startup.c FreeRTOS-Kernel/portable/MemMang/heap_4.c
 
-
 # Arquivos objeto
 OBJ_FILES := $(SRC_FILES:$(PROJECT_DIR)/%.c=$(BUILD_DIR)/%.o)
 
@@ -39,11 +38,13 @@ all: $(OUTPUT)
 
 # Linkagem
 $(OUTPUT): $(OBJ_FILES)
+	@echo "Arquivos objeto sendo vinculados: $(OBJ_FILES)"
 	$(CC) $(CFLAGS) $(OBJ_FILES) -o $(OUTPUT) $(LDFLAGS)
 
 # Compilação
 $(BUILD_DIR)/%.o: $(PROJECT_DIR)/%.c
-	@mkdir -p $(dir $@)
+	@mkdir -p $(@D)
+	@echo "Compilando $< para $@"
 	$(CC) $(CFLAGS) -c $< -o $@
 
 # Limpeza

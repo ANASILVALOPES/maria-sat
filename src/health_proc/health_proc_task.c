@@ -4,15 +4,16 @@
 #include "health_task.h"
 #include "shared.h"
 #include <stdio.h>
-#include <stdlib.h>  // para rand()
+#include <stdlib.h>  
 #include "health_task.h"
 
-QueueHandle_t xQueueHealth = NULL;  
+
 
 void vHEALTHProcTask(void *pvParameters)
 {
     (void)pvParameters;
     printf("[HEALTH_PROC] iniciado.\n");
+    
 
     HealthData_t healthData;
 

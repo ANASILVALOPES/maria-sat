@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MARIA-SAT | Painel de Teste</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Orbitron&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background-color: #0b0c10;
+      color: #c5c6c7;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    .app {
+      display: flex;
+      min-height: 100vh;
+    }
+    .sidebar {
+      width: 200px;
+      background: linear-gradient(180deg, #1f2833, #0b0c10);
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border-right: 1px solid #2A3B50;
+      box-shadow: 0 0 10px rgba(102, 252, 241, 0.2);
+    }
+    .sidebar .logo img {
+      height: 80px;
+      object-fit: contain;
+      margin-bottom: 20px;
+      filter: drop-shadow(0 0 5px #66fcf1);
+    }
+    .sidebar .logo h2 {
+      color: #66fcf1;
+      font-family: 'Orbitron', sans-serif;
+      margin: 0;
+      text-shadow: 0 0 5px #66fcf1;
+    }
+    .sidebar nav ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin: 0;
+    }
+    .sidebar nav li a {
+      cursor: pointer;
+      color: #c5c6c7;
+      background: none;
+      border: none;
+      font-size: 0.95rem;
+      transition: color 0.2s ease, padding-left 0.3s ease;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px;
+    }
+    .sidebar nav li a:hover, .sidebar nav li a.active {
+      color: #66fcf1;
+      background: linear-gradient(90deg, #66fcf1, transparent);
+      padding-left: 15px;
+      border-left: 3px solid #66fcf1;
+      text-shadow: 0 0 5px rgba(102, 252, 241, 0.5);
+    }
+    .main {
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      background: linear-gradient(135deg, #0b0c10, #1f2833);
+    }
+    header {
+      background: linear-gradient(145deg, #1f2833, #2c3e50);
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3), 0 0 5px rgba(102, 252, 241, 0.2);
+    }
+    header h1 {
+      margin: 0;
+      font-size: 1.5rem;
+      color: #ffffff;
+      font-family: 'Orbitron', sans-serif;
+      text-shadow: 0 0 5px #66fcf1;
+    }
+    .process-tabs {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .tab-button {
+      background: linear-gradient(90deg, #2c3e50, #1f2833);
+      color: #66fcf1;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: 'Roboto', sans-serif;
+      font-size: 0.9rem;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+    .tab-button:hover {
+      background: linear-gradient(90deg, #3b4e67, #2c3e50);
+      box-shadow: 0 2px 8px rgba(102, 252, 241, 0.3);
+    }
+    .tab-button.ativo {
+      background: linear-gradient(90deg, #66fcf1, #45a29e);
+      color: #0b0c10;
+      box-shadow: 0 0 10px rgba(102, 252, 241, 0.5);
+    }
+    .tab-button.report {
+      background: linear-gradient(90deg, #009933, #006622);
+    }
+    .tab-button.report:hover {
+      background: linear-gradient(90deg, #00cc44, #009933);
+    }
+    .process-panel.hidden {
+      display: none;
+    }
+    .process-panel.active {
+      display: block;
+    }
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+    .process-card {
+      background: linear-gradient(145deg, #2c3e50, #1f2833);
+      padding: 15px;
+      border-radius: 8px;
+      color: #ffffff;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3), 0 0 5px rgba(102, 252, 241, 0.2);
+      font-size: 0.85rem;
+      transition: all 0.3s ease;
+    }
+    .process-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4), 0 0 10px rgba(102, 252, 241, 0.5);
+    }
+    .process-card h3 {
+      margin: 0 0 8px 0;
+      font-size: 1rem;
+      color: #66fcf1;
+      font-family: 'Orbitron', sans-serif;
+      text-shadow: 0 0 3px rgba(102, 252, 241, 0.5);
+    }
+    .process-card p {
+      font-size: 0.85rem;
+      margin: 4px 0;
+    }
+    .process-card button {
+      background: linear-gradient(90deg, #45a29e, #2c3e50);
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      transition: background 0.3s ease, box-shadow 0.3s ease; /* Removed transform */
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      margin-top: 8px;
+      min-width: 120px; /* Fixed width to prevent size changes */
+      text-align: center;
+    }
+    .process-card button:hover:not(:disabled) {
+      background: linear-gradient(90deg, #66fcf1, #45a29e);
+      color: #0b0c10;
+      box-shadow: 0 2px 8px rgba(102, 252, 241, 0.3);
+    }
+    .process-card button:disabled {
+      background: #555;
+      color: #888;
+      cursor: not-allowed;
+      box-shadow: none; /* Consistent appearance */
+    }
+    .status-ok {
+      color: #00ff88;
+      text-shadow: 0 0 3px rgba(0, 255, 136, 0.5);
+    }
+    .status-fail {
+      color: #ff3333;
+      text-shadow: 0 0 3px rgba(255, 51, 51, 0.5);
+    }
+    .status-alert {
+      color: orange;
+      text-shadow: 0 0 3px rgba(255, 165, 0, 0.5);
+    }
+    canvas {
+      width: 100% !important;
+      height: auto !important;
+      max-height: 200px;
+      background: linear-gradient(145deg, #1f2833, #2c3e50);
+      border: 1px solid #3B4E67;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+    .stats {
+      font-size: 0.85rem;
+      color: #c5c6c7;
+      margin-top: 8px;
+    }
+    .terminal {
+      background: linear-gradient(145deg, #1f2833, #2c3e50);
+      padding: 15px;
+      border-radius: 8px;
+      color: #00ff88;
+      font-family: monospace;
+      font-size: 0.85rem;
+      max-height: 180px;
+      overflow-y: auto;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3), 0 0 5px rgba(102, 252, 241, 0.2);
+    }
+    .terminal h2 {
+      margin: 0 0 10px;
+      font-size: 1rem;
+      color: #ffffff;
+      font-family: 'Orbitron', sans-serif;
+      text-shadow: 0 0 3px rgba(102, 252, 241, 0.5);
+    }
+    .terminal pre {
+      background: #000;
+      padding: 10px;
+      margin: 0;
+      border: 1px solid #3B4E67;
+      border-radius: 4px;
+    }
+    #alertsOutput {
+      background: #000;
+      padding: 10px;
+      color: orange;
+      border: 1px solid #3B4E67;
+      border-radius: 4px;
+    }
+    .log-command {
+      color: #66fcf1;
+    }
+    .log-success {
+      color: #00ff88;
+    }
+    .log-alert {
+      color: #ffa500;
+    }
+    .log-error {
+      color: #ff3333;
+    }
+    .log-metric {
+      color: #c5c6c7;
+    }
+    .report-panel {
+      background: linear-gradient(145deg, #2c3e50, #1f2833);
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3), 0 0 5px rgba(102, 252, 241, 0.2);
+    }
+    .report-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+      font-size: 0.85rem;
+    }
+    .report-table th, .report-table td {
+      padding: 10px;
+      border: 1px solid #3B4E67;
+      text-align: left;
+      color: #c5c6c7;
+    }
+    .report-table th {
+      background: linear-gradient(90deg, #2c3e50, #1f2833);
+      color: #66fcf1;
+      cursor: pointer;
+      font-family: 'Orbitron', sans-serif;
+      text-shadow: 0 0 3px rgba(102, 252, 241, 0.5);
+    }
+    .report-table th:hover {
+      background: linear-gradient(90deg, #3b4e67, #2c3e50);
+    }
+    .report-table tbody tr:hover {
+      background: rgba(102, 252, 241, 0.1);
+    }
+    .report-table .status-pass { color: #00ff88; }
+    .report-table .status-alert { color: #ffa500; }
+    .report-table .status-erro { color: #ff3333; }
+    .report-summary {
+      background: linear-gradient(145deg, #1f2833, #2c3e50);
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+    .report-summary p {
+      margin: 4px 0;
+      font-size: 0.85rem;
+    }
+    .report-filters {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+    .report-filters select, .report-filters input {
+      background: #2c3e50;
+      color: #c5c6c7;
+      border: 1px solid #3B4E67;
+      padding: 8px;
+      border-radius: 5px;
+      font-size: 0.85rem;
+      transition: all 0.3s ease;
+    }
+    .report-filters select:focus, .report-filters input:focus {
+      border-color: #66fcf1;
+      box-shadow: 0 0 5px rgba(102, 252, 241, 0.5);
+      outline: none;
+    }
+    .report-filters button {
+      background: linear-gradient(90deg, #45a29e, #2c3e50);
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      transition: all 0.3s ease;
+    }
+    .report-filters button:hover {
+      background: linear-gradient(90deg, #66fcf1, #45a29e);
+      color: #0b0c10;
+      box-shadow: 0 2px 8px rgba(102, 252, 241, 0.3);
+    }
+    @media (max-width: 768px) {
+      .sidebar {
+        width: 100%;
+        height: auto;
+        flex-direction: row;
+        justify-content: space-around;
+        padding: 10px;
+      }
+      .main {
+        padding: 10px;
+      }
+      .process-grid {
+        grid-template-columns: 1fr;
+      }
+      .tab-button {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+      }
+      .report-table th, .report-table td {
+        padding: 6px;
+        font-size: 0.75rem;
+      }
+      .report-filters {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar" role="navigation" aria-label="Navegação principal">
+      <div class="logo">
+        <img src="images/LOGOMARIA.png" alt="MARIA SAT Logo" onerror="this.style.display='none';this.nextElementSibling.style.display='block'" />
+        <h2 style="display:none">MARIA-SAT</h2>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html" aria-label="Ir para Painel de Visualização">Painel</a></li>
+          <li><a href="test_panel.html" class="active" aria-label="Ir para Painel de Teste">Painel de Teste</a></li>
+        </ul>
+      </nav>
+    </aside>
+    <main class="main">
+      <header>
+        <h1>Painel de Teste MARIA-SAT</h1>
+        <div class="process-tabs" role="tablist">
+          <button class="tab-button ativo" data-target="process-grid" aria-label="Exibir processos" role="tab" aria-selected="true" aria-controls="process-grid">Processos</button>
+          <button class="tab-button" data-target="telemetry" aria-label="Exibir telemetria" role="tab" aria-selected="false" aria-controls="telemetry">Telemetria</button>
+          <button class="tab-button" data-target="alerts" aria-label="Exibir alertas" role="tab" aria-selected="false" aria-controls="alerts">Alertas</button>
+          <button class="tab-button" data-target="report" aria-label="Exibir relatório dinâmico" role="tab" aria-selected="false" aria-controls="report">📄 Relatório</button>
+          <button class="tab-button report" onclick="generateReport()" aria-label="Gerar relatório de testes">Gerar Relatório</button>
+        </div>
+      </header>
+      <section class="process-panel active" id="process-grid" role="tabpanel" aria-labelledby="process-tab">
+        <h2>Status de Processos</h2>
+        <div class="process-grid" id="processGrid"></div>
+      </section>
+      <section class="process-panel hidden" id="telemetry" role="tabpanel" aria-labelledby="telemetry-tab">
+        <h2>Telemetria Geral</h2>
+        <div>
+          <canvas id="tempChart" aria-label="Gráfico de temperatura"></canvas>
+          <div id="telemetry-temp-stats" class="stats"></div>
+        </div>
+        <div>
+          <canvas id="cpuChart" aria-label="Gráfico de uso de CPU"></canvas>
+          <div id="telemetry-cpu-stats" class="stats"></div>
+        </div>
+        <div>
+          <canvas id="voltageChart" aria-label="Gráfico de tensão"></canvas>
+          <div id="telemetry-voltage-stats" class="stats"></div>
+        </div>
+      </section>
+      <section class="process-panel hidden" id="alerts" role="tabpanel" aria-labelledby="alerts-tab">
+        <h2>Alertas</h2>
+        <pre id="alertsOutput" aria-label="Logs de alertas"></pre>
+      </section>
+      <section class="process-panel hidden" id="report" role="tabpanel" aria-labelledby="report-tab">
+        <h2>Relatório Dinâmico</h2>
+        <div class="report-panel">
+          <div class="report-summary">
+            <h3>Resumo</h3>
+            <p>Total de Testes: <span id="total-tests">0</span></p>
+            <p>PASS: <span id="pass-count">0</span></p>
+            <p>ALERT: <span id="alert-count">0</span></p>
+            <p>ERRO: <span id="error-count">0</span></p>
+            <p>Tempo Médio: <span id="avg-time">0</span> ms</p>
+            <p>Teste Mais Rápido: <span id="fastest-test">N/A</span></p>
+            <p>Teste Mais Lento: <span id="slowest-test">N/A</span></p>
+            <canvas id="status-chart" aria-label="Gráfico de distribuição de status dos testes"></canvas>
+          </div>
+          <div class="report-filters">
+            <select id="status-filter" aria-label="Filtrar por status do teste">
+              <option value="all">Todos os Status</option>
+              <option value="PASS">PASS</option>
+              <option value="ALERT">ALERT</option>
+              <option value="ERRO">ERRO</option>
+            </select>
+            <input id="search-input" type="text" placeholder="Buscar por ID ou Comando" aria-label="Buscar testes por ID ou comando" />
+            <button id="refresh-report" aria-label="Atualizar relatório">🔄 Atualizar</button>
+          </div>
+          <table class="report-table" role="grid" aria-label="Tabela de resultados dos testes">
+            <thead>
+              <tr>
+                <th scope="col" data-sort="id">ID</th>
+                <th scope="col" data-sort="command">Comando</th>
+                <th scope="col" data-sort="expected">Esperado</th>
+                <th scope="col" data-sort="actual">Obtido</th>
+                <th scope="col" data-sort="status">Status</th>
+                <th scope="col" data-sort="responseTime">Tempo (ms)</th>
+                <th scope="col" data-sort="timestamp">Horário</th>
+              </tr>
+            </thead>
+            <tbody id="report-table-body"></tbody>
+          </table>
+        </div>
+      </section>
+      <section class="terminal">
+        <h2>Logs do Sistema (ao vivo)</h2>
+        <pre id="live-log-output" aria-label="Logs do sistema em tempo real"></pre>
+      </section>
+    </main>
+  </div>
+  <script>
+    // Dados iniciais dos processos com ações expandidas
+    const processos = {
+      "MAIN_SO": { name: "MAIN_SO", status: "Aguardando", metrics: "🛰️", timestamp: "—", actions: ["LIGAR_CAMERA", "DESLIGAR_CAMERA", "REPORTAR_TELEMETRIA", "REPORTAR_BMS", "REPORTAR_ALERTAS", "ATIVAR_MOTORES_5"] },
+      "BMS_PROC": { name: "BMS_PROC", status: "OK", metrics: "Temp: 43°C | V: 4.04V | SoC: 75%", timestamp: "—", actions: ["TEST_TEMP_CRITICA", "TEST_BAIXA_TENSAO", "TEST_SOC_CRITICO", "TEST_NORMAL", "VERIFICAR_TEMPERATURA", "VERIFICAR_TENSAO", "VERIFICAR_SOC"] },
+      "ALERT_PROC": { name: "ALERT_PROC", status: "OK", metrics: "Nenhum alerta", timestamp: "—", actions: ["FORCAR_TEMP_ALERTA", "FORCAR_TENSAO_ALERTA", "FORCAR_CPU_ALERTA", "FORCAR_GPS_FALHA", "FORCAR_STAR_FALHA"] },
+      "CCSDS_PROC": { name: "CCSDS_PROC", status: "OK", metrics: "Encapsulados: 0", timestamp: "—", actions: ["TEST_CCSDS_VALIDO", "TEST_CCSDS_INVALIDO"] },
+      "HK_CPU_PROC": { name: "HK_CPU_PROC", status: "OK", metrics: "CPU: 33%", timestamp: "—" },
+      "HK_GPS_PROC": { name: "HK_GPS_PROC", status: "OK", metrics: "GPS: OK", timestamp: "—" },
+      "HK_STAR_PROC": { name: "HK_STAR_PROC", status: "OK", metrics: "Roll: 5°", timestamp: "—" },
+      "HEALTH_PROC": { name: "HEALTH_PROC", status: "OK", metrics: "CPU: 33%", timestamp: "—", actions: ["SIMULAR_CPU_ALTA", "SIMULAR_BAIXA_TENSAO", "SIMULAR_GPS_FALHA", "SIMULAR_STAR_FALHA"] },
+      "FDIR_PROC": { name: "FDIR_PROC", status: "OK", metrics: "Normal", timestamp: "—", actions: ["DETECTAR_ANOMALIAS"] },
+      "THERMAL_PROC": { name: "THERMAL_PROC", status: "OK", metrics: "Temp: 42°C", timestamp: "—" },
+      "POWER_PROC": { name: "POWER_PROC", status: "OK", metrics: "Power: 3.63V", timestamp: "—" },
+      "MPPT_PROC": { name: "MPPT_PROC", status: "OK", metrics: "Analisando carga solar...", timestamp: "—", actions: ["ANALISAR_FREQUENCIA"] },
+      "RF_TM_PROC": { name: "RF_TM_PROC", status: "OK", metrics: "Nenhum dado TM recebido", timestamp: "—", actions: ["ENVIAR_TELEMETRIA_UART"] },
+      "HK_PWR_PROC": { name: "HK_PWR_PROC", status: "OK", metrics: "Monitorando consumo de energia...", timestamp: "—" },
+      "PACKET_PROC": { name: "PACKET_PROC", status: "OK", metrics: "Pacote gerado", timestamp: "—" },
+      "RF_TC_PROC": { name: "RF_TC_PROC", status: "OK", metrics: "Aguardando comandos", timestamp: "—", actions: ["RECEBER_COMANDO_UART"] },
+      "TM_PROC": { name: "TM_PROC", status: "OK", metrics: "Aguardando sinal", timestamp: "—", actions: ["ENVIAR_COLETA_MANUAL", "VERIFICAR_TIMEOUT", "ENVIAR_SINAL_INVALIDO"] },
+      "TTC_PROC": { name: "TTC_PROC", status: "OK", metrics: "Aguardando comandos", timestamp: "—" },
+      "LOG_TASK": { name: "LOG_TASK", status: "OK", metrics: "Logs ativos", timestamp: "—", actions: ["VISUALIZAR_LOGS"] }
+    };
+
+    // Estado global
+    let testCounter = 0;
+    let testResults = [];
+    let logMessages = [];
+    let telemetryData = { temp: [], cpu: [], voltage: [] };
+    let timeLabels = [];
+    let lastUpdate = 0;
+    let statusChart = null;
+    let sortColumn = null;
+    let sortDirection = 1;
+
+    // Elementos do DOM
+    const liveLogOutput = document.getElementById('live-log-output');
+    const alertsOutput = document.getElementById('alertsOutput');
+    const processGrid = document.getElementById('processGrid');
+    const reportTableBody = document.getElementById('report-table-body');
+
+    // Conexão SocketIO
+    const socket = io('http://localhost:5000', {
+      transports: ['websocket'],
+      reconnection: true,
+      reconnectionAttempts: 5,
+      reconnectionDelay: 1000
+    });
+
+    // Funções utilitárias
+    function sanitizeString(str) {
+      return str.replace(/[<>&\x80-\xFF]/g, '');
+    }
+
+    function getTestId() {
+      testCounter++;
+      return `TESTE #${String(testCounter).padStart(3, '0')}`;
+    }
+
+    function getLogClass(log) {
+      if (log.includes("enviado") || log.includes("Comando processado")) return 'log-command';
+      if (log.includes("concluído com sucesso") || log.includes("Câmera ligada") || log.includes("Câmera desligada") || log.includes("Motores ativados") || log.includes("Solicitando telemetria") || log.includes("BMS:") || log.includes("ALERTA às") || log.includes("Nenhum alerta ativo") || log.includes("Temperatura:") || log.includes("Tensão:") || log.includes("V=") || log.includes("PASS")) return 'log-success';
+      if (log.includes("[ALERT]") || log.includes("Alerta")) return 'log-alert';
+      if (log.includes("Falha") || log.includes("ERRO") || log.includes("não reconhecido") || log.includes("inválido")) return 'log-error';
+      return 'log-metric';
+    }
+
+    // Renderiza cartões de processos
+    function renderProcessCards() {
+      processGrid.innerHTML = '';
+      Object.values(processos).forEach(proc => {
+        const card = document.createElement('div');
+        card.className = 'process-card';
+        card.dataset.processName = proc.name; // Add identifier for targeted updates
+        let buttonsHTML = proc.actions ? proc.actions.map(action => `
+          <button onclick="executeAction('${proc.name}', '${action}', this)" aria-label="Executar ${action} para ${proc.name}">${action.replace('_', ' ')}</button>
+        `).join('') : '';
+        card.innerHTML = `
+          <h3>${proc.name}</h3>
+          <p class="status-${proc.status.toLowerCase()}">${proc.status}</p>
+          <p>${proc.metrics}</p>
+          <p>Atualização: ${proc.timestamp}</p>
+          ${buttonsHTML}
+        `;
+        processGrid.appendChild(card);
+      });
+    }
+
+    // Atualiza um único cartão de processo
+    function updateProcessCard(processName) {
+      const proc = processos[processName];
+      if (!proc) return;
+      const card = document.querySelector(`.process-card[data-process-name="${processName}"]`);
+      if (card) {
+        card.innerHTML = `
+          <h3>${proc.name}</h3>
+          <p class="status-${proc.status.toLowerCase()}">${proc.status}</p>
+          <p>${proc.metrics}</p>
+          <p>Atualização: ${proc.timestamp}</p>
+          ${proc.actions ? proc.actions.map(action => `
+            <button onclick="executeAction('${proc.name}', '${action}', this)" aria-label="Executar ${action} para ${proc.name}">${action.replace('_', ' ')}</button>
+          `).join('') : ''}
+        `;
+      }
+    }
+
+    // Processa logs recebidos
+    function processLog(log) {
+      const sanitizedLog = sanitizeString(log);
+      const timestamp = new Date().toLocaleTimeString();
+      let processName, metric, status = "OK";
+
+      const alertMatch = sanitizedLog.match(/\[(\d{2}:\d{2}:\d{2})\]\s*\[ALERT\]\s*(.*)/);
+      if (alertMatch) {
+        logMessages.push(sanitizedLog);
+        if (alertsOutput) {
+          const alertLogs = logMessages.filter(msg => msg.includes("[ALERT]"));
+          alertsOutput.innerHTML = alertLogs.map(log => `<span class="${getLogClass(log)}">${log}</span>`).join('\n');
+          alertsOutput.scrollTop = alertsOutput.scrollHeight;
+        }
+        return;
+      }
+
+      const timestampProcMatch = sanitizedLog.match(/\[(\d{6}|\d{2}:\d{2}:\d{2})\]\s*\[(\w+_PROC|MAIN_SO|BMS|LOG_TASK)\]\s*(.*)/);
+      if (timestampProcMatch) {
+        processName = timestampProcMatch[2];
+        metric = timestampProcMatch[3].trim();
+      }
+
+      const procMatch = sanitizedLog.match(/\[(\w+_PROC|MAIN_SO|BMS|LOG_TASK)\]\s*(.*)/);
+      if (procMatch) {
+        processName = procMatch[1];
+        metric = procMatch[2].trim();
+      }
+
+      if (!processName || !metric || metric.includes("Tarefa iniciada") || metric.includes("iniciado.") || metric.includes("Starting") || metric.includes("char device") || sanitizedLog.includes("Recebido comando")) return;
+
+      if (processName && metric) {
+        if (!processos[processName]) processos[processName] = { name: processName, status: "OK", metrics: metric, timestamp };
+        processos[processName].metrics = metric;
+        processos[processName].timestamp = timestamp;
+        if (metric.includes("Falha") || metric.includes("ERRO")) status = "FAIL";
+        else if (metric.includes("Temp") && parseFloat(metric.match(/Temp: (\d+)/)?.[1]) > 60) status = "ALERT";
+        else if (metric.includes("V:") && parseFloat(metric.match(/V: ([\d.]+)/)?.[1]) < 3.2) status = "ALERT";
+        else if (metric.includes("SoC") && parseFloat(metric.match(/SoC: (\d+)/)?.[1]) < 10) status = "ALERT";
+        else if (metric.includes("CPU") && parseFloat(metric.match(/CPU: (\d+)/)?.[1]) > 90) status = "ALERT";
+        else if (metric.includes("Alerta")) status = "ALERT";
+        else if (metric.includes("PASS")) status = "OK";
+        processos[processName].status = status;
+        updateProcessCard(processName); // Update only the affected card
+      }
+    }
+
+    // Atualiza telemetria
+    function updateTelemetry(type, value) {
+      if (isNaN(value)) return;
+      telemetryData[type].push(value);
+      timeLabels.push(new Date().toLocaleTimeString());
+      if (telemetryData[type].length > 20) {
+        telemetryData[type].shift();
+        timeLabels.shift();
+      }
+
+      if (type === 'temp') {
+        tempChart.data.labels = timeLabels;
+        tempChart.data.datasets[0].data = telemetryData.temp;
+        tempChart.update();
+      } else if (type === 'cpu') {
+        cpuChart.data.labels = timeLabels;
+        cpuChart.data.datasets[0].data = telemetryData.cpu;
+        cpuChart.update();
+      } else if (type === 'voltage') {
+        voltageChart.data.labels = timeLabels;
+        voltageChart.data.datasets[0].data = telemetryData.voltage;
+        voltageChart.update();
+      }
+
+      const avg = telemetryData[type].reduce((a, b) => a + b, 0) / telemetryData[type].length;
+      const max = Math.max(...telemetryData[type]);
+      document.getElementById(`telemetry-${type}-stats`).innerHTML = `
+        <p>Último: ${value.toFixed(1)} | Média: ${avg.toFixed(1)} | Máximo: ${max.toFixed(1)}</p>
+      `;
+    }
+
+    // Atualiza logs
+    function updateLiveLogs() {
+      const now = Date.now();
+      if (now - lastUpdate < 500) return;
+      lastUpdate = now;
+      if (liveLogOutput) {
+        liveLogOutput.innerHTML = logMessages.map(log => `<span class="${getLogClass(log)}">${log}</span>`).join('\n');
+        liveLogOutput.scrollTop = liveLogOutput.scrollHeight;
+      }
+      logMessages.forEach(log => {
+        if (log.includes("BMS_PROC") || log.includes("THERMAL_PROC") || log.includes("[BMS]")) {
+          const tempMatch = log.match(/Temp: (\d+)(?:°C)?|T=(\d+\.\d+)/);
+          const temp = tempMatch ? parseFloat(tempMatch[1] || tempMatch[2]) : NaN;
+          if (!isNaN(temp)) updateTelemetry('temp', temp);
+
+          const voltageMatch = log.match(/V: ([\d.]+)(?:V)?|V=([\d.]+)/);
+          const voltage = voltageMatch ? parseFloat(voltageMatch[1] || voltageMatch[2]) : NaN;
+          if (!isNaN(voltage)) updateTelemetry('voltage', voltage);
+        }
+        if (log.includes("HK_CPU_PROC") || log.includes("HEALTH_PROC")) {
+          const cpuMatch = log.match(/CPU: (\d+)%/);
+          const cpu = cpuMatch ? parseFloat(cpuMatch[1]) : NaN;
+          if (!isNaN(cpu)) updateTelemetry('cpu', cpu);
+
+          const voltageMatch = log.match(/Power: ([\d.]+)(?:V)?/);
+          const voltage = voltageMatch ? parseFloat(voltageMatch[1]) : NaN;
+          if (!isNaN(voltage)) updateTelemetry('voltage', voltage);
+        }
+      });
+    }
+
+    // Funções para a aba Relatório
+    function updateReportTable(data) {
+      reportTableBody.innerHTML = '';
+      data.forEach(test => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${test.id || 'N/A'}</td>
+          <td>${test.command || 'N/A'}</td>
+          <td>${test.expected || 'N/A'}</td>
+          <td>${test.actual || 'N/A'}</td>
+          <td class="status-${test.status.toLowerCase()}">${test.status || 'N/A'}</td>
+          <td>${test.responseTime || '0'}</td>
+          <td>${test.timestamp ? new Date(test.timestamp).toLocaleString('pt-BR') : 'N/A'}</td>
+        `;
+        reportTableBody.appendChild(row);
+      });
+    }
+
+    function updateReportSummary(data) {
+      const totalTests = data.length;
+      const passCount = data.filter(t => t.status === 'PASS').length;
+      const alertCount = data.filter(t => t.status === 'ALERT').length;
+      const errorCount = data.filter(t => t.status === 'ERRO').length;
+      const avgTime = totalTests ? (data.reduce((sum, t) => sum + (t.responseTime || 0), 0) / totalTests).toFixed(2) : 0;
+      const fastest = data.reduce((min, t) => Math.min(min, t.responseTime || Infinity), Infinity);
+      const slowest = data.reduce((max, t) => Math.max(max, t.responseTime || -Infinity), -Infinity);
+
+      document.getElementById('total-tests').textContent = totalTests;
+      document.getElementById('pass-count').textContent = passCount;
+      document.getElementById('alert-count').textContent = alertCount;
+      document.getElementById('error-count').textContent = errorCount;
+      document.getElementById('avg-time').textContent = avgTime;
+      document.getElementById('fastest-test').textContent = fastest === Infinity ? 'N/A' : `${fastest} ms`;
+      document.getElementById('slowest-test').textContent = slowest === -Infinity ? 'N/A' : `${slowest} ms`;
+    }
+
+    function updateReportChart(data) {
+      const passCount = data.filter(t => t.status === 'PASS').length;
+      const alertCount = data.filter(t => t.status === 'ALERT').length;
+      const errorCount = data.filter(t => t.status === 'ERRO').length;
+
+      const ctx = document.getElementById('status-chart').getContext('2d');
+      if (statusChart) statusChart.destroy();
+
+      statusChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ['PASS', 'ALERT', 'ERRO'],
+          datasets: [{
+            label: 'Contagem de Testes',
+            data: [passCount, alertCount, errorCount],
+            backgroundColor: ['#00ff88', '#ffa500', '#ff3333'],
+            borderColor: ['#00cc66', '#cc8400', '#cc0000'],
+            borderWidth: 1
+          }]
+        },
+        options: {
+          responsive: true,
+          scales: {
+            y: {
+              beginAtZero: true,
+              title: {
+                display: true,
+                text: 'Número de Testes',
+                color: '#c5c6c7'
+              },
+              ticks: { color: '#c5c6c7' }
+            },
+            x: { ticks: { color: '#c5c6c7' } }
+          },
+          plugins: {
+            legend: { display: false },
+            title: {
+              display: true,
+              text: 'Distribuição de Status dos Testes',
+              color: '#66fcf1',
+              font: { family: 'Orbitron', size: 14 }
+            }
+          }
+        }
+      });
+    }
+
+    function sortTable(data, column, direction) {
+      return data.sort((a, b) => {
+        let valA = a[column] || '';
+        let valB = b[column] || '';
+        if (column === 'responseTime') {
+          valA = a.responseTime || 0;
+          valB = b.responseTime || 0;
+        } else if (column === 'timestamp') {
+          valA = new Date(a.timestamp || 0).getTime();
+          valB = new Date(b.timestamp || 0).getTime();
+        }
+        if (valA < valB) return -1 * direction;
+        if (valA > valB) return 1 * direction;
+        return 0;
+      });
+    }
+
+    function filterTable() {
+      const status = document.getElementById('status-filter').value;
+      const search = document.getElementById('search-input').value.toLowerCase();
+      let filteredData = [...testResults];
+
+      if (status !== 'all') {
+        filteredData = filteredData.filter(test => test.status === status);
+      }
+
+      if (search) {
+        filteredData = filteredData.filter(test =>
+          (test.id || '').toLowerCase().includes(search) ||
+          (test.command || '').toLowerCase().includes(search)
+        );
+      }
+
+      if (sortColumn) {
+        filteredData = sortTable(filteredData, sortColumn, sortDirection);
+      }
+
+      updateReportTable(filteredData);
+      updateReportSummary(filteredData);
+      updateReportChart(filteredData);
+    }
+
+    // Executa ação com validação e métricas
+    function executeAction(processName, action, button) {
+      const testId = getTestId();
+      const startTime = Date.now();
+      button.disabled = true;
+      button.textContent = 'Enviando...';
+      const command = `${processName.toLowerCase()}:${action}`;
+      const logMsg = `[${new Date().toLocaleTimeString()}] [${processName}] [${testId}] Executando: ${action}`;
+      logMessages.push(logMsg);
+      let simulatedResponse, status, expectedResult;
+
+      switch (action) {
+        case 'TEST_TEMP_CRITICA':
+          simulatedResponse = `[${new Date().toLocaleTimeString()}] [BMS_PROC] [${testId}] Temp: 65°C | V: 4.04V | SoC: 75%`;
+          expectedResult = 'Temperatura > 60°C';
+          status = 'ALERT';
+          break;
+        case 'TEST_BAIXA_TENSAO':
+          simulatedResponse = `[${new Date().toLocaleTimeString()}] [BMS_PROC] [${testId}] Temp: 43°C | V: 3.1V | SoC: 75%`;
+          expectedResult = 'Tensão < 3.2V';
+          status = 'ALERT';
+          break;
+        case 'TEST_SOC_CRITICO':
+          simulatedResponse = `[${new Date().toLocaleTimeString()}] [BMS_PROC] [${testId}] Temp: 43°C | V: 4.04V | SoC: 8%`;
+          expectedResult = 'SoC < 10%';
+          status = 'ALERT';
+          break;
+        case 'TEST_NORMAL':
+          simulatedResponse = `[${new Date().toLocaleTimeString()}] [BMS_PROC] [${testId}] Temp: 43°C | V: 4.04V | SoC: 75%`;
+          expectedResult = 'Valores normais';
+          status = 'PASS';
+          break;
+        case 'FORCAR_TEMP_ALERTA':
+          simulatedResponse = `[${new Date().toLocaleTimeString()}] [ALERT] [${testId}] 🚨 Temperatura Crítica`;
+          expectedResult = 'Alerta de temperatura';
+          status = 'ALERT';
+          break;
+        case 'FORCAR_TENSAO_ALERTA':
+          simulatedResponse = `[${new Date().toLocaleTimeString()}] [ALERT] [${testId}] 🚨 Tensão Baixa`;
+          expectedResult = 'Alerta de tensão';
+          status = 'ALERT';
+          break;
+        case 'FORCAR_CPU_ALERTA':
+          simulatedResponse = `[${new Date().toLocaleTimeString()}] [ALERT] [${testId}] 🚨 Uso de CPU Alto`;
+          expectedResult = 'Alerta de CPU';
+          status = 'ALERT';
+          break;
+        case 'FORCAR_GPS_FALHA':
+          simulatedResponse = `[${new Date().toLocaleTimeString()}] [ALERT] [${testId}] 🚨 Falha no GPS`;
+          expectedResult = 'Falha no GPS';
+          status = 'ALERT';
+          break;
+        case 'FORCAR_STAR_FALHA':
+          simulatedResponse = `[${new Date().toLocaleTimeString()}] [ALERT] [${testId}] 🚨 Falha no Star Tracker`;
+          expectedResult = 'Falha no Star Tracker';
+          status = 'ALERT';
+          break;
+        case 'SIMULAR_CPU_ALTA':
+          simulatedResponse = `[${new Date().toLocaleTimeString()}] [HEALTH_PROC] [${testId}] CPU: 95% | Power: 3.63V | GPS: OK | STAR: OK`;
+          expectedResult = 'CPU > 90%';
+          status = 'ALERT';
+          break;
+        case 'SIMULAR_BAIXA_TENSAO':
+          simulatedResponse = `[${new Date().toLocaleTimeString()}] [HEALTH_PROC] [${testId}] CPU: 33% | Power: 3.2V | GPS: OK | STAR: OK`;
+          expectedResult = 'Tensão < 3.3V';
+          status = 'ALERT';
+          break;
+        case 'SIMULAR_GPS_FALHA':
+          simulatedResponse = `[${new Date().toLocaleTimeString()}] [HEALTH_PROC] [${testId}] CPU: 33% | Power: 3.63V | GPS: FAIL | STAR: OK`;
+          expectedResult = 'Falha no GPS';
+          status = 'FAIL';
+          break;
+        case 'SIMULAR_STAR_FALHA':
+          simulatedResponse = `[${new Date().toLocaleTimeString()}] [HEALTH_PROC] [${testId}] CPU: 33% | Power: 3.63V | GPS: OK | STAR: FAIL`;
+          expectedResult = 'Falha no Star Tracker';
+          status = 'FAIL';
+          break;
+        case 'DETECTAR_ANOMALIAS':
+          simulatedResponse = `[${new Date().toLocaleTimeString()}] [FDIR_PROC] [${testId}] Verificando anomalias: Normal`;
+          expectedResult = 'Sem anomalias';
+          status = 'PASS';
+          break;
+        case 'ENVIAR_COLETA_MANUAL':
+          simulatedResponse = `[${new Date().toLocaleTimeString()}] [TM_PROC] [${testId}] Coleta manual enviada`;
+          expectedResult = 'Coleta enviada';
+          status = 'PASS';
+          break;
+        case 'VERIFICAR_TIMEOUT':
+          simulatedResponse = `[${new Date().toLocaleTimeString()}] [TM_PROC] [${testId}] Timeout verificado`;
+          expectedResult = 'Timeout OK';
+          status = 'PASS';
+          break;
+        case 'ENVIAR_SINAL_INVALIDO':
+          simulatedResponse = `[${new Date().toLocaleTimeString()}] [TM_PROC] [${testId}] Sinal inválido rejeitado`;
+          expectedResult = 'Sinal rejeitado';
+          status = 'PASS';
+          break;
+        case 'TEST_CCSDS_VALIDO':
+          simulatedResponse = `[${new Date().toLocaleTimeString()}] [CCSDS_PROC] [${testId}] Pacote CCSDS válido gerado | APID: 0x01 | Comprimento: 128 | Validação: OK`;
+          expectedResult = 'Pacote válido';
+          status = 'PASS';
+          break;
+        case 'TEST_CCSDS_INVALIDO':
+          simulatedResponse = `[${new Date().toLocaleTimeString()}] [CCSDS_PROC] [${testId}] Pacote CCSDS inválido detectado | APID: 0xFF | Comprimento: 999 | Validação: APID desconhecido`;
+          expectedResult = 'Pacote inválido';
+          status = 'ERRO';
+          break;
+        case 'ANALISAR_FREQUENCIA':
+          simulatedResponse = `[${new Date().toLocaleTimeString()}] [MPPT_PROC] [${testId}] Frequência de carga solar analisada`;
+          expectedResult = 'Frequência OK';
+          status = 'PASS';
+          break;
+        case 'VISUALIZAR_LOGS':
+          simulatedResponse = `[${new Date().toLocaleTimeString()}] [LOG_TASK] [${testId}] Visualizando logs periódicos`;
+          expectedResult = 'Logs visualizados';
+          status = 'PASS';
+          break;
+        case 'RECEBER_COMANDO_UART':
+          simulatedResponse = `[${new Date().toLocaleTimeString()}] [RF_TC_PROC] [${testId}] Comando UART ${Math.random() > 0.3 ? 'válido recebido' : 'inválido rejeitado'}`;
+          expectedResult = 'Comando processado';
+          status = Math.random() > 0.3 ? 'PASS' : 'ERRO';
+          break;
+        case 'ENVIAR_TELEMETRIA_UART':
+          simulatedResponse = `[${new Date().toLocaleTimeString()}] [RF_TM_PROC] [${testId}] Telemetria UART ${Math.random() > 0.2 ? 'enviada com sucesso' : 'falha no envio'}`;
+          expectedResult = 'Telemetria enviada';
+          status = Math.random() > 0.2 ? 'PASS' : 'ERRO';
+          break;
+        default:
+          simulatedResponse = `[${new Date().toLocaleTimeString()}] [${processName}] [${testId}] ${action} concluído com sucesso`;
+          expectedResult = 'Ação concluída';
+          status = 'PASS';
+      }
+
+      setTimeout(() => {
+        const endTime = Date.now();
+        const responseTime = endTime - startTime;
+        logMessages.push(simulatedResponse);
+        processLog(simulatedResponse);
+        updateLiveLogs();
+        processos[processName].metrics = processos[processName].metrics.split(' | ⏱')[0] + ` | ⏱ ${responseTime}ms`;
+        updateProcessCard(processName); // Update only the affected card
+        button.disabled = false;
+        button.textContent = action.replace('_', ' ');
+        const testResult = { id: testId, command: action, expected: expectedResult, actual: simulatedResponse, status, responseTime, timestamp: new Date().toISOString() };
+        console.log('New Test Result:', testResult); // Debug
+        testResults.push(testResult);
+        socket.emit('test_result', testResult);
+        document.getElementById('status-filter').value = 'all'; // Reset filter to show all results
+        filterTable();
+      }, 1000);
+
+      socket.emit('message', command);
+    }
+
+    // Gera relatório
+    function generateReport() {
+      const report = testResults.map(test => ({
+        testId: test.id,
+        command: test.command,
+        expected: test.expected,
+        actual: test.actual,
+        status: test.status,
+        responseTime: test.responseTime,
+        timestamp: test.timestamp
+      }));
+      const blob = new Blob([JSON.stringify(report, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'maria-sat-report.json';
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    // Simula logs
+    function simulateLogs() {
+      const processesForLogs = Object.keys(processos);
+      const telemetryProcesses = ["BMS_PROC", "HEALTH_PROC"];
+      const randomProcess = Math.random() > 0.3 ? 
+        telemetryProcesses[Math.floor(Math.random() * telemetryProcesses.length)] : 
+        processesForLogs[Math.floor(Math.random() * processesForLogs.length)];
+      let logMsg;
+
+      if (randomProcess === "BMS_PROC") {
+        const temp = Math.random() > 0.9 ? 65 : Math.floor(Math.random() * 10) + 40;
+        const voltage = Math.random() > 0.9 ? 3.1 : (Math.random() * 0.5 + 3.9).toFixed(2);
+        const soc = Math.random() > 0.9 ? 8 : Math.floor(Math.random() * 50) + 50;
+        logMsg = `[${new Date().toLocaleTimeString()}] [${randomProcess}] Temp: ${temp}°C | V: ${voltage}V | SoC: ${soc}%`;
+      } else if (randomProcess === "HEALTH_PROC") {
+        const cpu = Math.random() > 0.1 ? Math.floor(Math.random() * 30) + 30 : 95;
+        const power = Math.random() > 0.1 ? (Math.random() * 0.5 + 3.5).toFixed(2) : 3.2;
+        const gps = Math.random() < 0.1 ? "FAIL" : "OK";
+        const star = Math.random() < 0.2 ? "FAIL" : "OK";
+        logMsg = `[${new Date().toLocaleTimeString()}] [${randomProcess}] CPU: ${cpu}% | Power: ${power}V | GPS: ${gps} | STAR: ${star}`;
+      } else if (randomProcess === "ALERT_PROC") {
+        const alerts = ["Tensão Baixa", "Temperatura Crítica", "Nenhum Alerta", "Uso de CPU Alto", "Falha no GPS", "Falha no Star Tracker"];
+        const randomAlert = alerts[Math.floor(Math.random() * alerts.length)];
+        logMsg = `[${new Date().toLocaleTimeString()}] [ALERT] 🚨 ${randomAlert}`;
+      } else if (randomProcess === "HK_GPS_PROC") {
+        const status = Math.random() < 0.1 ? "Falha no GPS" : "Localização simulada: Lat -23.5505, Lon -46.6333";
+        logMsg = `[${new Date().toLocaleTimeString()}] [${randomProcess}] ${status}`;
+      } else if (randomProcess === "HK_STAR_PROC") {
+        const roll = Math.floor(Math.random() * 10) - 5;
+        logMsg = `[${new Date().toLocaleTimeString()}] [${randomProcess}] Roll: ${roll}° | Pitch: 10° | Yaw: -3°`;
+      } else if (randomProcess === "POWER_PROC" || randomProcess === "HK_PWR_PROC") {
+        logMsg = `[${new Date().toLocaleTimeString()}] [${randomProcess}] Monitorando consumo de energia...`;
+      } else if (randomProcess === "PACKET_PROC") {
+        logMsg = `[${new Date().toLocaleTimeString()}] [${randomProcess}] Pacote gerado: <PKT:TEMP=42;TENS=3900>`;
+      } else if (randomProcess === "RF_TM_PROC") {
+        logMsg = `[${new Date().toLocaleTimeString()}] [${randomProcess}] Nenhum dado TM recebido`;
+      } else if (randomProcess === "TM_PROC") {
+        const status = Math.random() > 0.5 ? "Nenhum sinal recebido. Enviando telemetria automaticamente." : "✅ TM enviada para RF_TM";
+        logMsg = `[${new Date().toLocaleTimeString()}] [${randomProcess}] ${status}`;
+      } else if (randomProcess === "RF_TC_PROC" || randomProcess === "TTC_PROC") {
+        logMsg = `[${new Date().toLocaleTimeString()}] [${randomProcess}] Aguardando comandos`;
+      } else if (randomProcess === "MPPT_PROC") {
+        logMsg = `[${new Date().toLocaleTimeString()}] [${randomProcess}] Analisando carga solar...`;
+      } else if (randomProcess === "CCSDS_PROC") {
+        logMsg = `[${new Date().toLocaleTimeString()}] [${randomProcess}] Encapsulados: ${Math.floor(Math.random() * 100)}`;
+      } else if (randomProcess === "FDIR_PROC") {
+        logMsg = `[${new Date().toLocaleTimeString()}] [${randomProcess}] Normal`;
+      } else if (randomProcess === "LOG_TASK") {
+        logMsg = `[${new Date().toLocaleTimeString()}] [${randomProcess}] Log periódico gerado`;
+      }
+
+      if (logMsg) {
+        logMessages.push(logMsg);
+        if (logMessages.length > 20) logMessages.shift();
+        socket.emit('log', { message: logMsg });
+        processLog(logMsg);
+      }
+    }
+
+    // Inicialização
+    let tempChart, cpuChart, voltageChart;
+    document.addEventListener('DOMContentLoaded', () => {
+      renderProcessCards();
+
+      tempChart = new Chart(document.getElementById("tempChart"), {
+        type: 'line',
+        data: { labels: timeLabels, datasets: [{ label: 'Temperatura (°C)', data: telemetryData.temp, borderColor: '#f39c12', backgroundColor: 'rgba(243, 156, 18, 0.2)', tension: 0.3, fill: true }] },
+        options: { responsive: true, scales: { y: { beginAtZero: false, suggestedMax: 80 } } }
+      });
+
+      cpuChart = new Chart(document.getElementById("cpuChart"), {
+        type: 'line',
+        data: { labels: timeLabels, datasets: [{ label: 'Uso de CPU (%)', data: telemetryData.cpu, borderColor: '#00bcd4', backgroundColor: 'rgba(0, 188, 212, 0.2)', tension: 0.3, fill: true }] },
+        options: { responsive: true, scales: { y: { beginAtZero: true, suggestedMax: 100 } } }
+      });
+
+      voltageChart = new Chart(document.getElementById("voltageChart"), {
+        type: 'line',
+        data: { labels: timeLabels, datasets: [{ label: 'Tensão (V)', data: telemetryData.voltage, borderColor: '#ff3333', backgroundColor: 'rgba(255, 51, 51, 0.2)', tension: 0.3, fill: true }] },
+        options: { responsive: true, scales: { y: { beginAtZero: false, suggestedMin: 3.0, suggestedMax: 4.5 } } }
+      });
+
+      document.getElementById('status-filter').addEventListener('change', filterTable);
+      document.getElementById('search-input').addEventListener('input', filterTable);
+      document.getElementById('refresh-report').addEventListener('click', filterTable);
+
+      document.querySelectorAll('.report-table th').forEach(th => {
+        th.addEventListener('click', () => {
+          const column = th.dataset.sort;
+          if (sortColumn === column) {
+            sortDirection *= -1;
+          } else {
+            sortColumn = column;
+            sortDirection = 1;
+          }
+          filterTable();
+          document.querySelectorAll('.report-table th').forEach(t => t.classList.remove('sorted'));
+          th.classList.add('sorted');
+        });
+      });
+
+      socket.on('connect_error', () => {
+        logMessages.push(`[${new Date().toLocaleTimeString()}] [SISTEMA] ERRO: Falha na conexão com o servidor`);
+        updateLiveLogs();
+      });
+
+      socket.on('log', data => {
+        const logMessage = sanitizeString(data.message);
+        logMessages.push(logMessage);
+        if (logMessages.length > 20) logMessages.shift();
+        processLog(logMessage);
+        updateLiveLogs();
+      });
+
+      socket.on('process_update', data => {
+        const { name, status, metrics, timestamp } = data;
+        if (processos[name]) {
+          processos[name].status = status;
+          processos[name].metrics = metrics;
+          processos[name].timestamp = timestamp;
+          updateProcessCard(name);
+        }
+      });
+
+      socket.on('test_result', data => {
+        if (!testResults.some(test => test.id === data.id)) { // Prevent duplicates
+          testResults.push(data);
+          document.getElementById('status-filter').value = 'all'; // Reset filter
+          filterTable();
+        }
+      });
+
+      document.querySelectorAll('.tab-button:not(.report)').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.tab-button').forEach(b => b.classList.remove('ativo'));
+          document.querySelectorAll('.process-panel').forEach(p => p.classList.add('hidden'));
+          btn.classList.add('ativo');
+          document.querySelectorAll('.tab-button').forEach(b => b.setAttribute('aria-selected', b === btn ? 'true' : 'false'));
+          const targetPanel = document.getElementById(btn.dataset.target);
+          if (targetPanel) targetPanel.classList.remove('hidden');
+        });
+      });
+
+      setInterval(simulateLogs, 2000);
+      filterTable();
+    });
+  </script>
+</body>
+</html>

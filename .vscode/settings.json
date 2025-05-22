@@ -1,6 +1,8 @@
 {
     "files.associations": {
-        "unistd.h": "c"
+        "*.embeddedhtml": "html",
+        "unistd.h": "c",
+        "hk_star_task.h": "c"
     },
     "cmake.sourceDirectory": "/home/allan/maria_sat/FreeRTOS-Kernel"
 }
