@@ -3,24 +3,22 @@ Como Rodar o Projeto
 Passo 1: Compilar e rodar o satélite (QEMU)
 Compilação do código do satélite: Navegue até o diretório onde o código do satélite está localizado e rode o comando para compilar o código:
 
-bash
-Copiar
-make
-Rodar o satélite com QEMU: Depois de compilar o satélite, execute o comando abaixo para rodar o QEMU e simular o satélite:
+wsl
+make clean && make
+qemu-system-arm -M lm3s6965evb -nographic -monitor pty -serial stdio -kernel maria-sat.elf -nic none | tee logs.txt
+*logs.txt tem que estar no ficheiro 'interface'
 
-bash
-Copiar
-qemu-system-arm -M lm3s6965evb -nographic -serial file:logs.txt -kernel maria-sat.elf
-Isso irá rodar o satélite e gravar os logs no arquivo logs.txt.
 
 Passo 2: Rodar o servidor Flask (para exibir a interface)
 Navegue até o diretório da interface: Vá até a pasta interface onde os arquivos HTML, CSS e JavaScript estão localizados.
 
 Rodar o servidor Flask: No terminal, execute o comando abaixo para iniciar o servidor Flask:
 
-bash
-Copiar
+wsl
+cd interface
+source venv/bin/activate
 python3 server.py
+
 Acessar a interface:
 
 Abra um navegador web e vá para http://localhost:5000 para visualizar a interface do painel de processos do satélite.
